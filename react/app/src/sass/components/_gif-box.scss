@@ -1,0 +1,217 @@
+.gif-box {
+	width: 180px;
+	height: 180px;
+	border: dashed 2px $gray-opacity;
+	position: relative;
+	display: inline-block;
+	margin: 20px;
+	background-color: rgba(255,255,255,0.3);
+}
+
+.gif-box-add {
+	font-size: 70px;
+	color: $red;
+	cursor: pointer;
+	background: none;
+}
+
+.gif-box-inner {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 100%;
+	transform: translate(-50%, -50%);
+	padding: 15px;
+	box-sizing: border-box;
+}
+
+.gif-box-delete {
+	position: absolute;
+	z-index: 20;
+	right: -8px;
+	top: -8px;
+	padding: 5px;
+	border-radius: 100%;
+	background-color: $gray;
+	cursor: pointer;
+	height: 15px;
+	width: 15px;
+	&:after, &:before {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		display: block;
+		width: 2px;
+		height: 10px;
+		content:"";
+		background-color: $white;
+		margin-top: -5px;
+		margin-left: -1px;
+	}
+	&:after {
+		transform: rotate(45deg);;
+	}
+	&:before {
+		transform: rotate(-45deg);
+	}
+}
+
+.gif-box-inner-btn, .gif-box-bottom-btn {
+	display: inline-block;
+	border: 1px solid $gray;
+	border-radius: 100%;
+	margin: 0 3px;
+	width: 40px;
+	height: 40px;
+	position: relative;
+	cursor: pointer;
+	&:nth-child(1) {
+		margin-left: 0;
+	}
+	&:nth-child(3) {
+		margin-right: 0;
+	}
+}
+
+.gif-box-inner-btn-icon, .gif-box-bottom-btn-icon {
+	width: 20px;
+	height: 20px;
+	fill: $gray;
+	color: $gray;
+	font-family: $main-font;
+	font-weight: 800;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	display: block;
+	transform: translate(-50%,-50%);
+}
+
+.gif-box-inner-btn-txt, .gif-box-bottom-btn-txt {
+	color: $gray;
+	font-family: $main-font;
+	font-weight: 800;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	display: block;
+	transform: translate(-50%,-50%);
+}
+
+.gif-box-bottom-btn {
+	width: 35px;
+	height: 35px;
+	margin: 0 2px;
+	&:nth-child(1) {
+		margin-left: 0;
+	}
+	&:nth-child(3) {
+		margin-right: 0;
+	}
+}
+
+.gif-box-bottom-btn-icon {
+	width: 15px;
+	height: 15px;
+}
+
+.gif-box-bottom-btn-txt {
+	font-size: 12px;
+}
+
+.gif-box-instructions {
+	color: $gray;
+	font-family: $second-font;
+	font-weight: 800;
+	line-height: 1.5em;
+}
+
+.gif-box-bottom {
+	position: absolute;
+	bottom: -50px;
+	width: 100%;
+}
+
+.gif-box-bottom-left {
+	overflow: hidden;
+	float: left;
+}
+
+.gif-box-bottom-right {
+	overflow: hidden;
+	float: right;
+}
+
+.gif-box-gif-container {
+	background-color: #000;
+	position: absolute;
+	height: 180px;
+	width: 180px;
+}
+
+.gif-box-gif {
+	width: 100%;
+	position: absolute;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.gif-box-loader-container {
+	background: transparent;
+}
+
+.gif-box-loader {
+	position: relative;
+	width: 12px;
+	height: 12px;
+	top: 46%;
+	left: 46%;
+	border-radius: 12px;
+	animation: loaderm 2s $easeInOutQuad infinite;
+	&:before {
+		content: "";
+		position: absolute;
+		top: 0px;
+		left: -20px;
+		height: 12px;
+		width: 12px;
+		border-radius: 12px;
+		animation: loaderg 2s $easeInOutQuad infinite;
+	}
+	&:after {
+		content: "";
+		position: absolute;
+		top: 0px;
+		left: 20px;
+		height: 10px;
+		width: 10px;
+		border-radius: 10px;
+		animation: loaderd 2s $easeInOutQuad infinite;
+	}
+}
+
+@keyframes loaderg{
+	0%{background-color: rgba(255, 255, 255, .5);}
+	25%{background-color: rgba(255, 255, 255, 1);}
+	50%{background-color: rgba(255, 255, 255, .5);}
+	75%{background-color: rgba(255, 255, 255, .5);}
+	100%{background-color: rgba(255, 255, 255, .5);}
+}
+
+@keyframes loaderm{
+	0%{background-color: rgba(255, 255, 255, .5);}
+	25%{background-color: rgba(255, 255, 255, .5);}
+	50%{background-color: rgba(255, 255, 255, 1);}
+	75%{background-color: rgba(255, 255, 255, .5);}
+	100%{background-color: rgba(255, 255, 255, .5);}
+}
+
+@keyframes loaderd{
+	0%{background-color: rgba(255, 255, 255, .5);}
+	25%{background-color: rgba(255, 255, 255, .5);}
+	50%{background-color: rgba(255, 255, 255, .5);}
+	75%{background-color: rgba(255, 255, 255, 1);}
+	100%{background-color: rgba(255, 255, 255, .5);}
+}
+
+

@@ -1,0 +1,18 @@
+.gif-box-upload-dropzone {
+	cursor: pointer;
+	position: absolute;
+	height: 180px;
+	width: 180px;
+	transition: background-color 0.5s $easeOutQuad;
+	overflow: hidden;
+	&:hover {
+		background-color: $white;
+	}
+}
+
+.gif-box-upload-gif {
+	width: 100%;
+	position: absolute;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}

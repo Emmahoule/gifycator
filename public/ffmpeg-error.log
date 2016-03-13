@@ -1,0 +1,26 @@
+ffmpeg version 2.8.4-tessus Copyright (c) 2000-2015 the FFmpeg developers
+  built with Apple LLVM version 6.0 (clang-600.0.57) (based on LLVM 3.5svn)
+  configuration: --cc=/usr/bin/clang --prefix=/opt/ffmpeg --as=yasm --extra-version=tessus --enable-avisynth --enable-fontconfig --enable-gpl --enable-libass --enable-libbluray --enable-libfreetype --enable-libgsm --enable-libmodplug --enable-libmp3lame --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libopus --enable-libschroedinger --enable-libsoxr --enable-libspeex --enable-libtheora --enable-libvidstab --enable-libvo-aacenc --enable-libvo-amrwbenc --enable-libvorbis --enable-libvpx --enable-libwavpack --enable-libx264 --enable-libx265 --enable-libxavs --enable-libxvid --enable-libzmq --enable-version3 --disable-ffplay --disable-indev=qtkit --disable-indev=x11grab_xcb
+  libavutil      54. 31.100 / 54. 31.100
+  libavcodec     56. 60.100 / 56. 60.100
+  libavformat    56. 40.101 / 56. 40.101
+  libavdevice    56.  4.100 / 56.  4.100
+  libavfilter     5. 40.101 /  5. 40.101
+  libswscale      3.  1.101 /  3.  1.101
+  libswresample   1.  2.101 /  1.  2.101
+  libpostproc    53.  3.100 / 53.  3.100
+Input #0, gif, from '/Applications/MAMP/tmp/php/phppMYOfx':
+  Duration: N/A, bitrate: N/A
+    Stream #0:0: Video: gif, bgra, 650x408, 7.67 fps, 23.08 tbr, 100 tbn, 100 tbc
+[libvpx-vp9 @ 0x7ff784073600] v1.3.0
+Output #0, webm, to 'uploads/ycQ28nWIey.webm':
+  Metadata:
+    encoder         : Lavf56.40.101
+    Stream #0:0: Video: vp9 (libvpx-vp9), yuv420p, 650x408, q=-1--1, 200 kb/s, 23.08 fps, 1k tbn, 23.08 tbc
+    Metadata:
+      encoder         : Lavc56.60.100 libvpx-vp9
+Stream mapping:
+  Stream #0:0 -> #0:0 (gif (native) -> vp9 (libvpx-vp9))
+Press [q] to stop, [?] for help
+frame=   13 fps=1.0 q=0.0 Lsize=       8kB time=00:00:01.60 bitrate=  39.5kbits/s    
+video:7kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 7.713236%

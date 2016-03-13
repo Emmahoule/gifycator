@@ -1,0 +1,57 @@
+body {
+	font-family: $main-font;
+	color: $white;
+	font-size: 14px;
+}
+
+p {
+	line-height: 1.5em;
+}
+
+a {
+	color: $white;
+}
+
+.btn1 {
+	border-radius: 40px;
+	padding: 15px 30px;
+	border: 1px solid $gray;
+	display: inline-block;
+	font-family: $main-font;
+	text-transform: uppercase;
+	font-size: 11px;
+	letter-spacing: .1em;
+	font-weight: 600;
+	color: $gray;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.c-red {
+	color: $red;
+}
+
+.title-2 {
+	font-family: $second-font;
+	font-size: 20px;
+	font-weight: 600;
+	letter-spacing: .05em;
+}
+
+.clearfix {
+  overflow: auto;
+} 
+
+input {
+	border-bottom: 1px solid $gray;
+	background-color: transparent;
+	padding: 10px 0;
+	color: $gray;
+	&::placeholder {
+		color: $gray;
+	}
+}
+
+.error {
+	color: $red;
+}
