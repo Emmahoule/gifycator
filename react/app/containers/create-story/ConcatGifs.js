@@ -5,6 +5,9 @@ import { concatGifs } from '../../actions/ConcatGifsActions.js';
 import GifBox from '../../components/GifBox';
 import ReactDOM from 'react-dom';
 
+import { config } from '../../config.js'
+const API_URL = config.API_URL;
+
 
 /* Container ManipulateGif : 
  * 
@@ -34,10 +37,13 @@ class ConcatGif extends Component {
   //   this.props.dispatch(concatGifs(form));
   // }
   render() {
-    const { dispatch, imgs } = this.props;
+    const { dispatch, imgs, story } = this.props;
     return (
         <div className="manipulate-gif">
           <div>Concat Gif</div>
+          {story &&
+            <video autoPlay="true" width="400" height="400" loop="loop" preload="metadata" className="gif-box-gif" src={API_URL+story}></video>
+          }
         </div>
     )
   }
