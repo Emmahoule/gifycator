@@ -39,7 +39,7 @@ export default class GifBoxUpload extends Component {
         image: files[0].preview,
         file: files[0]
       });
-      this.props.addGifFileToStory(files[0].preview);
+      this.props.addGifFileToStory(files[0]);
     }
   }
 

@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 
 class GifController extends Controller{
 
-
     public function index(){
 
         $gifs  = Gif::all();

@@ -167,7 +167,13 @@ export default class GifBoxCamera extends Component {
     var url = window.URL.createObjectURL(webmBlob);
     video.src = url;
     this.setState({video: url});
-    this.props.addGifFileToStory(url);
+    this.props.addGifFileToStory(this.blobToFile(webmBlob, "camera_record_"+this.props.id+".webm"));
+  }
+
+  blobToFile(theBlob, fileName){
+    theBlob.lastModifiedDate = new Date();
+    theBlob.name = fileName;
+    return theBlob;
   }
 
   render() {

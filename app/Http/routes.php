@@ -37,6 +37,9 @@ $app->group(['prefix' => 'api/','namespace' => 'App\Http\Controllers'], function
     // Download routes
     $app->post('download-file','DownloadController@downloadFile');
 
+    // Create Story routes
+    $app->post('create-story','CreateStoryController@createStory');
+
 });
 
 
