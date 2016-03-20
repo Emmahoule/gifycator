@@ -26,9 +26,54 @@ class GifController extends Controller{
 
     public function saveGif(Request $request){
 
-        $gif = Gif::create($request->all());
+        // Récupération de la requête
+        $url = $request->input('url');
+        $cover = $request->input('cover');
+        $title = $request->input('title');
+        $author = $request->input('author');
+        $category = $request->input('category');
+        
+        // Récupération du dossier uploads
+        $uploadPath = config('images.path');
 
-        return response()->json($gif);
+        // Génération d'un nom de fichier pas encore existant
+        do {
+            $random = str_random(10);
+            $newCoverName = $random . '.png';
+        } while(file_exists($uploadPath . '/' . $newCoverName));
+
+        $newGifName = $random . '.webm';
+
+        // Décodage de la photo de couverture (Base64)
+        $coverDecoded = base64_decode($cover);
+        $coverFileName = $uploadPath.'/'.$newCoverName;
+        file_put_contents($coverFileName, $coverDecoded);
+
+        $gifPath = $uploadPath."/".$newGifName;
+        rename($url, $gifPath);
+
+
+        // Insertion des données dans la BDD
+        Gif::insert([
+            'url' => $url, 
+            'cover' => $coverFileName,
+            'title' => $title,
+            'author' => $author,
+            'category' => $category
+            ]
+        );
+
+        return response()->json([
+            'url' => $gifPath, 
+            'cover' => $coverFileName,
+            'title' => $title,
+            'author' => $author,
+            'category' => $category
+            ]);
+
+        // $gif = Gif::create($request->all());
+
+        // return response()->json($gif);
 
     }
 
@@ -44,9 +89,9 @@ class GifController extends Controller{
         $gif  = Gif::find($id);
 
         $gif->url = $request->input('url');
+        $gif->cover = $request->input('cover');
         $gif->title = $request->input('title');
         $gif->author = $request->input('author');
-        $gif->published = $request->input('published');
         $gif->category = $request->input('category');
 
         $gif->save();
@@ -55,3 +100,20 @@ class GifController extends Controller{
     }
 
 }
+
+        // $url = $request->input('url');
+        // $cover = $request->file('cover');
+        // $title = $request->input('title');
+        // $author = $request->input('author');
+        // $category = $request->input('category');
+
+        // Gif::insert([
+        //     'url' => $url, 
+        //     'cover' => $cover,
+        //     'title' => $title,
+        //     'author' => $author,
+        //     'category' => $category
+        //     ]
+        // );
+
+        // return $url;

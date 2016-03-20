@@ -14,16 +14,17 @@ class CreateGifsTable extends Migration
     {
         Schema::create('gifs', function(Blueprint $table) {
             $table->increments('id');
-            $table->string('url', 100)->unique();
             $table->string('title', 100);
             $table->string('author', 100);
-            $table->boolean('published')->default(true);
             $table->integer('category')->unsigned();
             $table->foreign('category')
                   ->references('id')
                   ->on('categories')
                   ->onDelete('restrict')
                   ->onUpdate('restrict');
+            $table->string('url', 100)->unique();
+            $table->string('cover', 100)->unique();
+            $table->boolean('published')->default(true);
         });
     }
 

@@ -10,8 +10,9 @@ import Frame from './containers/Frame'
 import Homepage from './containers/Homepage'
 
 import CreateStory from './containers/create-story/CreateStory'
+import ComposeGif from './containers/create-story/ComposeGif'
 import CreateGif from './containers/create-story/CreateGif'
-import ConcatGifs from './containers/create-story/ConcatGifs'
+import PublishGif from './containers/create-story/PublishGif'
 
 import Gallery from './containers/gallery/Gallery'
 
@@ -26,8 +27,9 @@ export class Routes extends React.Component {
 					<IndexRoute component={Homepage} />
 					<Route component={Gallery}/>
 					<Route path="create-story" component={CreateStory}>
-						<IndexRoute component={CreateGif} />
-						<Route path="manipulate-gif" component={ConcatGifs}/>
+						<IndexRoute component={ComposeGif} />
+						<Route path="create-gif" component={CreateGif}/>
+						<Route path="publish-gif" component={PublishGif}/>
 					</Route>
 				</Route>
 			</Router>

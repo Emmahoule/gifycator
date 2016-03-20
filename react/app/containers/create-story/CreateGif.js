@@ -1,39 +1,55 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { addBoxToStory, deleteBoxToStory, removeAllBoxToStory, addGifFileToStory } from '../../actions/CreateGifActions.js';
-import GifBox from '../../components/GifBox';
-import { Link } from "react-router";
+import ConcatGif from '../../components/ConcatGif';
+import SaveGif from '../../components/SaveGif';
+import { clearStory } from '../../actions/CreateGifActions.js';
+import ReactDOM from 'react-dom';
+
+import { config } from '../../config.js'
+const API_URL = config.API_URL;
+
 
 /* Container CreateGif : 
  * 
- * Sous-conteneur contenant les composants
- * pour l'ajout de gif lors de la création d'histoire 
+ * Sous-conteneur contenant les composants pour concaténer les gifs,
+ * et les composants pour enregistrer un gif dans la BDD
 */
 
 class CreateGif extends Component {
-  componentWillUnmount(){
-    // this.props.dispatch(removeAllBoxToStory());
+
+  constructor(){
+    super();
   }
+
+  /* ComponentWillMount : 
+   * 
+   * Si il n'y a pas de requête en cours
+   * on vide l'histoire
+  */
+  componentWillUnmount(){
+    if (!this.props.isFetching) {
+      this.props.dispatch(clearStory());
+    }
+  }
+
   render() {
-  	const { dispatch, imgs, complete } = this.props;
+    const { dispatch, imgs, story, dataCategories, history } = this.props;
     return (
-      	<div className="create-gif">
-          <div className="create-story-title title-2">Lets create your story !</div>
-
-          {imgs.map(function(img){
-            return <GifBox deleteBoxToStory={(id)=>dispatch(deleteBoxToStory(id))} addGifFileToStory={(file)=>dispatch(addGifFileToStory(img.id, file))} id={img.id} key={img.id} />
-          })}
-
-          {complete==false &&
-          <div className="gif-box gif-box-add" onClick={()=>dispatch(addBoxToStory())}>
-            <div className="gif-box-inner gif-box-inner">
-              +
-            </div>
-          </div>
+        <div className="create-gif">
+          {!story &&
+            <ConcatGif 
+              dispatch={dispatch} 
+              imgs={imgs} 
+            />
           }
-
-          <div className="clearfix"></div>
-          <Link to="create-story/manipulate-gif" className="create-gif-btn btn1">Create my story</Link>
+          {story &&
+            <SaveGif 
+              history={history}
+              story={story} 
+              dispatch={dispatch}
+              dataCategories={dataCategories}
+            />
+          }
         </div>
     )
   }
@@ -42,17 +58,19 @@ class CreateGif extends Component {
 CreateGif.propTypes = {
   dispatch: PropTypes.func.isRequired,
   imgs: PropTypes.array.isRequired,
-  complete: PropTypes.bool.isRequired
+  story: PropTypes.string,
+  dataCategories: PropTypes.array
 }
 
 function mapStateToProps(state) {
 
-  const { createGifStory } = state
-  const { imgs, complete } = createGifStory
+  const { composeGifStory, concatGifStory, saveGifStory, fetchCategories } = state
+  const { imgs } = composeGifStory
+  const { story, isFetching } = concatGifStory
+  const { dataCategories } = fetchCategories
 
   return {
-    imgs,
-    complete
+    imgs, story, dataCategories, isFetching
   }
 }
 

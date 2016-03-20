@@ -57,3 +57,37 @@
 	fill: $gray;
 }
 
+
+.frame-loading {
+	position: absolute;
+	bottom: 100px;
+	left: 100px;
+}
+.frame-loading-icon {
+	color: $gray;
+	width: 15px;
+	height: 15px;
+	display: inline-block;
+	vertical-align: middle;
+	fill: $gray;
+	margin-right: 15px;
+	// transition: transform 0.5s $easeInOutQuart;
+	animation: rotation 0.8s infinite;
+}
+
+@keyframes rotation { 
+    0% { 
+        transform: rotate(0deg);
+    } 
+    100% { 
+        transform: rotate(180deg);
+    } 
+}
+
+.frame-loading-text {
+	color: $gray;
+	display: inline-block;
+	vertical-align: middle;
+	font-family: $second-font;
+	font-weight: bold;
+}

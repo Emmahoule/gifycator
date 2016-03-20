@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { readGifsStory } from '../../actions/CreateGifActions.js';
+import { readGifsStory } from '../../actions/ComposeGifActions.js';
 import GifBox from '../../components/GifBox';
 import ReactDOM from 'react-dom';
 
@@ -171,8 +171,8 @@ ManipulateGif.propTypes = {
 
 function mapStateToProps(state) {
 
-  const { createGifStory } = state
-  const { imgs } = createGifStory
+  const { ComposeGifStory } = state
+  const { imgs } = ComposeGifStory
 
   return {
     imgs

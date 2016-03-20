@@ -13,6 +13,7 @@
 	color: $red;
 	cursor: pointer;
 	background: none;
+	font-family: $main-font;
 }
 
 .gif-box-inner {
@@ -144,6 +145,7 @@
 
 .gif-box-gif-container {
 	background-color: #000;
+	overflow: hidden;
 	position: absolute;
 	height: 180px;
 	width: 180px;

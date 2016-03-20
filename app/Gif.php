@@ -14,5 +14,5 @@ class Gif extends Model
 		return $this->belongsTo('App\Category');
 	}
 
-	protected $fillable = ['url', 'title','author', 'published', 'category'];
+	protected $fillable = ['url', 'cover', 'title','author', 'published', 'category'];
 }

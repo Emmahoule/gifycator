@@ -65,7 +65,7 @@ export default class GifBoxUpload extends Component {
           return Promise.reject(data)
         } else {
           this.setState({toWebm:API_URL+data, fetching:false});
-          this.props.addGifFileToStory(this.state.toWebm);
+          this.props.addGifFileToStory(data);
         }
       })
       //.catch(err => console.log("Error: ", err))

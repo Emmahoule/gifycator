@@ -23,15 +23,14 @@ class ToWebmController extends Controller
 		$filePath = $gif->getPathName();
 		$filename = $gif->getClientOriginalName();
 		$extension = $gif->getClientOriginalExtension();
-		$uploadPath = config('images.path');
+	    $tmpPath = config('images.tmpPath');
 
 		do {
 			$newFileName = str_random(10);
-		} while(file_exists($uploadPath . '/' . $newFileName));
+		} while(file_exists($tmpPath . '/' . $newFileName));
 
-		$webmFilePath = $uploadPath.'/'.$newFileName.".webm";
+		$webmFilePath = $tmpPath.'/'.$newFileName.".webm";
 		shell_exec("./ffmpeg -f ".$extension." -i ".$filePath." ".$webmFilePath." 2> ffmpeg-error.log");
-
 
 		return $webmFilePath;
 	}

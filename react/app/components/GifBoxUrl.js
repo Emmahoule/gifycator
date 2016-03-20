@@ -47,7 +47,7 @@ export default class GifBoxUrl extends Component {
           return Promise.reject(data)
         } else {
           this.setState({url:API_URL+data, fetching:false}) 
-          this.props.addGifFileToStory(this.state.url);
+          this.props.addGifFileToStory(data);
         }
       })
       //.catch(err => console.log("Error: ", err))

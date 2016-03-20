@@ -20,7 +20,8 @@ class CreateStoryController extends Controller
 		
 		$image = $request->toArray();
 		$tabImg = [];
-		$uploadPath = config('images.path');
+		$tmpPath = config('images.tmpPath');
+		error_log($tmpPath);
 		$listFiles = "";
 		$convert="";
 		$cpt=1;
@@ -53,10 +54,10 @@ class CreateStoryController extends Controller
 			// On génère un nom qui n'est pas existant
 			// do {
 			// 	$newFileName = str_random(10) . '.webm';
-			// } while(file_exists($uploadPath . '/' . $newFileName));
+			// } while(file_exists($tmpPath . '/' . $newFileName));
 
 			// On ajoute le chemin 
-			// $newFilePath = $uploadPath.'/'.$newFileName;
+			// $newFilePath = $tmpPath.'/'.$newFileName;
 
 			// shell_exec('./ffmpeg -f webm -i '.$filePath.' -filter_complex "[0:0] scale=size=500x500:force_original_aspect_ratio=decrease,pad=width=500:height=500:x=(out_w-in_w)/2:y=(out_h-in_h)/2,setsar=1" '.$newFilePath.' 2> ffmpeg-error.log');
 
@@ -71,19 +72,20 @@ class CreateStoryController extends Controller
 		
 		do {
 			$newStoryName = str_random(10) . '.webm';
-		} while(file_exists($uploadPath . '/' . $newStoryName));
+		} while(file_exists($tmpPath . '/' . $newStoryName));
 
-		$newStoryName = $uploadPath.'/'.$newStoryName;
+		$newStoryName = $tmpPath.'/'.$newStoryName;
 		$cmd = './ffmpeg '.$listFiles.'-filter_complex "'.$convert.$v.' concat=n='.$cpt2.':v=1:a=0 [v]" -map "[v]" -y '.$newStoryName.' 2> ffmpeg-error.log';
 		shell_exec($cmd);
+
+		// Suppression des images dont on n'a plus besoin
+		foreach ($image as $file) {
+			if (!is_object($file)){
+				unlink($file);
+			}
+		}
 
 		return $newStoryName;
 
 	}
 }
-
-
-// './ffmpeg -f webm -i '.$tabImg[0].' -f webm -i '.$tabImg[1].'-filter_complex "[0:0] scale=size=500x500:force_original_aspect_ratio=decrease,pad=width=500:height=500:x=(out_w-in_w)/2:y=(out_h-in_h)/2,setsar=1 [v1];[1:0] scale=size=500x500:force_original_aspect_ratio=decrease,pad=w=500:h=500:x=(out_w-in_w)/2:y=(out_h-in_h)/2,setsar=1 [v2];[v1][v2] concat=n=2:v=1:a=0 [v]" -map "[v]" -y '.$newFilePath.' 2> ffmpeg-error.log';
-
-
-// './ffmpeg -f webm -i /Applications/MAMP/tmp/php/phpLUuE80 -f webm -i /Applications/MAMP/tmp/php/php9zZIQN  -filter_complex "[0:0] scale=size=500x500:force_original_aspect_ratio=decrease,pad=width=500:height=500:x=(out_w-in_w)/2:y=(out_h-in_h)/2,setsar=1 [v1];[0:0] scale=size=500x500:force_original_aspect_ratio=decrease,pad=width=500:height=500:x=(out_w-in_w)/2:y=(out_h-in_h)/2,setsar=1 [v2];;[v1][v2] concat=n=2:v=1:a=0 [v]" -map "[v]" -y uploads/Q176xKUFe6.webm 2> ffmpeg-error.log
