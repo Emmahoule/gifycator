@@ -24,6 +24,13 @@ class GifController extends Controller{
         return response()->json($gif);
     }
 
+    public function getGifs($id){
+
+        $gifs  = Gif::where('category', $id)->get();;
+
+        return response()->json($gifs);
+    }
+
     public function saveGif(Request $request){
 
         // Récupération de la requête
@@ -55,7 +62,7 @@ class GifController extends Controller{
 
         // Insertion des données dans la BDD
         Gif::insert([
-            'url' => $url, 
+            'url' => $gifPath, 
             'cover' => $coverFileName,
             'title' => $title,
             'author' => $author,
@@ -63,6 +70,7 @@ class GifController extends Controller{
             ]
         );
 
+        // Renvoie des données en JSON
         return response()->json([
             'url' => $gifPath, 
             'cover' => $coverFileName,
@@ -100,20 +108,3 @@ class GifController extends Controller{
     }
 
 }
-
-        // $url = $request->input('url');
-        // $cover = $request->file('cover');
-        // $title = $request->input('title');
-        // $author = $request->input('author');
-        // $category = $request->input('category');
-
-        // Gif::insert([
-        //     'url' => $url, 
-        //     'cover' => $cover,
-        //     'title' => $title,
-        //     'author' => $author,
-        //     'category' => $category
-        //     ]
-        // );
-
-        // return $url;

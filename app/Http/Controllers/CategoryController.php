@@ -45,7 +45,8 @@ class CategoryController extends Controller{
         $category  = Category::find($id);
 
         $category->name = $request->input('name');
-
+        $category->name = $request->input('img');
+        $category->name = $request->input('thumbnail');
         $category->save();
 
         return response()->json($category);

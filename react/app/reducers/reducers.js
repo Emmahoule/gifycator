@@ -6,7 +6,9 @@ import { CONCAT_GIFS_REQUEST, CONCAT_GIFS_SUCCESS, CONCAT_GIFS_FAILURE, CLEAR_ST
         SAVE_STORY_REQUEST, SAVE_STORY_SUCCESS, SAVE_STORY_FAILURE } 
         from '../actions/CreateGifActions.js'
 
-import { FETCH_CATEGORIES_REQUEST, FETCH_CATEGORIES_SUCCESS, FETCH_CATEGORIES_FAILURE } from '../actions/CategoriesActions.js'
+import { FETCH_CATEGORIES_REQUEST, FETCH_CATEGORIES_SUCCESS, FETCH_CATEGORIES_FAILURE, FETCH_CATEGORY_REQUEST, FETCH_CATEGORY_SUCCESS, FETCH_CATEGORY_FAILURE } from '../actions/CategoriesActions.js'
+
+import { FETCH_GIFS_REQUEST, FETCH_GIFS_SUCCESS, FETCH_GIFS_FAILURE, CLEAR_GIFS } from '../actions/GalleryActions.js'
 
 
 /* Compose Gif Reducer :
@@ -177,9 +179,68 @@ function fetchCategories(state = {
   }
 }
 
+/* Fetch gifs Reducer :
+ * - FETCH_CATEGORY_REQUEST
+ * - FETCH_CATEGORY_SUCCESS
+ * - FETCH_CATEGORY_FAILURE
+*/
+function fetchCategory(state = {
+    isFetching: false
+  }, action) {
+  switch (action.type) {
+    case FETCH_CATEGORY_REQUEST:
+      return Object.assign({}, state, {
+        isFetching: true
+      })
+    case FETCH_CATEGORY_SUCCESS:
+      return Object.assign({}, state, {
+        isFetching: false,
+        dataCategory: action.response
+      })    
+    case FETCH_CATEGORY_FAILURE:
+      return Object.assign({}, state, {
+        isFetching: false
+      })
+    default:
+      return state
+  }
+}
+
+/* Fetch gifs Reducer :
+ * - FETCH_GIFS_REQUEST
+ * - FETCH_GIFS_SUCCESS
+ * - FETCH_GIFS_FAILURE
+*/
+function fetchGifs(state = {
+    isFetching: false
+  }, action) {
+  switch (action.type) {
+    case FETCH_GIFS_REQUEST:
+      return Object.assign({}, state, {
+        isFetching: true
+      })
+    case FETCH_GIFS_SUCCESS:
+      return Object.assign({}, state, {
+        isFetching: false,
+        gifs: action.response
+      })    
+    case FETCH_GIFS_FAILURE:
+      return Object.assign({}, state, {
+        isFetching: false
+      })
+    case CLEAR_GIFS:
+      return Object.assign({}, state, {
+        gifs: null,
+        isFetching: false
+      })
+    default:
+      return state
+  }
+}
+
 
 const myApp = combineReducers({
-  composeGifStory, concatGifStory, saveGifStory, fetchCategories
+  composeGifStory, concatGifStory, saveGifStory, fetchCategories, fetchCategory, fetchGifs
 })
 
 export default myApp

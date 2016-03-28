@@ -27,6 +27,7 @@ $app->group(['prefix' => 'api/','namespace' => 'App\Http\Controllers'], function
     // Gif routes
     $app->get('gif','GifController@index');
     $app->get('gif/{id}','GifController@getGif');
+    $app->get('gifs/{id}','GifController@getGifs');
     $app->post('gif','GifController@saveGif');
     $app->put('gif/{id}','GifController@updateGif');
     $app->delete('gif/{id}','GifController@deleteGif');

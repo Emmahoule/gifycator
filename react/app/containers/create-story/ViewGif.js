@@ -7,12 +7,12 @@ import { config } from '../../config.js'
 const API_URL = config.API_URL;
 
 
-/* Container PublishGif : 
+/* Container ViewGif : 
  * 
  * 
 */
 
-class PublishGif extends Component {
+class ViewGif extends Component {
 
   constructor(){
     super();
@@ -41,7 +41,7 @@ class PublishGif extends Component {
   }
 }
 
-PublishGif.propTypes = {
+ViewGif.propTypes = {
   dispatch: PropTypes.func.isRequired,
   dataStory: PropTypes.object.isRequired
 }
@@ -56,4 +56,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps)(PublishGif)
+export default connect(mapStateToProps)(ViewGif)

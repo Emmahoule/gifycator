@@ -116,7 +116,7 @@ export function saveStory(story, history) {
           return Promise.reject(dataStory)
         } else {
           dispatch(receiveSaveStory(dataStory))
-          history.push('create-story/publish-gif');
+          history.push('create-story/your-gif');
         }
       }).catch(err => console.log("Error: ", err))
   }

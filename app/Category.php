@@ -13,7 +13,7 @@
 	    return $this->hasMany('App\Gif');
 	}
 
-	protected $fillable = ['name'];
+	protected $fillable = ['name', 'img', 'thumbnail'];
 
  }
  

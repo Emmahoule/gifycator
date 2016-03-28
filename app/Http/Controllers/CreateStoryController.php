@@ -64,7 +64,7 @@ class CreateStoryController extends Controller
 			// On ajoute le chemin dans un tableau
 			// array_push($tabImg, $newFilePath);
 			$listFiles.='-f webm -i '.$filePath.' '; 
-			$convert.='['.$cpt2.':0] scale=size=500x500:force_original_aspect_ratio=decrease,pad=width=500:height=500:x=(out_w-in_w)/2:y=(out_h-in_h)/2,setsar=1 [v'.$cpt.'];';
+			$convert.='['.$cpt2.':0] scale=size=400x400:force_original_aspect_ratio=decrease,pad=width=400:height=400:x=(out_w-in_w)/2:y=(out_h-in_h)/2:color=black,setsar=1 [v'.$cpt.'];';
 			$v.='[v'.$cpt.']';
 			$cpt ++;
 			$cpt2 ++;
