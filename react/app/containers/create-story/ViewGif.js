@@ -21,21 +21,36 @@ class ViewGif extends Component {
   render() {
     const { dispatch, dataStory } = this.props;
     return (
-        <div className="publish-gif">
-          {dataStory &&
-            <div>
-            <div>
-              <div style={{backgroundUrl: dataStory.cover}}>
-                <video crossOrigin="anonymous" autoPlay="true" width="250" height="250" loop="loop" preload="metadata" src={API_URL+dataStory.url}></video>
+        <div className="view-gif">
+          <div className="a-middle">
+            {dataStory &&
+              <div className="view-gif-story-block">
+                <div className="view-gif-story">
+                  <div className="view-gif-square"></div>
+                  <div className="view-gif-title-block">
+                    <div className="view-gif-title">{dataStory.title}</div>
+                    <div className="view-gif-author">{dataStory.author}</div>
+                  </div>
+                  <video className="view-gif-video" crossOrigin="anonymous" autoPlay="true" width="300" height="300" loop="loop" preload="metadata" src={API_URL+dataStory.url}></video>
+                </div>
+                <div className="view-gif-share">Share on 
+                  <a className="view-gif-share-link" href="#">            
+                    <svg className="icon icon-facebook">
+                      <use xlinkHref="#icon-facebook"></use>
+                    </svg>
+                  </a>
+                  <a className="view-gif-share-link" href="#"> 
+                    <svg className="icon icon-twitter">
+                      <use xlinkHref="#icon-twitter"></use>
+                    </svg>
+                  </a>
+                </div>
+                <div className="clearfix"></div>
               </div>
-              <div className="">{dataStory.title}</div>
-            </div>
-            <div className="">{dataStory.author}</div>
-            </div>
-          }
-          <div className="btn1">Gallery</div>
-          <div className="btn1">Share</div>
-          <Link to="create-story" className="btn1">Create new story</Link>
+            }
+            <Link to="gallery" className="view-gif-btn btn1">Gallery</Link>
+            <Link to="create-story" className="view-gif-btn btn1">Create new story</Link>
+          </div>
         </div>
     )
   }

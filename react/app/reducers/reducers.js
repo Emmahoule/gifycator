@@ -1,5 +1,7 @@
 import { combineReducers } from 'redux'
 
+import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT_SUCCESS } from '../actions/AuthActions.js'
+
 import { ADD_BOX_TO_STORY, DELETE_BOX_TO_STORY, ADD_GIF_FILE_TO_STORY, REMOVE_ALL_BOX_TO_STORY, READ_GIFS_STORY } from '../actions/ComposeGifActions.js'
 
 import { CONCAT_GIFS_REQUEST, CONCAT_GIFS_SUCCESS, CONCAT_GIFS_FAILURE, CLEAR_STORY,
@@ -8,7 +10,47 @@ import { CONCAT_GIFS_REQUEST, CONCAT_GIFS_SUCCESS, CONCAT_GIFS_FAILURE, CLEAR_ST
 
 import { FETCH_CATEGORIES_REQUEST, FETCH_CATEGORIES_SUCCESS, FETCH_CATEGORIES_FAILURE, FETCH_CATEGORY_REQUEST, FETCH_CATEGORY_SUCCESS, FETCH_CATEGORY_FAILURE } from '../actions/CategoriesActions.js'
 
-import { FETCH_GIFS_REQUEST, FETCH_GIFS_SUCCESS, FETCH_GIFS_FAILURE, CLEAR_GIFS } from '../actions/GalleryActions.js'
+import { FETCH_GIFS_REQUEST, FETCH_GIFS_SUCCESS, FETCH_GIFS_FAILURE, CLEAR_GIFS, FETCH_GIF_REQUEST, FETCH_GIF_SUCCESS, FETCH_GIF_FAILURE, CLEAR_GIF } from '../actions/GalleryActions.js'
+
+/* Auth Reducer :
+ * - LOGIN_REQUEST
+ * - LOGIN_SUCCESS
+ * - LOGIN_FAILURE
+ * - LOGOUT_SUCCESS
+*/
+function auth(state = {
+    isFetching: false,
+    isAuthenticated: localStorage.getItem('id_token') ? true : false
+  }, action) {
+  switch (action.type) {
+    case LOGIN_REQUEST:
+      return Object.assign({}, state, {
+        isFetching: true,
+        isAuthenticated: false,
+        user: action.creds
+      })
+    case LOGIN_SUCCESS:
+      return Object.assign({}, state, {
+        isFetching: false,
+        isAuthenticated: true,
+        errorMessage: 'Vous êtes maintenant connecté'
+      })
+    case LOGIN_FAILURE:
+      return Object.assign({}, state, {
+        isFetching: false,
+        isAuthenticated: false,
+        errorMessage: action.message
+      })
+    case LOGOUT_SUCCESS:
+      return Object.assign({}, state, {
+        isFetching: true,
+        isAuthenticated: false,
+        errorMessage: ''
+      })
+    default:
+      return state
+  }
+}
 
 
 /* Compose Gif Reducer :
@@ -36,7 +78,7 @@ function composeGifStory(state = {
     case ADD_BOX_TO_STORY:
       let newIdCounter = state.idCounter + 1;
       let newImg = new uploadFrame(newIdCounter);
-      if (state.imgs.length>=4) {
+      if (state.imgs.length>=3) {
         state.complete = true; 
       }
       return Object.assign({}, state, {
@@ -52,7 +94,7 @@ function composeGifStory(state = {
         nbFile--;
       }
       let newTabImgs = state.imgs.filter(img=>img.id!==action.id);
-      if (newTabImgs.length<=4) {
+      if (newTabImgs.length<=3) {
         state.complete = false;
       }
       return Object.assign({}, state, {
@@ -238,9 +280,40 @@ function fetchGifs(state = {
   }
 }
 
+/* Fetch gif Reducer :
+ * - FETCH_GIF_REQUEST
+ * - FETCH_GIF_SUCCESS
+ * - FETCH_GIF_FAILURE
+*/
+function fetchGif(state = {
+    isFetching: false
+  }, action) {
+  switch (action.type) {
+    case FETCH_GIF_REQUEST:
+      return Object.assign({}, state, {
+        isFetching: true
+      })
+    case FETCH_GIF_SUCCESS:
+      return Object.assign({}, state, {
+        isFetching: false,
+        gif: action.response
+      })    
+    case FETCH_GIF_FAILURE:
+      return Object.assign({}, state, {
+        isFetching: false
+      })
+    case CLEAR_GIF:
+      return Object.assign({}, state, {
+        gif: null,
+        isFetching: false
+      })
+    default:
+      return state
+  }
+}
 
 const myApp = combineReducers({
-  composeGifStory, concatGifStory, saveGifStory, fetchCategories, fetchCategory, fetchGifs
+  composeGifStory, concatGifStory, saveGifStory, fetchCategories, fetchCategory, fetchGifs, fetchGif, auth
 })
 
 export default myApp

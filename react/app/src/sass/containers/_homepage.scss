@@ -2,39 +2,30 @@
 	text-align: center;
 }
 
-.homepage-logo {
-	position: relative;
-	margin-top: 90px;
-	margin-bottom: 0px;
-	font-family: $main-font;
+.homepage-title {
+	span {
+		padding: 30px;
+	}
 }
+
+// .homepage-block {
+// 	padding-top: 100px;
+// }
 
 .homepage-logo-img {
 	position: absolute;
 	top: 0;
 }  
 
-.homepage-logo-txt {
-	font-size: 100px;
-	text-transform: uppercase;
-	font-weight: 800;
-	position: absolute;
-	top: 0;
-	width: 100%;
-	text-align: center;
-	display: block;
-	span {
-		margin: 0 20px;
-	}
-}
-
 .homepage-txt {
-	max-width: 700px;
+	max-width: 650px;
 	margin: 0 auto;
 	font-size: 18px;
+	font-family: $font-serif;
+	font-weight: 800;
+	color: $gray;
 }
 
 .homepage-btn {
-	min-width: 100px;
-	margin: 40px 15px;
+	margin: 80px 40px 0 40px;
 }

@@ -37,13 +37,12 @@ export default class ConcatGif extends Component {
   render() {
     const { dispatch, imgs } = this.props;
     return (
-        <div className="concat-gif">
-        	<div className="create-story-title title-2">Lets create your story !</div>
+        <div className="concat-gif a-middle">
         	<div className="concat-gif-title">
 		        <svg className="icon icon-load concat-gif-title-icon">
 				      <use xlinkHref="#icon-load"></use>
 				    </svg>
-				    <div className="concat-gif-title-text">story in creation...</div>
+				    <div className="concat-gif-title-text title-3">Wait...</div>
 			    </div>
 			  <p className="concat-gif-infos">You can navigate in the website, or stay here during the creation of your story. It must be take the longer of yours gif. We tell you when your story is ready !</p>
       </div>

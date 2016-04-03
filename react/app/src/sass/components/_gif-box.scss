@@ -1,19 +1,33 @@
 .gif-box {
 	width: 180px;
 	height: 180px;
-	border: dashed 2px $gray-opacity;
+	border: dashed 1px darken($grey-light, 15%);
 	position: relative;
 	display: inline-block;
 	margin: 20px;
-	background-color: rgba(255,255,255,0.3);
+	background-color: $white;
+	// border: 1px solid darken($grey-light, 15%);
 }
 
 .gif-box-add {
-	font-size: 70px;
-	color: $red;
+	font-size: 34px;
+	color: $black;
 	cursor: pointer;
 	background: none;
-	font-family: $main-font;
+	font-family: $font-sans;
+	font-weight: 800;
+	text-transform: uppercase;
+	background-color: $turquoise;
+	letter-spacing: 0.5em;
+	text-align: right;
+	border: 1px solid $turquoise;
+}
+
+.gif-box-add-inner {
+	position: absolute;
+	padding: 15px 5px;
+	top: 100%;
+	transform: translate(0%, -100%);
 }
 
 .gif-box-inner {
@@ -29,11 +43,11 @@
 .gif-box-delete {
 	position: absolute;
 	z-index: 20;
-	right: -8px;
-	top: -8px;
+	right: -10px;
+	top: -10px;
 	padding: 5px;
 	border-radius: 100%;
-	background-color: $gray;
+	background-color: $turquoise;
 	cursor: pointer;
 	height: 15px;
 	width: 15px;
@@ -59,7 +73,7 @@
 
 .gif-box-inner-btn, .gif-box-bottom-btn {
 	display: inline-block;
-	border: 1px solid $gray;
+	border: 1px solid darken($grey-light,20%);
 	border-radius: 100%;
 	margin: 0 3px;
 	width: 40px;
@@ -77,9 +91,9 @@
 .gif-box-inner-btn-icon, .gif-box-bottom-btn-icon {
 	width: 20px;
 	height: 20px;
-	fill: $gray;
-	color: $gray;
-	font-family: $main-font;
+	fill: $black;
+	color: $black;
+	font-family: $font-sans;
 	font-weight: 800;
 	position: absolute;
 	left: 50%;
@@ -89,8 +103,8 @@
 }
 
 .gif-box-inner-btn-txt, .gif-box-bottom-btn-txt {
-	color: $gray;
-	font-family: $main-font;
+	color: $black;
+	font-family: $font-sans;
 	font-weight: 800;
 	position: absolute;
 	left: 50%;
@@ -103,6 +117,7 @@
 	width: 35px;
 	height: 35px;
 	margin: 0 2px;
+	// border: 2px solid $grey-light;
 	&:nth-child(1) {
 		margin-left: 0;
 	}
@@ -114,15 +129,19 @@
 .gif-box-bottom-btn-icon {
 	width: 15px;
 	height: 15px;
+	// fill: $gray;
+	// color: $gray;
 }
 
 .gif-box-bottom-btn-txt {
 	font-size: 12px;
+	// color: $gray;
 }
+
 
 .gif-box-instructions {
 	color: $gray;
-	font-family: $second-font;
+	font-family: $font-serif;
 	font-weight: 800;
 	line-height: 1.5em;
 }
@@ -144,7 +163,7 @@
 }
 
 .gif-box-gif-container {
-	background-color: #000;
+	background-color: $white;
 	overflow: hidden;
 	position: absolute;
 	height: 180px;
@@ -193,27 +212,27 @@
 }
 
 @keyframes loaderg{
-	0%{background-color: rgba(255, 255, 255, .5);}
-	25%{background-color: rgba(255, 255, 255, 1);}
-	50%{background-color: rgba(255, 255, 255, .5);}
-	75%{background-color: rgba(255, 255, 255, .5);}
-	100%{background-color: rgba(255, 255, 255, .5);}
+	0%{background-color: rgba(225, 225, 225, .5);}
+	25%{background-color: rgba(225, 225, 225, 1);}
+	50%{background-color: rgba(225, 225, 225, .5);}
+	75%{background-color: rgba(225, 225, 225, .5);}
+	100%{background-color: rgba(225, 225, 225, .5);}
 }
 
 @keyframes loaderm{
-	0%{background-color: rgba(255, 255, 255, .5);}
-	25%{background-color: rgba(255, 255, 255, .5);}
-	50%{background-color: rgba(255, 255, 255, 1);}
-	75%{background-color: rgba(255, 255, 255, .5);}
-	100%{background-color: rgba(255, 255, 255, .5);}
+	0%{background-color: rgba(225, 225, 225, .5);}
+	25%{background-color: rgba(225, 225, 225, .5);}
+	50%{background-color: rgba(225, 225, 225, 1);}
+	75%{background-color: rgba(225, 225, 225, .5);}
+	100%{background-color: rgba(225, 225, 225, .5);}
 }
 
 @keyframes loaderd{
-	0%{background-color: rgba(255, 255, 255, .5);}
-	25%{background-color: rgba(255, 255, 255, .5);}
-	50%{background-color: rgba(255, 255, 255, .5);}
-	75%{background-color: rgba(255, 255, 255, 1);}
-	100%{background-color: rgba(255, 255, 255, .5);}
+	0%{background-color: rgba(225, 225, 225, .5);}
+	25%{background-color: rgba(225, 225, 225, .5);}
+	50%{background-color: rgba(225, 225, 225, .5);}
+	75%{background-color: rgba(225, 225, 225, 1);}
+	100%{background-color: rgba(225, 225, 225, .5);}
 }
 
 

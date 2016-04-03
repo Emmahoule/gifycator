@@ -4,16 +4,15 @@
 
 .create-story-logo {
 	font-size: 16px;
-	text-transform: uppercase;
 	font-weight: 800;
 	display: block;
-	font-family: $main-font;
+	font-family: $font-sans;
 	span {
 		display: inline-block;
-		margin: 3px 5px;
+		margin: 0px 1px;
 	}
 }
 
 .create-story-title {
-	margin: 40px 0;
+	margin: 60px 0;
 }

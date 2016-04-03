@@ -28,23 +28,24 @@ class ComposeGif extends Component {
     return (
       	<div className="compose-gif">
           <div className="create-story-title title-2">Lets create your story !</div>
+          <div className="compose-gif-block a-middle">
+            {imgs.map(function(img){
+              return <GifBox deleteBoxToStory={(id)=>dispatch(deleteBoxToStory(id))} addGifFileToStory={(file)=>dispatch(addGifFileToStory(img.id, file))} id={img.id} key={img.id} />
+            })}
 
-          {imgs.map(function(img){
-            return <GifBox deleteBoxToStory={(id)=>dispatch(deleteBoxToStory(id))} addGifFileToStory={(file)=>dispatch(addGifFileToStory(img.id, file))} id={img.id} key={img.id} />
-          })}
-
-          {complete==false &&
-          <div className="gif-box gif-box-add" onClick={()=>dispatch(addBoxToStory())}>
-            <div className="gif-box-inner gif-box-inner">
-              +
+            {complete==false &&
+            <div className="gif-box gif-box-add" onClick={()=>dispatch(addBoxToStory())}>
+              <div className="gif-box-add-inner">
+                Add box
+              </div>
             </div>
-          </div>
-          }
+            }
 
-          <div className="clearfix"></div>
-          {files>=2 &&
-            <Link to="create-story/create-gif" className="compose-gif-btn btn1">Create my story</Link>
+            <div className="clearfix"></div>
+            {files>=2 &&
+              <Link to="create-story/create-gif" className="compose-gif-btn btn1">Create my story</Link>
           }
+          </div>
         </div>
     )
   }

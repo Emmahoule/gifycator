@@ -1,3 +1,7 @@
+.gif-box-upload {
+
+}
+
 .gif-box-upload-dropzone {
 	cursor: pointer;
 	position: absolute;
@@ -6,7 +10,7 @@
 	transition: background-color 0.5s $easeOutQuad;
 	overflow: hidden;
 	&:hover {
-		background-color: $white;
+		background-color: $grey-light;
 	}
 }
 

@@ -13,14 +13,14 @@
 
 .item-gallery-block-title {
 	font-size: 50px;
-	font-family: $main-font;
+	font-family: $font-sans;
 	letter-spacing: 0.15em;
 	font-weight: 800;
 }
 
 .item-gallery-block-author {
 	font-size: 20px;
-	font-family: $second-font;
+	font-family: $font-serif;
 	font-weight: 800;
 }
 
@@ -55,7 +55,7 @@
 // 	transform: translateX(-50%);
 // 	z-index: 99;
 // 	text-transform: uppercase;
-// 	font-family: $main-font;
+// 	font-family: $font-sans;
 // 	font-weight: 800;
 // 	letter-spacing: 0.4em;
 // }

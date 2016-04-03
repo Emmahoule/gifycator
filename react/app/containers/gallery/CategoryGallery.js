@@ -22,7 +22,6 @@ class CategoryGallery extends Component {
       prevGif : -2
     }
     this.lg = 0;
-    console.log("construction");
   }
 
   componentWillMount(){
@@ -72,7 +71,6 @@ class CategoryGallery extends Component {
   render() {
     const { gifs, dataCategory } = this.props;
     const categoryId = this.props.params.id[0];
-    console.log(this.state);
     return (
         <div className="category-gallery">
           {dataCategory && 

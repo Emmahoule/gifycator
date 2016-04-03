@@ -1,13 +1,10 @@
 .concat-gif {
 }
 
-.concat-gif-title {
-	margin-top: 140px;
-}
 .concat-gif-title:after {
 	content:"";
 	display: block;
-	background-color: $gray;
+	background-color: $black;
 	width: 90px;
 	height: 1px;
 	margin: 0 auto;
@@ -15,12 +12,12 @@
 }
 
 .concat-gif-title-icon {
-	color: $gray;
+	color: $black;
 	width: 15px;
 	height: 15px;
 	display: inline-block;
 	vertical-align: middle;
-	fill: $gray;
+	fill: $black;
 	margin-right: 15px;
 	// transition: transform 0.5s $easeInOutQuart;
 	animation: rotation 0.8s infinite;
@@ -36,16 +33,15 @@
 }
 
 .concat-gif-title-text {
-	color: $gray;
+	color: $black;
 	display: inline-block;
 	vertical-align: middle;
-	font-family: $second-font;
-	font-weight: bold;
+	margin-bottom: 0;
 }
 
 .concat-gif-infos {
 	display: block;
-	font-family: $second-font;
+	font-family: $font-serif;
 	color: $gray;
 	margin: 0 auto;
 	margin-top: 20px;

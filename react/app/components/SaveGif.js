@@ -22,11 +22,11 @@ export default class SaveGif extends Component {
     super();
     this.state = {
       categoryName: "Choose a category",
-      categoryValue: "",
+      categoryValue: null,
       open: false,
-      title: "", 
-      author: "",
-      cover: ""
+      title: null, 
+      author: null,
+      cover: null
     }
     this.selectCat;
     this.video;
@@ -83,6 +83,9 @@ export default class SaveGif extends Component {
    * pour choisir une photo de couverture
   */  
   onClickCoverBtn() {
+    this.setState({
+      cover : "clicked"
+    });
     this.video.pause();
     this.video.currentTime = 0;
     this.video.controls=true;
@@ -140,28 +143,40 @@ export default class SaveGif extends Component {
 
   render() {
     const { dispatch, story, dataCategories } = this.props;
+
     return (
         <div className="save-gif">
-        	<div className="create-story-title title-2">Congratulation !</div>
-          <div className="save-gif-top">
-            <input type="text" className="save-gif-input-name" value={this.state.title} onChange={(e)=>this.setState({title:e.target.value})} placeholder="Title"/>
-            <input type="text" className="save-gif-input-author" value={this.state.author}  onChange={(e)=>this.setState({author:e.target.value})} placeholder="Author"/>
-            <div className={"select save-gif-select" + (this.state.open ? " open" : " closed")} ref={e=>this.selectCat=e}>
-              <div className="select-selected" onClick={this.onClickSelect.bind(this)} data-value={this.state.categoryValue}>{this.state.categoryName}</div>
-              {dataCategories &&
-                <ul className="select-list">
-                {dataCategories.map(function(category){
-                  return <li key={category.id} className="select-list-item" data-value={category.id} onClick={this.onClickSelectItem.bind(this)}>{category.name}</li>
-                }.bind(this))}
-                </ul>
-              }
+
+          <div className="a-middle">
+            <div className="save-gif-top">
+              <input type="text" className="save-gif-input-name" value={this.state.title} onChange={(e)=>this.setState({title:e.target.value})} placeholder="Choose a title"/>
+              <input type="text" className="save-gif-input-author" value={this.state.author}  onChange={(e)=>this.setState({author:e.target.value})} placeholder="Who's the author"/>
+              <div className={"select save-gif-select" + (this.state.open ? " open" : " closed")} ref={e=>this.selectCat=e}>
+                <div className="select-selected" onClick={this.onClickSelect.bind(this)} data-value={this.state.categoryValue}>{this.state.categoryName}</div>
+                {dataCategories &&
+                  <ul className="select-list">
+                  {dataCategories.map(function(category){
+                    return <li key={category.id} className="select-list-item" data-value={category.id} onClick={this.onClickSelectItem.bind(this)}>{category.name}</li>
+                  }.bind(this))}
+                  </ul>
+                }
+              </div>
+              <div className="btn1 save-gif-cover-btn" onClick={this.onClickCoverBtn.bind(this)}>Select a cover</div>
             </div>
-            <div className="btn1 save-gif-cover-btn" onClick={this.onClickCoverBtn.bind(this)}>Select a cover</div>
+            
+            <div className="save-gif-bottom">
+              <div className="save-gif-bottom-square"></div>
+              <div className="save-gif-bottom-title-block">
+                <div className="save-gif-bottom-title">{this.state.title}</div>
+                <div className="save-gif-bottom-author">{this.state.author}</div>
+              </div>
+              <video crossOrigin="anonymous" autoPlay="true" width="250" height="250" loop="loop" preload="metadata" className="save-gif-video" ref={e=>this.video=e} src={API_URL+story}></video>
+            </div>
+            <div className="clearfix"></div>
+            {this.state.title && this.state.author && this.state.categoryValue && this.state.cover &&
+              <div className="btn1 save-gif-btn" onClick={this.onClickValidateBtn.bind(this)}>Valider</div>
+            }
           </div>
-          <div className="save-gif-bottom">
-            <video crossOrigin="anonymous" autoPlay="true" width="250" height="250" loop="loop" preload="metadata" className="save-gif-video" ref={e=>this.video=e} src={API_URL+story}></video>
-          </div>
-          <div className="btn1 save-gif-btn" onClick={this.onClickValidateBtn.bind(this)}>Valider</div>
         </div>
     )
   }

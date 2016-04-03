@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { Link } from 'react-router';
 import { connect } from 'react-redux'
+import { fetchGif, clearGif } from '../actions/GalleryActions.js';
 
 import { config } from '../config.js'
 const API_URL = config.API_URL;
@@ -17,21 +18,26 @@ class ItemGallery extends Component {
 
 	componentWillMount() {
 	  this.id = this.props.params.id[1];
+    this.props.dispatch(fetchGif(this.id));
 	}
 
 	componentWillReceiveProps(nextProps){
     if (nextProps.params.id[1]!= this.id) {
       this.id = nextProps.params.id[1];
+      this.props.dispatch(fetchGif(this.id));
     }
   }
 
+  componentWillUnmount(){
+    this.props.dispatch(clearGif());
+  }
+
   render() {
-    const { gifs } = this.props;
-    let id = this.props.params.id[1];
-		let gif = gifs.filter(gif=>gif.id==id);
-		gif = gif[0];
+    const { gif } = this.props;
     return (
       <div className="item-gallery">
+      {gif &&
+        <div>
       	<div className="item-gallery-block">
 	     	 	<div className="item-gallery-block-title">{gif.title}</div>
 	     	 	<div className="item-gallery-block-author">{gif.author}</div>
@@ -40,7 +46,8 @@ class ItemGallery extends Component {
 	        <img className="item-gallery-cover" src={API_URL+gif.cover} />
 	        <video className="item-gallery-gif" src={API_URL+gif.url} autoPlay loop/>
         </div>
-
+        </div>
+      }
       </div>
     )
   }
@@ -54,11 +61,11 @@ class ItemGallery extends Component {
 
 function mapStateToProps(state) {
 
-  const { fetchGifs } = state;
-  const { gifs } = fetchGifs;
+  const { fetchGif } = state;
+  const { gif } = fetchGif;
 
   return {
-    gifs
+    gif
   }
 }
 

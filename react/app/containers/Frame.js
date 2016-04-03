@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react'
 import { Link } from "react-router";
-import { draw } from '../middleware/bgCanvas';
 import { connect } from 'react-redux';
 
 /* Container Frame : conteneur global */
@@ -13,42 +12,71 @@ class Frame extends Component {
   	render() {
   		const { isFetching, story } = this.props;
     	return (
-      		<div className="frame">
-      			<canvas className="bg-gradient" id="bg-gradient"></canvas>
-        		<div className="frame-wrapper">
-        			{this.props.children}
-	        	</div>
-	        	<div className="frame-share">
-	        		<svg className="icon icon-share2 frame-share-icon">
-	        			<use xlinkHref="#icon-share"></use>
-	        		</svg>
-	        		Share
-	        		<div className="frame-share-socials">
-		        		<svg className="icon icon-facebook frame-share-socials-icon">
-		        			<use xlinkHref="#icon-facebook"></use>
-		        		</svg>
-		        		<svg className="icon icon-twitter frame-share-socials-icon">
-		        			<use xlinkHref="#icon-twitter"></use>
-		        		</svg>
-	        		</div>
-	       		</div>
-	       		{isFetching &&
-	       		<Link to="create-story/create-gif" className="frame-loading">
-			        <svg className="icon icon-load frame-loading-icon">
-					    <use xlinkHref="#icon-load"></use>
-					</svg>
-					<div className="frame-loading-text">story in creation...</div>
-	       		</Link>
-	       		}
-	       		{!isFetching && story &&
-	       		<Link to="create-story/create-gif" className="frame-loading">
-					<div className="frame-loading-text">your story is ready !</div>
-	       		</Link>
-	       		}
-      		</div>
+      	<div className="frame">
+    			<div className="frame-bg">
+    				<div className="frame-bg-line">
+    					<div className="frame-bg-line-inner"></div>
+    				</div>
+    				<div className="frame-bg-line">
+    					<div className="frame-bg-line-inner"></div>
+    				</div>
+    				<div className="frame-bg-line">
+    					<div className="frame-bg-line-inner"></div>
+    				</div>
+    				<div className="frame-bg-line">
+    					<div className="frame-bg-line-inner"></div>
+    				</div>
+    				<div className="frame-bg-line">
+    					<div className="frame-bg-line-inner"></div>
+    				</div>
+    				<div className="frame-bg-line">
+    					<div className="frame-bg-line-inner"></div>
+    				</div>
+    				<div className="frame-bg-line">
+    					<div className="frame-bg-line-inner"></div>
+    				</div>
+    			</div>
+          <div className="frame-left-nav">
+            {isFetching &&
+              <Link to="create-story/create-gif" className="frame-loading frame-left-nav-link">
+                <svg className="icon icon-load frame-loading-icon">
+                 <use xlinkHref="#icon-load"></use>
+               </svg>
+               <div className="frame-loading-text">Wait...</div>
+             </Link>
+            }
+            {!isFetching && story &&
+              <Link to="create-story/create-gif" className="frame-loading frame-left-nav-link">
+                <div className="frame-loading-text">Story ready !</div>
+              </Link>
+            }
+            <Link className="frame-left-nav-link" to="create-story">Create my story</Link>
+            <Link className="frame-left-nav-link" to="gallery">Gallery</Link>
+          </div>
+        	<div className="frame-wrapper">
+        	  <div className="title-1">
+			    		.Gifycator
+		      	</div>
+       			{this.props.children}
+	       	</div>
+      	</div>
     	)	
   	}
 }
+
+            // {isFetching &&
+            //   <Link to="create-story/create-gif" className="frame-loading frame-left-nav-link">
+            //     <svg className="icon icon-load frame-loading-icon">
+            //      <use xlinkHref="#icon-load"></use>
+            //    </svg>
+            //    <div className="frame-loading-text">story in creation...</div>
+            //  </Link>
+            // }
+            // {!isFetching && story &&
+            //   <Link to="create-story/create-gif" className="frame-loading frame-left-nav-link">
+            //     <div className="frame-loading-text">your story is ready !</div>
+            //   </Link>
+            // }
 
 Frame.propTypes = {
   dispatch: PropTypes.func.isRequired,

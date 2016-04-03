@@ -1,44 +1,21 @@
-.save-gif-top {
-	display: block;
-	margin: 0px 0 60px 0;
+.view-gif {
+
 }
 
-.save-gif-input-name {
-	width: 225px;
-	margin-right: 20px;
-}
-
-.save-gif-input-author {
-	width: 190px;
-	margin-left: 20px;
-	margin-right: 20px;
-}
-
-.save-gif-select {
-	width: 160px;
-	margin-left: 20px;
-	margin-right: 20px;
-}
-
-.save-gif-cover-btn {
-	display: inline-block;
-	margin-left: 20px;
-}
-
-.save-gif-bottom {
+.view-gif-story {
 	height: 280px;
 	position: relative;
 	display: inline-block;
 	margin-bottom: 30px;
 }
 
-.save-gif-bottom-square {
+.view-gif-square {
 	width: 280px;
 	height: 100%;
 	background-color: $turquoise;
 }
 
-.save-gif-bottom-title-block {
+.view-gif-title-block {
 	z-index: 999;
 	position: absolute;
 	top: -20px;
@@ -47,14 +24,14 @@
 	text-align: left;
 }
 
-.save-gif-bottom-title {
+.view-gif-title {
 	font-size: 50px;
 	font-family: $font-sans;
 	font-weight: 800;
 	letter-spacing: -0.05em;
 }
 
-.save-gif-bottom-author {
+.view-gif-author {
 	margin-top: 7px;
 	font-family: $font-serif;
 	font-size: 16px;
@@ -62,9 +39,36 @@
 	font-weight: 800;
 }
 
-.save-gif-video {
+.view-gif-video {
 	background-color: $white;
 	position: absolute;
 	left: 30px;
 	top: 30px;
+}
+
+.view-gif-btn {
+	margin: 20px;
+}
+
+.view-gif-share {
+	color: $black;
+	font-family: $font-sans;
+	font-size: 14px;
+	margin: 30px;
+	font-weight: 800;
+	letter-spacing: 0.2em;
+}
+
+.view-gif-share-link {
+	display: inline-block;
+	padding: 10px;
+	&:first-child {
+		margin-left: 10px;
+	}
+	.icon {
+		display: inline-block;
+		width: 15px;
+		height: 15px;
+		fill: $black;
+	}
 }
