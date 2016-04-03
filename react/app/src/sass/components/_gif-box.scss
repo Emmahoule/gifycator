@@ -9,25 +9,51 @@
 	// border: 1px solid darken($grey-light, 15%);
 }
 
+// .gif-box-add {
+// 	font-size: 24px;
+// 	color: $black;
+// 	cursor: pointer;
+// 	background: none;
+// 	font-family: $font-sans;
+// 	font-weight: 800;
+// 	// text-transform: uppercase;
+// 	background-color: $turquoise;
+// 	// letter-spacing: -0.1em;
+// 	text-align: right;
+// 	border: 1px solid $turquoise;
+// }
+
+// .gif-box-add-inner {
+// 	position: absolute;
+// 	padding: 15px 5px;
+// 	top: 100%;
+// 	transform: translate(0%, -100%);
+// }
+
 .gif-box-add {
-	font-size: 34px;
+	font-size: 16px;
 	color: $black;
 	cursor: pointer;
 	background: none;
 	font-family: $font-sans;
 	font-weight: 800;
-	text-transform: uppercase;
-	background-color: $turquoise;
-	letter-spacing: 0.5em;
-	text-align: right;
-	border: 1px solid $turquoise;
+	box-sizing: border-box;
+	// background-color: $grey-light;
+	text-align: center;
+	border: 8px solid $turquoise;
 }
 
 .gif-box-add-inner {
 	position: absolute;
-	padding: 15px 5px;
-	top: 100%;
-	transform: translate(0%, -100%);
+	// padding: 15px 5px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	white-space: nowrap;
+	.gif-box-add-inner-icn {
+		font-size: 18px;
+		color: darken($turquoise, 20%);
+	}
 }
 
 .gif-box-inner {
@@ -53,20 +79,19 @@
 	width: 15px;
 	&:after, &:before {
 		position: absolute;
-		left: 50%;
-		top: 50%;
 		display: block;
 		width: 2px;
 		height: 10px;
 		content:"";
-		background-color: $white;
-		margin-top: -5px;
-		margin-left: -1px;
+		background-color: $black;
+		margin-top: 2px;
 	}
 	&:after {
+		left: 12px;
 		transform: rotate(45deg);;
 	}
 	&:before {
+		right: 11px;
 		transform: rotate(-45deg);
 	}
 }

@@ -36,7 +36,7 @@ class ComposeGif extends Component {
             {complete==false &&
             <div className="gif-box gif-box-add" onClick={()=>dispatch(addBoxToStory())}>
               <div className="gif-box-add-inner">
-                Add box
+                <span className="gif-box-add-inner-icn">+</span> Add box
               </div>
             </div>
             }
