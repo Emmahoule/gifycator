@@ -3,9 +3,12 @@ import ReactDOM from 'react-dom';
 import { connect } from 'react-redux'
 import { Link } from "react-router";
 
-import { config } from '../../config.js'
-const API_URL = config.API_URL;
+import { ShareButtons, ShareCounts, generateShareIcon } from 'react-share';
 
+import { config } from '../../config.js'
+
+const API_URL = config.API_URL;
+const { FacebookShareButton, TwitterShareButton, PinterestShareButton } = ShareButtons;
 
 /* Container ViewGif : 
  * 
@@ -34,16 +37,24 @@ class ViewGif extends Component {
                   <video className="view-gif-video" crossOrigin="anonymous" autoPlay="true" width="300" height="300" loop="loop" preload="metadata" src={API_URL+dataStory.url}></video>
                 </div>
                 <div className="view-gif-share">Share on 
-                  <a className="view-gif-share-link" href="#">            
+                  <FacebookShareButton className="view-gif-share-link" url="www.google.fr" title="coucou" media={API_URL+dataStory.cover} >
                     <svg className="icon icon-facebook">
                       <use xlinkHref="#icon-facebook"></use>
                     </svg>
-                  </a>
-                  <a className="view-gif-share-link" href="#"> 
+                  </FacebookShareButton>
+
+                  <TwitterShareButton className="view-gif-share-link" url="www.google.fr" title="coucou" media={API_URL+dataStory.cover}> 
                     <svg className="icon icon-twitter">
                       <use xlinkHref="#icon-twitter"></use>
                     </svg>
-                  </a>
+                  </TwitterShareButton>
+
+                  <PinterestShareButton className="view-gif-share-link" url="www.google.fr" title="coucou" media={API_URL+dataStory.cover} >
+                    <svg className="icon icon-facebook">
+                      <use xlinkHref="#icon-facebook"></use>
+                    </svg>
+                  </PinterestShareButton>
+
                 </div>
                 <div className="clearfix"></div>
               </div>

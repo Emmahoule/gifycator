@@ -38,14 +38,13 @@ class ItemGallery extends Component {
       <div className="item-gallery">
       {gif &&
         <div>
-      	<div className="item-gallery-block">
-	     	 	<div className="item-gallery-block-title">{gif.title}</div>
-	     	 	<div className="item-gallery-block-author">{gif.author}</div>
-     	 	</div>
-     	 	<div className="item-gallery-gif-container">
-	        <img className="item-gallery-cover" src={API_URL+gif.cover} />
-	        <video className="item-gallery-gif" src={API_URL+gif.url} autoPlay loop/>
-        </div>
+        	<div className="item-gallery-story">
+            <div className="item-gallery-title-block">
+    	     	 	<div className="item-gallery-title">{gif.title}</div>
+    	     	 	<div className="item-gallery-author">{gif.author}</div>
+         	 	</div>
+    	      <video className="item-gallery-video" src={API_URL+gif.url} autoPlay loop/>
+          </div>
         </div>
       }
       </div>

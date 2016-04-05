@@ -1,50 +1,102 @@
-.item-gallery-block {
-	color: lighten($red, 5%);
-	position: absolute;
-	top: 0;
-	left: 0;
-	transform: translate(-30%, -80%);
-	text-align: left;
-	z-index: 10;
-	width: auto;
-	min-width: 450px;
-	white-space: nowrap;
+// .item-gallery-block {
+// 	color: lighten($red, 5%);
+// 	position: absolute;
+// 	top: 0;
+// 	left: 0;
+// 	transform: translate(-30%, -80%);
+// 	text-align: left;
+// 	z-index: 10;
+// 	width: auto;
+// 	min-width: 450px;
+// 	white-space: nowrap;
+// }
+
+// .item-gallery-block-title {
+// 	font-size: 50px;
+// 	font-family: $font-sans;
+// 	letter-spacing: 0.15em;
+// 	font-weight: 800;
+// }
+
+// .item-gallery-block-author {
+// 	font-size: 20px;
+// 	font-family: $font-serif;
+// 	font-weight: 800;
+// }
+
+// .item-gallery-gif-container {
+// 	width: 340px;
+// 	height: 340px;
+// 	padding: 40px;
+// 	position: absolute;
+// 	right: -25px;
+// 	bottom: -25px;
+// 	box-sizing: border-box;
+// 	background-color: $white;
+// 	position: relative;
+// }
+
+// .item-gallery-gif, .item-gallery-cover {
+// 	position: absolute;
+// 	width: 300px;
+// 	height: 300px;
+// 	top: 50%;
+// 	left: 50%;
+// 	margin-left: -150px;
+// 	margin-top: -150px;
+// }
+
+
+
+.item-gallery-story {
+	height: 350px;
+	width: 350px;
+	position: relative;
+	display: inline-block;
 }
 
-.item-gallery-block-title {
+
+.item-gallery-square {
+	width: 280px;
+	height: 280px;
+	background-color: $turquoise;
+}
+
+
+.item-gallery-title-block {
+	z-index: 999;
+	position: absolute;
+	top: -20px;
+	left: -10%;
+	transform: translateX(-20%);
+	text-align: left;
+}
+
+
+.item-gallery-title {
 	font-size: 50px;
 	font-family: $font-sans;
-	letter-spacing: 0.15em;
 	font-weight: 800;
+	letter-spacing: -0.05em;
 }
 
-.item-gallery-block-author {
-	font-size: 20px;
+
+.item-gallery-author {
+	margin-top: 7px;
 	font-family: $font-serif;
+	font-size: 16px;
+	letter-spacing: 0.2em;
 	font-weight: 800;
 }
 
-.item-gallery-gif-container {
-	width: 340px;
-	height: 340px;
-	padding: 40px;
-	position: absolute;
-	right: -25px;
-	bottom: -25px;
-	box-sizing: border-box;
+
+.item-gallery-video {
 	background-color: $white;
-	position: relative;
+	position: absolute;
+	left: 50px;
+	top: 50px;
 }
 
-.item-gallery-gif, .item-gallery-cover {
-	position: absolute;
-	width: 300px;
-	height: 300px;
-	top: 50%;
-	left: 50%;
-	margin-left: -150px;
-	margin-top: -150px;
-}
 
 // .item-gallery-logo {
 // 	color: #F0F0F0;

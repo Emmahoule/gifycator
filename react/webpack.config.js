@@ -40,6 +40,9 @@ module.exports = {
             {   test: /\.eot$/,  
                 loader: "file-loader" 
             },
+            {   test: /\.otf$/,  
+                loader: "file-loader" 
+            },
             {   test: /\.svg$/,  
                 loader: "url-loader?limit=10000&mimetype=image/svg+xml" 
             }

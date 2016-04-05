@@ -10,12 +10,14 @@ const API_URL = config.API_URL;
 
 export default class SelectCategory extends Component {
   render() {
-    const { id, thumbnail } = this.props;
+    const { id, name, color } = this.props;
     const gallery =  "gallery/" + id;
     return (
-      <Link to={gallery} className="select-category">
-        <div className="select-category-name">See category</div>
-        <div className="select-category-circle"  style={{backgroundImage: "url("+API_URL+thumbnail+")"}} ></div>
+      <Link to={gallery} className="select-category"  style={{backgroundColor: color}}>
+        <div className="select-category-text-block">
+          <div className="select-category-name">{name}</div>
+          <div className="select-category-stories">{name} amazing stories</div>
+        </div>
       </Link>
     )
   }
@@ -23,5 +25,6 @@ export default class SelectCategory extends Component {
 
 SelectCategory.propTypes = {
   id: PropTypes.number.isRequired,
-  thumbnail: PropTypes.string.isRequired
+  name: PropTypes.string.isRequired,
+  color: PropTypes.string.isRequired
 }

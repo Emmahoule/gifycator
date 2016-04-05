@@ -75,11 +75,10 @@ class CategoryGallery extends Component {
         <div className="category-gallery">
           {dataCategory && 
           <div className="category-gallery-block">
-            <div className="category-gallery-block-square"></div>
+            <div className="category-gallery-block-square" style={{backgroundColor: dataCategory.color}}></div>
             {this.state.currentGif<0 &&
               <div>
                 <div className="category-gallery-block-category">{dataCategory.name}</div>
-                <img className="category-gallery-block-img" src={API_URL+dataCategory.img} />
               </div>
             }
             {this.state.currentGif>=0 &&

@@ -25,6 +25,7 @@
     "react-prefixr": "^0.1.0",
     "react-redux": "^4.2.0",
     "react-router": "^1.0.3",
+    "react-share": "^1.4.1",
     "react-tap-event-plugin": "^0.2.2",
     "redux": "^3.1.6",
     "redux-logger": "^2.4.0",

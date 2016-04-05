@@ -1,0 +1,22 @@
+ffmpeg version 2.8.4-tessus Copyright (c) 2000-2015 the FFmpeg developers
+  built with Apple LLVM version 6.0 (clang-600.0.57) (based on LLVM 3.5svn)
+  configuration: --cc=/usr/bin/clang --prefix=/opt/ffmpeg --as=yasm --extra-version=tessus --enable-avisynth --enable-fontconfig --enable-gpl --enable-libass --enable-libbluray --enable-libfreetype --enable-libgsm --enable-libmodplug --enable-libmp3lame --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libopus --enable-libschroedinger --enable-libsoxr --enable-libspeex --enable-libtheora --enable-libvidstab --enable-libvo-aacenc --enable-libvo-amrwbenc --enable-libvorbis --enable-libvpx --enable-libwavpack --enable-libx264 --enable-libx265 --enable-libxavs --enable-libxvid --enable-libzmq --enable-version3 --disable-ffplay --disable-indev=qtkit --disable-indev=x11grab_xcb
+  libavutil      54. 31.100 / 54. 31.100
+  libavcodec     56. 60.100 / 56. 60.100
+  libavformat    56. 40.101 / 56. 40.101
+  libavdevice    56.  4.100 / 56.  4.100
+  libavfilter     5. 40.101 /  5. 40.101
+  libswscale      3.  1.101 /  3.  1.101
+  libswresample   1.  2.101 /  1.  2.101
+  libpostproc    53.  3.100 / 53.  3.100
+Input #0, matroska,webm, from '/Applications/MAMP/tmp/php/phpehke6w':
+  Metadata:
+    encoder         : whammy
+  Duration: 00:00:01.04, start: 0.000000, bitrate: 2732 kb/s
+    Stream #0:0: Video: vp8, yuv420p, 180x135, SAR 1:1 DAR 4:3, 50 fps, 50 tbr, 1k tbn, 1k tbc (default)
+Input #1, matroska,webm, from '/Applications/MAMP/tmp/php/phpVQDcw7':
+  Metadata:
+    encoder         : whammy
+  Duration: 00:00:00.78, start: 0.000000, bitrate: 5067 kb/s
+    Stream #1:0: Video: vp8, yuv420p, 180x135, SAR 1:1 DAR 4:3, 50 fps, 50 tbr, 1k tbn, 1k tbc (default)
+/ibDkfWSeF7.webm: Permission denied
