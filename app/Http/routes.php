@@ -31,6 +31,7 @@ $app->group(['prefix' => 'api/','namespace' => 'App\Http\Controllers'], function
     $app->post('gif','GifController@saveGif');
     $app->put('gif/{id}','GifController@updateGif');
     $app->delete('gif/{id}','GifController@deleteGif');
+    $app->get('count-gifs','GifController@countGifs');
 
     // Convert route
     $app->post('to-webm','ToWebmController@convertVideo');

@@ -21,6 +21,12 @@ class ViewGif extends Component {
     super();
   }
 
+  componentWillMount(){
+    if (!this.props.dataStory) {
+      this.props.history.push("create-story");
+    }
+  }
+
   render() {
     const { dispatch, dataStory } = this.props;
     return (
@@ -34,29 +40,28 @@ class ViewGif extends Component {
                     <div className="view-gif-title">{dataStory.title}</div>
                     <div className="view-gif-author">{dataStory.author}</div>
                   </div>
-                  <video className="view-gif-video" crossOrigin="anonymous" autoPlay="true" width="300" height="300" loop="loop" preload="metadata" src={API_URL+dataStory.url}></video>
+                  <video className="view-gif-video" crossOrigin="anonymous" autoPlay="true" width="290" height="290" loop="loop" preload="metadata" src={API_URL+dataStory.url}></video>
                 </div>
-                <div className="view-gif-share">Share on 
-                  <FacebookShareButton className="view-gif-share-link" url="www.google.fr" title="coucou" media={API_URL+dataStory.cover} >
+                <div className="clearfix"></div>
+                <div className="view-gif-share share">Share on 
+                  <FacebookShareButton className="share-link" url="www.google.fr" title="coucou" media={API_URL+dataStory.cover} >
                     <svg className="icon icon-facebook">
                       <use xlinkHref="#icon-facebook"></use>
                     </svg>
                   </FacebookShareButton>
 
-                  <TwitterShareButton className="view-gif-share-link" url="www.google.fr" title="coucou" media={API_URL+dataStory.cover}> 
+                  <TwitterShareButton className="share-link" url="www.google.fr" title="coucou" media={API_URL+dataStory.cover}> 
                     <svg className="icon icon-twitter">
                       <use xlinkHref="#icon-twitter"></use>
                     </svg>
                   </TwitterShareButton>
 
-                  <PinterestShareButton className="view-gif-share-link" url="www.google.fr" title="coucou" media={API_URL+dataStory.cover} >
+                  <PinterestShareButton className="share-link" url="www.google.fr" title="coucou" media={API_URL+dataStory.cover} >
                     <svg className="icon icon-facebook">
                       <use xlinkHref="#icon-facebook"></use>
                     </svg>
                   </PinterestShareButton>
-
                 </div>
-                <div className="clearfix"></div>
               </div>
             }
             <Link to="gallery" className="view-gif-btn btn1">Gallery</Link>

@@ -2,9 +2,11 @@ import React, { Component, PropTypes } from 'react'
 import { Link } from 'react-router';
 import { connect } from 'react-redux'
 import { fetchGif, clearGif } from '../actions/GalleryActions.js';
+import { ShareButtons, ShareCounts, generateShareIcon } from 'react-share';
 
 import { config } from '../config.js'
 const API_URL = config.API_URL;
+const { FacebookShareButton, TwitterShareButton, PinterestShareButton } = ShareButtons;
 
 /*  Component ItemGallery : 
  *
@@ -37,14 +39,34 @@ class ItemGallery extends Component {
     return (
       <div className="item-gallery">
       {gif &&
-        <div>
-        	<div className="item-gallery-story">
-            <div className="item-gallery-title-block">
-    	     	 	<div className="item-gallery-title">{gif.title}</div>
-    	     	 	<div className="item-gallery-author">{gif.author}</div>
-         	 	</div>
-    	      <video className="item-gallery-video" src={API_URL+gif.url} autoPlay loop/>
-          </div>
+      	<div className="item-gallery-story">
+          <div className="item-gallery-title-block">
+  	     	 	<div className="item-gallery-title">{gif.title}</div>
+  	     	 	<div className="item-gallery-author">{gif.author}</div>
+       	 	</div>
+  	      <video className="item-gallery-video" src={API_URL+gif.url} autoPlay loop/>
+        </div>
+
+      }
+      {gif &&
+        <div className="share item-gallery-share">Share on 
+          <FacebookShareButton className="share-link" url="www.google.fr" title="coucou" media={API_URL+gif.url} >
+            <svg className="icon icon-facebook">
+              <use xlinkHref="#icon-facebook"></use>
+            </svg>
+          </FacebookShareButton>
+
+          <TwitterShareButton className="share-link" url="www.google.fr" title="coucou" media={API_URL+gif.url}> 
+            <svg className="icon icon-twitter">
+              <use xlinkHref="#icon-twitter"></use>
+            </svg>
+          </TwitterShareButton>
+
+          <PinterestShareButton className="share-link" url="www.google.fr" title="coucou" media={API_URL+gif.url} >
+            <svg className="icon icon-facebook">
+              <use xlinkHref="#icon-facebook"></use>
+            </svg>
+          </PinterestShareButton>
         </div>
       }
       </div>

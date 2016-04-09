@@ -13,12 +13,11 @@ export default class Gallery extends Component {
     return (
         <div className="gallery">
           <Link to="/" className="gallery-logo">
-            <span className="c-red">.</span>
-            <span className="c-red">G</span>
-            <span className="c-red">i</span>
-            <span className="c-red">f</span>
+            <span>.</span>
+            <span>G</span>
+            <span>i</span>
+            <span>f</span>
             <span>y</span>
-            <span>-</span><br/>
             <span>c</span>
             <span>a</span>
             <span>t</span>

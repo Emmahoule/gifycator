@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { Link } from "react-router";
 import { fetchGifs, clearGifs } from '../../actions/GalleryActions.js';
-import { fetchCategory } from '../../actions/CategoriesActions.js';
+import { fetchCategory, clearCategory } from '../../actions/CategoriesActions.js';
 import ItemGallery from '../../components/ItemGallery.js';
 import LazyLoad from 'react-lazy-load';
 
@@ -37,6 +37,7 @@ class CategoryGallery extends Component {
 
   componentWillUnmount(){
     this.props.dispatch(clearGifs());
+    this.props.dispatch(clearCategory());
   }
 
   prevStates(){
@@ -73,13 +74,13 @@ class CategoryGallery extends Component {
     const categoryId = this.props.params.id[0];
     return (
         <div className="category-gallery">
+          <Link to="gallery" className="category-gallery-return">Return</Link>
+          <div className="a-middle">
           {dataCategory && 
           <div className="category-gallery-block">
             <div className="category-gallery-block-square" style={{backgroundColor: dataCategory.color}}></div>
             {this.state.currentGif<0 &&
-              <div>
-                <div className="category-gallery-block-category">{dataCategory.name}</div>
-              </div>
+              <div className="category-gallery-block-category">{dataCategory.name}</div>
             }
             {this.state.currentGif>=0 &&
               this.props.children
@@ -87,15 +88,16 @@ class CategoryGallery extends Component {
           </div>
           }
           {gifs &&
-            <div><br/><br/><br/><br/>
+            <div className="category-gallery-nav">
             {this.state.prevGif>=-1 &&
-              <div onClick={this.prevStates.bind(this)} >Prev</div>
+              <div className="category-gallery-nav-item category-gallery-nav-prev" onClick={this.prevStates.bind(this)} >Prev</div>
             }
             {this.state.nextGif<this.lg &&
-              <div onClick={this.nextStates.bind(this)} >Next</div>
+              <div className="category-gallery-nav-item category-gallery-nav-next" onClick={this.nextStates.bind(this)} >Next</div>
             }
             </div>
           }
+          </div>
         </div>
     )
   }

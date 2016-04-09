@@ -1,6 +1,6 @@
 .gif-box-camera-btn {
-	border: 1px solid darken($grey-light, 20%);
-	padding: 10px;
+	border: 2px solid darken($grey-light, 80%);
+	padding: 8px;
 	position: absolute;
 	z-index: 999;
 	width: 20px;
@@ -14,12 +14,13 @@
 
 .gif-box-camera-record-btn {
 	&:after {
-		width: 15px;
-		height: 15px; 
+		width: 12px;
+		height: 12px; 
 		position: absolute;
 		top: 50%;
 		left: 50%;
-		transform: translate(-50%, -50%);
+		margin-left: -6px;
+		margin-top: -6px;
 		background-color: $black;
 		display: block;
 		content:"";
@@ -35,5 +36,7 @@
 .gif-box-camera-restart-btn {
 	svg {
 		fill: $black;
+			left: 50%;
+	top: 50%;
 	}
 }

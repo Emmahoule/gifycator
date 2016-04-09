@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use App\Gif;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -29,6 +30,15 @@ class GifController extends Controller{
         $gifs  = Gif::where('category', $id)->get();;
 
         return response()->json($gifs);
+    }
+
+    public function countGifs(){
+        
+        $nbGifs = Gif::select('category', DB::raw('count(*) as total'))
+                 ->groupBy('category')
+                 ->get();
+
+        return response()->json($nbGifs);
     }
 
     public function saveGif(Request $request){

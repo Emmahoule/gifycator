@@ -8,7 +8,9 @@ import { CONCAT_GIFS_REQUEST, CONCAT_GIFS_SUCCESS, CONCAT_GIFS_FAILURE, CLEAR_ST
         SAVE_STORY_REQUEST, SAVE_STORY_SUCCESS, SAVE_STORY_FAILURE } 
         from '../actions/CreateGifActions.js'
 
-import { FETCH_CATEGORIES_REQUEST, FETCH_CATEGORIES_SUCCESS, FETCH_CATEGORIES_FAILURE, FETCH_CATEGORY_REQUEST, FETCH_CATEGORY_SUCCESS, FETCH_CATEGORY_FAILURE } from '../actions/CategoriesActions.js'
+import { FETCH_CATEGORIES_REQUEST, FETCH_CATEGORIES_SUCCESS, FETCH_CATEGORIES_FAILURE, 
+        FETCH_CATEGORY_REQUEST, FETCH_CATEGORY_SUCCESS, FETCH_CATEGORY_FAILURE, CLEAR_CATEGORY,
+        FETCH_NB_GIFS_REQUEST, FETCH_NB_GIFS_SUCCESS, FETCH_NB_GIFS_FAILURE, } from '../actions/CategoriesActions.js'
 
 import { FETCH_GIFS_REQUEST, FETCH_GIFS_SUCCESS, FETCH_GIFS_FAILURE, CLEAR_GIFS, FETCH_GIF_REQUEST, FETCH_GIF_SUCCESS, FETCH_GIF_FAILURE, CLEAR_GIF } from '../actions/GalleryActions.js'
 
@@ -221,10 +223,11 @@ function fetchCategories(state = {
   }
 }
 
-/* Fetch gifs Reducer :
+/* Fetch category Reducer :
  * - FETCH_CATEGORY_REQUEST
  * - FETCH_CATEGORY_SUCCESS
  * - FETCH_CATEGORY_FAILURE
+ * - CLEAR_CATEGORY
 */
 function fetchCategory(state = {
     isFetching: false
@@ -240,6 +243,38 @@ function fetchCategory(state = {
         dataCategory: action.response
       })    
     case FETCH_CATEGORY_FAILURE:
+      return Object.assign({}, state, {
+        isFetching: false
+      })
+    case CLEAR_CATEGORY:
+      return Object.assign({}, state, {
+        isFetching: false,
+        dataCategory: null
+      })
+    default:
+      return state
+  }
+}
+
+/* Fetch number gifs Reducer :
+ * - FETCH_CATEGORY_REQUEST
+ * - FETCH_CATEGORY_SUCCESS
+ * - FETCH_CATEGORY_FAILURE
+*/
+function fetchNbGifs(state = {
+    isFetching: false
+  }, action) {
+  switch (action.type) {
+    case FETCH_NB_GIFS_REQUEST:
+      return Object.assign({}, state, {
+        isFetching: true
+      })
+    case FETCH_NB_GIFS_SUCCESS:
+      return Object.assign({}, state, {
+        isFetching: false,
+        nbGifs: action.response
+      })    
+    case FETCH_NB_GIFS_FAILURE:
       return Object.assign({}, state, {
         isFetching: false
       })
@@ -313,7 +348,7 @@ function fetchGif(state = {
 }
 
 const myApp = combineReducers({
-  composeGifStory, concatGifStory, saveGifStory, fetchCategories, fetchCategory, fetchGifs, fetchGif, auth
+  composeGifStory, concatGifStory, saveGifStory, fetchCategories, fetchCategory, fetchNbGifs, fetchGifs, fetchGif, auth
 })
 
 export default myApp

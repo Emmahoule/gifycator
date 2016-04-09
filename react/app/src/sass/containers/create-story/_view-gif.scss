@@ -3,8 +3,8 @@
 }
 
 .view-gif-story {
-	height: 350px;
-	width: 350px;
+	height: 300px;
+	width: 300px;
 	position: relative;
 	display: inline-block;
 }
@@ -51,24 +51,7 @@
 }
 
 .view-gif-share {
-	color: $black;
-	font-family: $font-sans;
-	font-size: 14px;
-	margin: 20px;
-	font-weight: 800;
-	// letter-spacing: 0.2em;
+	margin-top: 35px;
+	margin-bottom: 10px;
 }
 
-.view-gif-share-link {
-	display: inline-block;
-	padding: 10px;
-	&:first-child {
-		margin-left: 10px;
-	}
-	.icon {
-		display: inline-block;
-		width: 15px;
-		height: 15px;
-		fill: $black;
-	}
-}

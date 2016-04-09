@@ -1,43 +1,23 @@
 .gif-box {
 	width: 180px;
 	height: 180px;
-	border: dashed 1px darken($grey-light, 15%);
+	border: dashed 3px darken($grey-light, 5%);
 	position: relative;
 	display: inline-block;
 	margin: 20px;
 	background-color: $white;
-	// border: 1px solid darken($grey-light, 15%);
 }
 
-// .gif-box-add {
-// 	font-size: 24px;
-// 	color: $black;
-// 	cursor: pointer;
-// 	background: none;
-// 	font-family: $font-sans;
-// 	font-weight: 800;
-// 	// text-transform: uppercase;
-// 	background-color: $turquoise;
-// 	// letter-spacing: -0.1em;
-// 	text-align: right;
-// 	border: 1px solid $turquoise;
-// }
-
-// .gif-box-add-inner {
-// 	position: absolute;
-// 	padding: 15px 5px;
-// 	top: 100%;
-// 	transform: translate(0%, -100%);
-// }
-
 .gif-box-add {
-	font-size: 16px;
+	width: 172px;
+	height: 172px;
+	font-size: 18px;
 	color: $black;
 	cursor: pointer;
 	background: none;
 	font-family: $font-sans;
 	font-weight: 800;
-	box-sizing: border-box;
+	// box-sizing: border-box;
 	// background-color: $grey-light;
 	text-align: center;
 	border: 8px solid $turquoise;
@@ -45,7 +25,6 @@
 
 .gif-box-add-inner {
 	position: absolute;
-	// padding: 15px 5px;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
@@ -69,8 +48,8 @@
 .gif-box-delete {
 	position: absolute;
 	z-index: 20;
-	right: -10px;
-	top: -10px;
+	right: -12px;
+	top: -12px;
 	padding: 5px;
 	border-radius: 100%;
 	background-color: $turquoise;
@@ -98,8 +77,10 @@
 
 .gif-box-inner-btn, .gif-box-bottom-btn {
 	display: inline-block;
-	border: 1px solid darken($grey-light,20%);
+	border: 5px solid $turquoise;
+	// background-color: $turquoise;
 	border-radius: 100%;
+	box-sizing: border-box;
 	margin: 0 3px;
 	width: 40px;
 	height: 40px;
@@ -121,8 +102,8 @@
 	font-family: $font-sans;
 	font-weight: 800;
 	position: absolute;
-	left: 50%;
-	top: 50%;
+	left: 70%;
+	top: 70%;
 	display: block;
 	transform: translate(-50%,-50%);
 }
@@ -132,8 +113,8 @@
 	font-family: $font-sans;
 	font-weight: 800;
 	position: absolute;
-	left: 50%;
-	top: 50%;
+	left: 70%;
+	top: 70%;
 	display: block;
 	transform: translate(-50%,-50%);
 }
@@ -142,7 +123,7 @@
 	width: 35px;
 	height: 35px;
 	margin: 0 2px;
-	// border: 2px solid $grey-light;
+	border: 5px solid $turquoise;
 	&:nth-child(1) {
 		margin-left: 0;
 	}
@@ -169,6 +150,7 @@
 	font-family: $font-serif;
 	font-weight: 800;
 	line-height: 1.5em;
+	font-weight: 800;
 }
 
 .gif-box-bottom {

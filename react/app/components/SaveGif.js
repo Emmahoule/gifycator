@@ -23,6 +23,7 @@ export default class SaveGif extends Component {
     this.state = {
       categoryName: "Choose a category",
       categoryValue: null,
+      categoryColor: null,
       open: false,
       title: null, 
       author: null,
@@ -40,6 +41,9 @@ export default class SaveGif extends Component {
   */  
   componentWillMount(){
     this.props.dispatch(fetchCategories());
+    if (!this.props.story) {
+      this.props.history.push("create-story");
+    }
   }
 
   /* onClickSelect : 
@@ -69,9 +73,11 @@ export default class SaveGif extends Component {
   onClickSelectItem(e){
     let value = e.target.getAttribute("data-value");
     let text = e.target.innerHTML;
+    let color = this.props.dataCategories.find((category)=>{return category.id==value}).color;
     this.setState({
       categoryName : text,
       categoryValue : value,
+      categoryColor : color,
       open : false
     });
   }
@@ -165,7 +171,7 @@ export default class SaveGif extends Component {
             </div>
             
             <div className="save-gif-bottom">
-              <div className="save-gif-bottom-square"></div>
+              <div className="save-gif-bottom-square" style={{backgroundColor: this.state.categoryColor}}></div>
               <div className="save-gif-bottom-title-block">
                 <div className="save-gif-bottom-title">{this.state.title}</div>
                 <div className="save-gif-bottom-author">{this.state.author}</div>

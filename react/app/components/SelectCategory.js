@@ -10,13 +10,13 @@ const API_URL = config.API_URL;
 
 export default class SelectCategory extends Component {
   render() {
-    const { id, name, color } = this.props;
+    const { id, name, color, nbGifs } = this.props;
     const gallery =  "gallery/" + id;
     return (
       <Link to={gallery} className="select-category"  style={{backgroundColor: color}}>
         <div className="select-category-text-block">
           <div className="select-category-name">{name}</div>
-          <div className="select-category-stories">{name} amazing stories</div>
+          <div className="select-category-stories">{nbGifs} amazing stories</div>
         </div>
       </Link>
     )

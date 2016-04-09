@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { Link } from "react-router";
 import SelectCategory from '../../components/SelectCategory';
-import { fetchCategories } from '../../actions/CategoriesActions.js';
+import { fetchCategories, fetchNbGifs } from '../../actions/CategoriesActions.js';
 
 import { config } from '../../config.js'
 const API_URL = config.API_URL;
@@ -25,19 +25,30 @@ class ChooseCategory extends Component {
 
   componentWillMount(){
     this.props.dispatch(fetchCategories());
+    this.props.dispatch(fetchNbGifs());
   }
 
   render() {
-    const { dataCategories } = this.props;
+    const { dataCategories, nbGifs } = this.props;
+    if(nbGifs){
+      console.log(nbGifs);
+    }
     return (
         <div className="choose-category a-middle">
-          {dataCategories && dataCategories.map(function(category){
-            return <SelectCategory id={category.id} key={category.id} name={category.name} color={category.color} />;
+          {dataCategories && nbGifs && dataCategories.map(function(category){
+            let nbOfGifs=nbGifs.find((item)=>{return (typeof(item.category!="undefined"))? item.category == category.id:0});
+            return <SelectCategory 
+                    id={category.id} 
+                    key={category.id} 
+                    nbGifs={nbOfGifs?nbOfGifs.total:0} 
+                    name={category.name} 
+                    color={category.color} />;
           }.bind(this))}
         </div>
     )
   }
 }
+
 
 ChooseCategory.propTypes = {
   dispatch: PropTypes.func.isRequired,
@@ -46,11 +57,11 @@ ChooseCategory.propTypes = {
 
 function mapStateToProps(state) {
 
-  const { fetchCategories } = state;
+  const { fetchCategories, fetchNbGifs } = state;
   const { dataCategories } = fetchCategories;
-
+  const { nbGifs } = fetchNbGifs;
   return {
-    dataCategories
+    dataCategories, nbGifs
   }
 }
 
