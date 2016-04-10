@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Link } from "react-router";
 import SelectCategory from '../../components/SelectCategory';
 import { fetchCategories, fetchNbGifs } from '../../actions/CategoriesActions.js';
+import * as TweenMax from "gsap/src/minified/TweenMax.min.js";
 
 import { config } from '../../config.js'
 const API_URL = config.API_URL;
@@ -28,11 +29,17 @@ class ChooseCategory extends Component {
     this.props.dispatch(fetchNbGifs());
   }
 
+  componentWillReceiveProps(nextProps){
+    if (nextProps.dataCategories){
+      let tl = new TimelineMax();
+      tl.add( TweenMax.staggerTo(".select-category-bg-inner", 1, {width: "375px", ease:Power2.easeInOut}, 0.15));
+      tl.add( TweenMax.staggerTo(".select-category-name", 1.5, {autoAlpha: 1, x: 0, y:0, ease:Power2.easeOut}, 0.15), 0.5);  
+      tl.add( TweenMax.staggerTo(".select-category-stories", 1.5, {autoAlpha: 1, x: 0, y:0, ease:Power2.easeOut}, 0.15), 0.5);  
+    }
+  }
+
   render() {
     const { dataCategories, nbGifs } = this.props;
-    if(nbGifs){
-      console.log(nbGifs);
-    }
     return (
         <div className="choose-category a-middle">
           {dataCategories && nbGifs && dataCategories.map(function(category){
@@ -42,7 +49,8 @@ class ChooseCategory extends Component {
                     key={category.id} 
                     nbGifs={nbOfGifs?nbOfGifs.total:0} 
                     name={category.name} 
-                    color={category.color} />;
+                    color={category.color}
+                    history={this.props.history} />;
           }.bind(this))}
         </div>
     )

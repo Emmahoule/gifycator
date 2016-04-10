@@ -10,12 +10,28 @@
 	padding: 15px;
 	cursor: pointer;
 	z-index: 20;
+	position: relative;
 	span {
 		display: inline-block;
 		margin: 0px 1px;
+		animation: animLogo 1s;
+		animation-timing-function: $easeOutQuad;
 	}
+}
+
+@keyframes animLogo {
+    from {opacity: 0}
+    to {opacity: 1}
 }
 
 .create-story-title {
 	margin: 60px 0;
+	animation: animTitle 1s forwards 0.5s;
+	animation-timing-function: $easeOutQuart;
+ 	opacity: 0;
+}
+
+@keyframes animTitle {
+    from {transform: translateY(40px); opacity: 0}
+    to {transform: translateY(0px); opacity: 1}
 }

@@ -1,6 +1,14 @@
 .save-gif-top {
 	display: block;
 	margin: 0px 0 60px 0;
+	// animation: saveGifTop 1s forwards 0.5s;
+	// animation-timing-function: $easeOutQuart;
+	opacity: 1;
+}
+
+@keyframes saveGifTop {
+    from {opacity: 0}
+    to {opacity: 1}
 }
 
 .save-gif-input-name {
@@ -37,6 +45,14 @@
 	width: 280px;
 	height: 280px;
 	background-color: $turquoise;
+	animation: saveGifSquare 1s;
+	animation-timing-function: $easeInOutQuart;
+
+}
+
+@keyframes saveGifSquare {
+    from {width: 0px;}
+    to {width: 280px;}
 }
 
 .save-gif-bottom-title-block {
@@ -63,9 +79,18 @@
 	font-weight: 800;
 }
 
-.save-gif-video {
-	background-color: $white;
+.save-gif-video-mask {
 	position: absolute;
-	left: 30px;
-	top: 30px;
+	left: 45px;
+	top: 45px;
+	height: 250px;
+	width: 0;
+	animation: saveGifVideoMask 1s forwards 0.35s;
+	animation-timing-function: $easeInOutQuart;
+	overflow: hidden;
+}
+
+@keyframes saveGifVideoMask {
+    from {width: 0}
+    to {width: 250px}
 }

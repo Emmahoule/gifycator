@@ -5,6 +5,7 @@ import { fetchGifs, clearGifs } from '../../actions/GalleryActions.js';
 import { fetchCategory, clearCategory } from '../../actions/CategoriesActions.js';
 import ItemGallery from '../../components/ItemGallery.js';
 import LazyLoad from 'react-lazy-load';
+import $ from 'jquery';
 
 import { config } from '../../config.js'
 const API_URL = config.API_URL;
@@ -17,9 +18,9 @@ class CategoryGallery extends Component {
   constructor(){
     super();
     this.state = {
-      currentGif : -1,
-      nextGif : 0,
-      prevGif : -2
+      currentGif : 0,
+      nextGif : 1,
+      prevGif : -1
     }
     this.lg = 0;
   }
@@ -27,6 +28,10 @@ class CategoryGallery extends Component {
   componentWillMount(){
     this.props.dispatch(fetchGifs(this.props.params.id));
     this.props.dispatch(fetchCategory(this.props.params.id));
+    window.setTimeout(function(){
+      $('.category-gallery-block').addClass("visible");
+      this.props.history.push('gallery/'+this.props.params.id[0]+'/'+this.props.gifs[0].id);
+    }.bind(this), 500);
   }
 
   componentWillReceiveProps(nextProps){
@@ -42,12 +47,16 @@ class CategoryGallery extends Component {
 
   prevStates(){
     if (this.state.currentGif>0) {
-      this.props.history.push('gallery/'+this.props.params.id[0]+'/'+this.props.gifs[this.state.prevGif].id);
-      this.setState({
-        currentGif : this.state.currentGif-1,
-        nextGif : this.state.currentGif,
-        prevGif : this.state.currentGif-2
-      });   
+      $('.category-gallery-block').removeClass("visible");
+      window.setTimeout(function(){
+        $('.category-gallery-block').addClass("visible");
+        this.props.history.push('gallery/'+this.props.params.id[0]+'/'+this.props.gifs[this.state.prevGif].id);
+        this.setState({
+          currentGif : this.state.currentGif-1,
+          nextGif : this.state.currentGif,
+          prevGif : this.state.currentGif-2
+        });   
+      }.bind(this), 1000);
     } else {
       this.setState({
         currentGif : -1,
@@ -59,22 +68,33 @@ class CategoryGallery extends Component {
 
   nextStates(){
     if (this.state.currentGif<=this.lg) {
-      this.props.history.push('gallery/'+this.props.params.id[0]+'/'+this.props.gifs[this.state.nextGif].id);
-      this.setState({
-        currentGif : this.state.currentGif+1,
-        nextGif : this.state.currentGif+2,
-        prevGif : this.state.currentGif
-      });    
+      $('.category-gallery-block').removeClass("visible");
+      window.setTimeout(function(){
+        $('.category-gallery-block').addClass("visible");
+        this.props.history.push('gallery/'+this.props.params.id[0]+'/'+this.props.gifs[this.state.nextGif].id);
+        this.setState({
+          currentGif : this.state.currentGif+1,
+          nextGif : this.state.currentGif+2,
+          prevGif : this.state.currentGif
+        });    
+      }.bind(this), 1000);
     }
   }       
 
+  onClickReturn(e){
+    e.preventDefault();
+    $('.category-gallery-block').removeClass("visible");
+    window.setTimeout(function(){
+      this.props.history.push("gallery");
+    }.bind(this), 1000);
+  }
 
   render() {
     const { gifs, dataCategory } = this.props;
     const categoryId = this.props.params.id[0];
     return (
         <div className="category-gallery">
-          <Link to="gallery" className="category-gallery-return">Return</Link>
+          <Link to="gallery" className="category-gallery-return" onClick={this.onClickReturn.bind(this)}>Categories</Link>
           <div className="a-middle">
           {dataCategory && 
           <div className="category-gallery-block">
@@ -89,7 +109,7 @@ class CategoryGallery extends Component {
           }
           {gifs &&
             <div className="category-gallery-nav">
-            {this.state.prevGif>=-1 &&
+            {this.state.prevGif>=0 &&
               <div className="category-gallery-nav-item category-gallery-nav-prev" onClick={this.prevStates.bind(this)} >Prev</div>
             }
             {this.state.nextGif<this.lg &&

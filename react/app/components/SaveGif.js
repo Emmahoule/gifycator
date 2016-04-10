@@ -176,7 +176,9 @@ export default class SaveGif extends Component {
                 <div className="save-gif-bottom-title">{this.state.title}</div>
                 <div className="save-gif-bottom-author">{this.state.author}</div>
               </div>
-              <video crossOrigin="anonymous" autoPlay="true" width="250" height="250" loop="loop" preload="metadata" className="save-gif-video" ref={e=>this.video=e} src={API_URL+story}></video>
+              <div className="save-gif-video-mask">
+                <video crossOrigin="anonymous" autoPlay="true" width="250" height="250" loop="loop" preload="metadata" className="save-gif-video" ref={e=>this.video=e} src={API_URL+story}></video>
+              </div>
             </div>
             <div className="clearfix"></div>
             {this.state.title && this.state.author && this.state.categoryValue && this.state.cover &&

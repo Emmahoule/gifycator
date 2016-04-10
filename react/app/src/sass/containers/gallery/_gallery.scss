@@ -14,5 +14,12 @@
 	span {
 		display: inline-block;
 		margin: 0px 1px;
+		animation: animLogo 1s;
+		animation-timing-function: $easeOutQuart;
 	}
+}
+
+@keyframes animLogo {
+    from {opacity: 0}
+    to {opacity: 1}
 }

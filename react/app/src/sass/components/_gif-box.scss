@@ -6,32 +6,87 @@
 	display: inline-block;
 	margin: 20px;
 	background-color: $white;
+	animation: animBox 0.5s;
+	animation-timing-function: $easeOutQuart;
+}
+
+@keyframes animBox {
+    from {
+    	// transform: translateY(40px); 
+    	opacity: 0
+    	}
+    to {
+    	// transform: translateY(0px); 
+    	opacity: 1
+    }
 }
 
 .gif-box-add {
-	width: 172px;
-	height: 172px;
+	width: 186px;
+	height: 186px;
 	font-size: 18px;
 	color: $black;
 	cursor: pointer;
 	background: none;
 	font-family: $font-sans;
 	font-weight: 800;
-	// box-sizing: border-box;
+	box-sizing: border-box;
 	// background-color: $grey-light;
 	text-align: center;
 	border: 8px solid $turquoise;
+	transition: all 0.5s $easeOutQuart;
+	&:hover {
+		border: 12px solid $turquoise;
+		.gif-box-add-inner-icn {  
+			font-size: 22px;
+		}
+		.gif-box-add-inner {
+			transform: translate(-50%, -50%) scale(1.05);
+			&:after, &:before {
+				width: 50px;
+			}
+		}
+	}
+	animation: animBoxAdd 1s;
+	animation-timing-function: $easeOutQuart;
+	transition: all 0.5s $easeOutQuart;
 }
 
+@keyframes animBoxAdd {
+    from {transform: translateY(80px); opacity: 0}
+    to {transform: translateY(0px); opacity: 1}
+}
+
+
 .gif-box-add-inner {
+	display: inline-block;
 	position: absolute;
 	top: 50%;
 	left: 50%;
+	// width: 110px;
 	transform: translate(-50%, -50%);
 	white-space: nowrap;
+	transition: all 0.5s $easeOutQuart;
 	.gif-box-add-inner-icn {
 		font-size: 18px;
 		color: darken($turquoise, 20%);
+		transition: all 0.5s $easeOutQuart;
+	}
+	&:after, &:before {
+		content: "";
+		display: inline-block;
+		width: 0;
+		height: 4px;
+		background-color: $turquoise;
+		transition: all 0.5s $easeOutQuart;
+		position: absolute;
+		bottom: -10px;
+	}
+	&:after {
+		left: 50%;
+	}
+	&:before {
+		right: 50%;
 	}
 }
 
@@ -64,6 +119,7 @@
 		content:"";
 		background-color: $black;
 		margin-top: 2px;
+		transition: all 0.5s $easeOutQuart;
 	}
 	&:after {
 		left: 12px;
@@ -73,6 +129,14 @@
 		right: 11px;
 		transform: rotate(-45deg);
 	}
+	&:hover {
+		&:after {
+			transform: rotate(-45deg);
+		}
+		&:before {
+			transform: rotate(-135deg);
+		}
+	}
 }
 
 .gif-box-inner-btn, .gif-box-bottom-btn {
@@ -81,31 +145,38 @@
 	// background-color: $turquoise;
 	border-radius: 100%;
 	box-sizing: border-box;
-	margin: 0 3px;
-	width: 40px;
-	height: 40px;
+	margin: 0 2px;
+	width: 46px;
+	height: 46px;
 	position: relative;
 	cursor: pointer;
+	transition: all 0.5s $easeOutQuart;
 	&:nth-child(1) {
 		margin-left: 0;
 	}
 	&:nth-child(3) {
 		margin-right: 0;
 	}
+	&:hover {
+		border: 10px solid $turquoise;
+	}
+	&:hover {
+	}
 }
 
 .gif-box-inner-btn-icon, .gif-box-bottom-btn-icon {
-	width: 20px;
-	height: 20px;
+	width: 19px;
+	height: 19px;
 	fill: $black;
 	color: $black;
 	font-family: $font-sans;
 	font-weight: 800;
 	position: absolute;
-	left: 70%;
-	top: 70%;
+	left: 50%;
+	top: 50%;
 	display: block;
 	transform: translate(-50%,-50%);
+	transition: all 0.5s $easeOutQuart;
 }
 
 .gif-box-inner-btn-txt, .gif-box-bottom-btn-txt {
@@ -113,17 +184,19 @@
 	font-family: $font-sans;
 	font-weight: 800;
 	position: absolute;
-	left: 70%;
-	top: 70%;
+	left: 50%;
+	top: 50%;
 	display: block;
+	font-size: 13px;
 	transform: translate(-50%,-50%);
+	transition: all 0.5s $easeOutQuart;
 }
 
 .gif-box-bottom-btn {
-	width: 35px;
-	height: 35px;
+	width: 38px;
+	height: 38px;
 	margin: 0 2px;
-	border: 5px solid $turquoise;
+	border: 4px solid $turquoise;
 	&:nth-child(1) {
 		margin-left: 0;
 	}
@@ -140,7 +213,7 @@
 }
 
 .gif-box-bottom-btn-txt {
-	font-size: 12px;
+	font-size: 11px;
 	// color: $gray;
 }
 

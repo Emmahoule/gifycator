@@ -80,8 +80,11 @@ class GifController extends Controller{
             ]
         );
 
+        $id = Gif::select('id')->where('url', '=', $gifPath)->get();
+
         // Renvoie des données en JSON
         return response()->json([
+            'id' => $id,
             'url' => $gifPath, 
             'cover' => $coverFileName,
             'title' => $title,

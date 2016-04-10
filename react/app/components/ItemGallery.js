@@ -3,9 +3,11 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux'
 import { fetchGif, clearGif } from '../actions/GalleryActions.js';
 import { ShareButtons, ShareCounts, generateShareIcon } from 'react-share';
+import $ from 'jquery';
 
 import { config } from '../config.js'
 const API_URL = config.API_URL;
+const BASE_URL = config.BASE_URL;
 const { FacebookShareButton, TwitterShareButton, PinterestShareButton } = ShareButtons;
 
 /*  Component ItemGallery : 
@@ -21,6 +23,10 @@ class ItemGallery extends Component {
 	componentWillMount() {
 	  this.id = this.props.params.id[1];
     this.props.dispatch(fetchGif(this.id));
+    $('.category-gallery-block').removeClass("visible");
+    window.setTimeout(function(){
+      $('.category-gallery-block').addClass("visible");
+    }, 1000)
 	}
 
 	componentWillReceiveProps(nextProps){
@@ -32,6 +38,10 @@ class ItemGallery extends Component {
 
   componentWillUnmount(){
     this.props.dispatch(clearGif());
+      $('.category-gallery-block').removeClass("visible");
+    window.setTimeout(function(){
+      $('.category-gallery-block').addClass("visible");
+    }, 1000)
   }
 
   render() {
@@ -44,27 +54,29 @@ class ItemGallery extends Component {
   	     	 	<div className="item-gallery-title">{gif.title}</div>
   	     	 	<div className="item-gallery-author">{gif.author}</div>
        	 	</div>
-  	      <video className="item-gallery-video" src={API_URL+gif.url} autoPlay loop/>
+          <div className="item-gallery-video-mask">
+  	        <video className="item-gallery-video" src={API_URL+gif.url} autoPlay loop/>
+          </div>
         </div>
 
       }
       {gif &&
         <div className="share item-gallery-share">Share on 
-          <FacebookShareButton className="share-link" url="www.google.fr" title="coucou" media={API_URL+gif.url} >
+          <FacebookShareButton className="share-link" url={BASE_URL+"gallery/"+gif.category+"/"+gif.id} title={gif.title} media={API_URL+gif.cover} >
             <svg className="icon icon-facebook">
               <use xlinkHref="#icon-facebook"></use>
             </svg>
           </FacebookShareButton>
 
-          <TwitterShareButton className="share-link" url="www.google.fr" title="coucou" media={API_URL+gif.url}> 
+          <TwitterShareButton className="share-link" url={BASE_URL+"gallery/"+gif.category+"/"+gif.id} title={gif.title} media={API_URL+gif.cover}> 
             <svg className="icon icon-twitter">
               <use xlinkHref="#icon-twitter"></use>
             </svg>
           </TwitterShareButton>
 
-          <PinterestShareButton className="share-link" url="www.google.fr" title="coucou" media={API_URL+gif.url} >
-            <svg className="icon icon-facebook">
-              <use xlinkHref="#icon-facebook"></use>
+          <PinterestShareButton className="share-link" url={BASE_URL+"gallery/"+gif.category+"/"+gif.id} title={gif.title} media={API_URL+gif.cover} >
+            <svg className="icon icon-pinterest">
+              <use xlinkHref="#icon-pinterest"></use>
             </svg>
           </PinterestShareButton>
         </div>

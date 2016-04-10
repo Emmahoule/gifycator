@@ -1,14 +1,30 @@
 .concat-gif {
 }
 
-.concat-gif-title:after {
-	content:"";
-	display: block;
-	background-color: $black;
-	width: 90px;
-	height: 1px;
-	margin: 0 auto;
-	margin-top: 20px;
+.concat-gif-title {
+	animation: animConcatTitle 0.5s;
+	animation-timing-function: $easeOutQuad;
+	&:after {
+		content:"";
+		display: block;
+		background-color: $black;
+		width: 0;
+		height: 1px;
+		margin: 0 auto;
+		margin-top: 20px;	
+		animation: animConcatTitleAfter 0.5s forwards 0.25s;
+		animation-timing-function: $easeOutQuart;
+	}
+}
+
+@keyframes animConcatTitle {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes animConcatTitleAfter {
+    from {width: 0}
+    to {width: 90px}
 }
 
 .concat-gif-title-icon {
@@ -37,6 +53,8 @@
 	display: inline-block;
 	vertical-align: middle;
 	margin-bottom: 0;
+	animation: animConcatTitle 0.5s;
+	animation-timing-function: $easeOutQuad;
 }
 
 .concat-gif-infos {

@@ -8,6 +8,8 @@ import { ShareButtons, ShareCounts, generateShareIcon } from 'react-share';
 import { config } from '../../config.js'
 
 const API_URL = config.API_URL;
+const BASE_URL = config.BASE_URL;
+
 const { FacebookShareButton, TwitterShareButton, PinterestShareButton } = ShareButtons;
 
 /* Container ViewGif : 
@@ -44,21 +46,21 @@ class ViewGif extends Component {
                 </div>
                 <div className="clearfix"></div>
                 <div className="view-gif-share share">Share on 
-                  <FacebookShareButton className="share-link" url="www.google.fr" title="coucou" media={API_URL+dataStory.cover} >
+                  <FacebookShareButton className="share-link" url={BASE_URL+"gallery/"+dataStory.category+"/"+dataStory.id[0].id} title={dataStory.title} media={API_URL+dataStory.cover} >
                     <svg className="icon icon-facebook">
                       <use xlinkHref="#icon-facebook"></use>
                     </svg>
                   </FacebookShareButton>
 
-                  <TwitterShareButton className="share-link" url="www.google.fr" title="coucou" media={API_URL+dataStory.cover}> 
+                  <TwitterShareButton className="share-link" url={BASE_URL+"gallery/"+dataStory.category+"/"+dataStory.id[0].id} title={dataStory.title} media={API_URL+dataStory.cover}> 
                     <svg className="icon icon-twitter">
                       <use xlinkHref="#icon-twitter"></use>
                     </svg>
                   </TwitterShareButton>
 
-                  <PinterestShareButton className="share-link" url="www.google.fr" title="coucou" media={API_URL+dataStory.cover} >
-                    <svg className="icon icon-facebook">
-                      <use xlinkHref="#icon-facebook"></use>
+                  <PinterestShareButton className="share-link" url={BASE_URL+"gallery/"+dataStory.category+"/"+dataStory.id[0].id} title={dataStory.title} media={API_URL+dataStory.cover} >
+                    <svg className="icon icon-pinterest">
+                      <use xlinkHref="#icon-pinterest"></use>
                     </svg>
                   </PinterestShareButton>
                 </div>

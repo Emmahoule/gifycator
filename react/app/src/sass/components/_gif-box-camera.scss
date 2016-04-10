@@ -10,6 +10,7 @@
 	left: 50%;
 	margin-left: -20px;
 	cursor: pointer;
+	transition: all 0.5s $easeOutQuart;
 }
 
 .gif-box-camera-record-btn {
@@ -24,11 +25,12 @@
 		background-color: $black;
 		display: block;
 		content:"";
+		transition: all 0.5s $easeOutQuart;
 	}
 	&.record {
-		border: 1px solid red;
+		border: 2px solid $red;
 		&:after {
-			background-color: red;
+			background-color: $red;
 		}
 	}
 }

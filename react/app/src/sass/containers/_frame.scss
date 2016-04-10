@@ -57,7 +57,7 @@
 	letter-spacing: -0.01em;
 	margin: 0 20px;
 	position: relative;
-	transition: all 0.5s $easeInOutQuart;
+	transition: all 1s $easeOutQuart;
 	&:after {
 		content: "";
 		display: block;
@@ -69,6 +69,14 @@
 		top: 50%;
 		transform: translate(-50%, 0);
 		z-index: -5;
+		transition: all 1s $easeOutQuart;
+	}
+	&:hover {
+		transform: translateX(15px);
+		&:after {
+			height: 20px; 
+			transform: translate(-55%, 0);
+		}
 	}
 }
 
