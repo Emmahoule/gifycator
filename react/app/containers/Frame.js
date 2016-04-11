@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { Link } from "react-router";
 import { connect } from 'react-redux';
+import { fetchCategories } from '../actions/CategoriesActions.js';
 
 /* Container Frame : conteneur global */
 
@@ -13,24 +14,36 @@ class Frame extends Component {
     }
 	}
 
-	render() {
-		const { isFetching, story } = this.props;
+  componentWillMount(){
+    this.props.dispatch(fetchCategories());
+  }
 
-    let title = ".Gifycator";
-    console.log(this.props.location.pathname)
-    if (this.props.location.pathname == "create-story" || 
-        this.props.location.pathname == "create-story/create-gif") {
-      title = "Createstory";
+  componentWillReceiveProps(nextProps){
+    if (nextProps.location.pathname == "/"){
+      this.setState({title:".Gifycator"});
     }
-    if (this.props.location.pathname == "create-story/your-gif") {
-      title = "Amazing!";
+    if (nextProps.location.pathname == "create-story" || 
+        nextProps.location.pathname == "create-story/create-gif") {
+      this.setState({title:"Createstory"});
     }
-    if (this.props.location.pathname == "gallery") {
-      title = "Gallery";
+    if (nextProps.location.pathname == "create-story/your-gif") {
+      this.setState({title:"Amazing!"});
     }
-    if (this.props.location.pathname == "gallery") {
-      title = "Gallery";
+    if (nextProps.location.pathname == "gallery") {
+      this.setState({title:"Gallery"});
     }
+    if (nextProps.dataCategories){
+      nextProps.dataCategories.map(function(category){
+        if (nextProps.location.pathname.indexOf("gallery/"+category.id)>-1) {
+          return  this.setState({title:category.name});
+        }
+      }.bind(this));
+    }
+  }
+
+	render() {
+		const { isFetching, story, dataCategories } = this.props;
+
   	return (
     	<div className="frame">
   			<div className="frame-bg">
@@ -75,7 +88,7 @@ class Frame extends Component {
         </div>
       	<div className="frame-wrapper">
       	  <div className="title-1">
-		    		{title}
+		    		{this.state.title}
 	      	</div>
      			{this.props.children}
        	</div>
@@ -84,33 +97,42 @@ class Frame extends Component {
 	}
 }
 
-            // {isFetching &&
-            //   <Link to="create-story/create-gif" className="frame-loading frame-left-nav-link">
-            //     <svg className="icon icon-load frame-loading-icon">
-            //      <use xlinkHref="#icon-load"></use>
-            //    </svg>
-            //    <div className="frame-loading-text">story in creation...</div>
-            //  </Link>
-            // }
-            // {!isFetching && story &&
-            //   <Link to="create-story/create-gif" className="frame-loading frame-left-nav-link">
-            //     <div className="frame-loading-text">your story is ready !</div>
-            //   </Link>
-            // }
+    // console.log(dataCategories);
+    // let title = ".Gifycator";
+    // console.log(this.props.location.pathname)
+    // if (this.props.location.pathname == "create-story" || 
+    //     this.props.location.pathname == "create-story/create-gif") {
+    //   title = "Createstory";
+    // }
+    // if (this.props.location.pathname == "create-story/your-gif") {
+    //   title = "Amazing!";
+    // }
+    // if (this.props.location.pathname == "gallery") {
+    //   title = "Gallery";
+    // }
+    // if (dataCategories){
+    //   dataCategories.map(function(category){
+    //     if (this.props.location.pathname.indexOf("gallery/"+category.id)>-1) {
+    //       return title = category.name;
+    //     }
+    //   }.bind(this));
+    // }
 
 Frame.propTypes = {
   dispatch: PropTypes.func.isRequired,
   isFetching: PropTypes.bool,
-  story: PropTypes.string
+  story: PropTypes.string,
+  dataCategories: PropTypes.array
 }
 
 function mapStateToProps(state) {
 
-  const { concatGifStory } = state
+  const { concatGifStory, fetchCategories } = state
   const { isFetching, story } = concatGifStory
+  const { dataCategories } = fetchCategories;
 
   return {
-    isFetching, story
+    isFetching, story, dataCategories
   }
 }
 

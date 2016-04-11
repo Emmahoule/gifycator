@@ -32,7 +32,6 @@ export default class SelectCategory extends Component {
   render() {
     const { id, name, color, nbGifs } = this.props;
     const gallery =  "gallery/" + id;
-    console.log(this.props);
     return (
       <Link to={gallery} onClick={this.onClickCategory.bind(this)} className="select-category">
         <div className="select-category-bg">
