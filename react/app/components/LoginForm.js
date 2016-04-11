@@ -11,12 +11,12 @@ export default class LoginForm extends Component {
   }
   submit() {
     const creds = { email: this.state.email, password: this.state.password }
-    this.props.onLoginClick(creds);
+    this.props.onLoginClick(creds, this.props.history);
   }   
   render() {
     const { errorMessage } = this.props
     return (
-      <div>
+      <div className="login-form a-middle">
         <input 
           placeholder="Email" 
           type="text"
@@ -30,7 +30,10 @@ export default class LoginForm extends Component {
           name="password" 
           onChange={(e)=>this.setState({password: e.target.value})}
           required />
-        <div className="btn1" onClick={this.submit.bind(this)} >Se connecter</div>
+          {errorMessage &&
+            <div><br/>{errorMessage}<br/></div>
+          }
+        <div className="btn1 login-form-btn" onClick={this.submit.bind(this)} >Se connecter</div>
       </div>
     )
   }

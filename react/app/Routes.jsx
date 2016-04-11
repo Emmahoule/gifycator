@@ -21,6 +21,7 @@ import ItemGallery from './components/ItemGallery'
 
 import Admin from './containers/admin/Admin'
 import Login from './containers/admin/Login'
+import CategoriesList from './containers/admin/CategoriesList'
 
 // let history = useBasename(createBrowserHistory)({basename: '/html/'});
 let history = useBasename(createHashHistory)({basename: '/html/'});
@@ -42,8 +43,10 @@ export class Routes extends React.Component {
 						<Route path="create-gif" component={CreateGif}/>
 						<Route path="your-gif" component={ViewGif}/>
 					</Route>
+					<Route path="login" component={Login} />
 					<Route path="admin" component={Admin}>
-						<IndexRoute component={Login} />
+						<IndexRoute component={Admin} />
+						<Route path="categories" component={CategoriesList} />
 					</Route>
 				</Route>
 			</Router>

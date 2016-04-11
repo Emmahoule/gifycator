@@ -51,7 +51,7 @@ class GifController extends Controller{
         $category = $request->input('category');
         
         // Récupération du dossier uploads
-        $uploadPath = config('images.path');
+        $uploadPath = "uploads";
 
         // Génération d'un nom de fichier pas encore existant
         do {

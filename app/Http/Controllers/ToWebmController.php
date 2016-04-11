@@ -23,7 +23,7 @@ class ToWebmController extends Controller
 		$filePath = $gif->getPathName();
 		$filename = $gif->getClientOriginalName();
 		$extension = $gif->getClientOriginalExtension();
-	    $tmpPath = config('images.tmpPath');
+	    $tmpPath = "tmp";
 
 		do {
 			$newFileName = str_random(10);

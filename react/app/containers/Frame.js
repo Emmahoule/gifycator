@@ -90,6 +90,7 @@ class Frame extends Component {
       	  <div className="title-1">
 		    		{this.state.title}
 	      	</div>
+          <Link className="frame-admin-btn" to="login">Admin</Link>
      			{this.props.children}
        	</div>
     	</div>

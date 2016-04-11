@@ -19,7 +19,7 @@ class DownloadController extends Controller
 
 		$url = $request->input("url");
 
-	    $tmpPath = config('images.tmpPath');
+	    $tmpPath = "tmp";
 
 		$extension = pathinfo($url, PATHINFO_EXTENSION);
 

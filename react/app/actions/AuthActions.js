@@ -35,8 +35,6 @@ function loginError(message) {
   }
 }
 
-// Calls the API to get a token and
-// dispatches actions along the way
 export function loginUser(creds, history) {
 
   let config = {
@@ -48,7 +46,7 @@ export function loginUser(creds, history) {
   return dispatch => {
     dispatch(requestLogin(creds))
 
-    return fetch(API_URL+'api/auth/login', config)
+    return fetch(API_URL+'api/auth', config)
       .then(response =>
         response.json().then(user => ({ user, response }))
             ).then(({ user, response }) =>  {
@@ -58,7 +56,7 @@ export function loginUser(creds, history) {
         } else {
           localStorage.setItem('id_token', user.token)
           dispatch(receiveLogin(user))
-          // history.push('app/home');
+          history.push('admin/categories');
         }
       }).catch(err => console.log("Error: ", err))
   }
@@ -89,3 +87,5 @@ export function logoutUser(history) {
     return history.push('/');
   } 
 }
+
+

@@ -20,8 +20,8 @@ class CreateStoryController extends Controller
 		
 		$image = $request->toArray();
 		$tabImg = [];
-		$tmpPath = config('images.tmpPath');
-		error_log($tmpPath);
+		// $tmpPath = config('images.tmpPath');
+		$tmpPath = "tmp";
 		$listFiles = "";
 		$convert="";
 		$cpt=1;

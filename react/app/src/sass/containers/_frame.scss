@@ -111,3 +111,11 @@
 	vertical-align: middle;
 	color: $black;
 }
+
+.frame-admin-btn {
+	position: absolute;
+	right: 80px;
+	font-family: $font-sans;
+	color: darken($grey-light, 20%);
+	text-decoration: none;
+}

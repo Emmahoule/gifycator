@@ -42,6 +42,9 @@ $app->group(['prefix' => 'api/','namespace' => 'App\Http\Controllers'], function
     // Create Story routes
     $app->post('create-story','CreateStoryController@createStory');
 
+    // Auth routes
+    $app->post('auth','UserController@auth');
+
 });
 
 

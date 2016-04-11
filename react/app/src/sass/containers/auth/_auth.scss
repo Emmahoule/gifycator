@@ -1,0 +1,36 @@
+.auth {
+	text-align: center;
+}
+
+.auth-logo {
+	font-size: 16px;
+	font-weight: 800;
+	display: block;
+	font-family: $font-sans;
+	padding: 15px;
+	cursor: pointer;
+	z-index: 20;
+	position: relative;
+	span {
+		display: inline-block;
+		margin: 0px 1px;
+		animation: animLogo 1s;
+		animation-timing-function: $easeOutQuart;
+	}
+}
+
+@keyframes animLogo {
+    from {opacity: 0}
+    to {opacity: 1}
+}
+
+.auth-logout {
+	cursor: pointer;
+	padding: 20px;
+	transition: all 0.5s $easeOutQuad;
+	position: relative;
+	z-index: 20;
+	&:hover {
+		color: $turquoise;
+	}
+}
