@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { Link } from 'react-router';
 import { connect } from 'react-redux'
-import { fetchGif, clearGif } from '../actions/GalleryActions.js';
+import { fetchGif, clearGif, deleteGif } from '../actions/GalleryActions.js';
 import { ShareButtons, ShareCounts, generateShareIcon } from 'react-share';
 import $ from 'jquery';
 
@@ -44,8 +44,12 @@ class ItemGallery extends Component {
     }, 1000)
   }
 
+  deleteGif(){
+    this.props.dispatch(deleteGif(this.props.gif.id, this.props.history));
+  }
+
   render() {
-    const { gif } = this.props;
+    const { gif, isAuthenticated } = this.props;
     return (
       <div className="item-gallery">
       {gif &&
@@ -58,7 +62,6 @@ class ItemGallery extends Component {
   	        <video className="item-gallery-video" src={API_URL+gif.url} autoPlay loop/>
           </div>
         </div>
-
       }
       {gif &&
         <div className="share item-gallery-share">Share on 
@@ -80,6 +83,9 @@ class ItemGallery extends Component {
             </svg>
           </PinterestShareButton>
         </div>
+      } 
+      {isAuthenticated && 
+        <div className="item-gallery-delete" onClick={this.deleteGif.bind(this)}>X Delete this story</div>
       }
       </div>
     )
@@ -94,11 +100,12 @@ class ItemGallery extends Component {
 
 function mapStateToProps(state) {
 
-  const { fetchGif } = state;
+  const { fetchGif, auth } = state;
   const { gif } = fetchGif;
+  const { isAuthenticated } = auth
 
   return {
-    gif
+    gif, isAuthenticated
   }
 }
 

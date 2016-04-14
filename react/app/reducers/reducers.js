@@ -14,7 +14,11 @@ import { FETCH_CATEGORIES_REQUEST, FETCH_CATEGORIES_SUCCESS, FETCH_CATEGORIES_FA
         DELETE_CAT_REQUEST, DELETE_CAT_SUCCESS, DELETE_CAT_FAILURE,
         ADD_CAT_REQUEST, ADD_CAT_SUCCESS, ADD_CAT_FAILURE} from '../actions/CategoriesActions.js'
 
-import { FETCH_GIFS_REQUEST, FETCH_GIFS_SUCCESS, FETCH_GIFS_FAILURE, CLEAR_GIFS, FETCH_GIF_REQUEST, FETCH_GIF_SUCCESS, FETCH_GIF_FAILURE, CLEAR_GIF } from '../actions/GalleryActions.js'
+import { FETCH_GIFS_REQUEST, FETCH_GIFS_SUCCESS, FETCH_GIFS_FAILURE, 
+        CLEAR_GIFS, CLEAR_GIF,
+        FETCH_GIF_REQUEST, FETCH_GIF_SUCCESS, FETCH_GIF_FAILURE,
+        DELETE_GIF_REQUEST, DELETE_GIF_SUCCESS, DELETE_GIF_FAILURE,
+         } from '../actions/GalleryActions.js'
 
 /* Auth Reducer :
  * - LOGIN_REQUEST
@@ -403,8 +407,35 @@ function fetchGif(state = {
   }
 }
 
+/* Delete gif reducer :
+ * - DELETE_GIF_REQUEST
+ * - DELETE_GIF_SUCCESS
+ * - DELETE_GIF_FAILURE
+*/
+function deleteGif(state = {
+    isFetching: false
+  }, action) {
+  switch (action.type) {
+    case DELETE_GIF_REQUEST:
+      return Object.assign({}, state, {
+        isFetching: true
+      })
+    case DELETE_GIF_SUCCESS:
+      return Object.assign({}, state, {
+        isFetching: false,
+        datasGifSupp: action.datasGifSupp
+      })    
+    case DELETE_GIF_FAILURE:
+      return Object.assign({}, state, {
+        isFetching: false
+      })
+    default:
+      return state
+  }
+}
+
 const myApp = combineReducers({
-  composeGifStory, concatGifStory, saveGifStory, fetchCategories, fetchCategory, fetchNbGifs, deleteCat, addCat, fetchGifs, fetchGif, auth
+  composeGifStory, concatGifStory, saveGifStory, fetchCategories, fetchCategory, fetchNbGifs, deleteCat, addCat, fetchGifs, fetchGif, deleteGif, auth
 })
 
 export default myApp

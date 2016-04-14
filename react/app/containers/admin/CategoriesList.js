@@ -31,8 +31,11 @@ class CategoriesList extends Component {
     let form = new FormData();
     form.append('name', this.state.catName);
     form.append('color', this.state.catColor);
-    this.props.dispatch(addCategory(form));
-    this.props.dispatch(fetchCategories());
+    this.props.dispatch(addCategory(form,  this.props.dispatch(fetchCategories())));
+  }
+
+  deleteCategory(id){
+    this.props.dispatch(deleteCategory(id,  this.props.dispatch(fetchCategories())));
   }
 
   render() {
@@ -41,13 +44,18 @@ class CategoriesList extends Component {
         <div className="categories-list a-middle">
           {dataCategories && nbGifs && dataCategories.map(function(category){
             let nbOfGifs=nbGifs.find((item)=>{return (typeof(item.category!="undefined"))? item.category == category.id:0});
+            let canDelete = null;
+            if (!nbOfGifs){
+              canDelete = <div className="categories-list-category-delete" onClick={()=>this.deleteCategory(category.id)} >X Delete</div>;
+            }
+            console.log(nbOfGifs);
             return <div key={category.id} className="categories-list-category-item">
-                      <div 
+                      <Link to={"gallery/"+category.id}
                         className="categories-list-category" 
                         style={{backgroundColor: category.color}} >
                         {category.name} : {nbOfGifs?nbOfGifs.total:0} stories
-                      </div>
-                      <div className="categories-list-category-delete" onClick={()=>this.props.dispatch(deleteCategory(category.id))} >X Delete</div>
+                      </Link>
+                      {canDelete}
                     </div>;
           }.bind(this))}
           <input className="categories-list-input" placeholder="New category" onChange={(e)=>this.setState({catName: e.target.value})} />

@@ -115,7 +115,26 @@
 .frame-admin-btn {
 	position: absolute;
 	right: 80px;
+	top: 65px;
 	font-family: $font-sans;
 	color: darken($grey-light, 20%);
 	text-decoration: none;
+	transition: all 0.5s $easeOutQuad;
+	z-index: 9990;
+	padding: 15px;
+	&:after {
+		content: "";
+		display: block;
+		margin-top: 5px;
+		width: 0;
+		height: 2px;
+		background-color: #000;
+		transition: all 0.5s $easeOutQuart;
+	}
+	&:hover {
+		color: #000;
+		&:after {
+			width: 100%;
+		}
+	}
 }

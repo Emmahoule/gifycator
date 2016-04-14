@@ -9,18 +9,18 @@ ffmpeg version 2.8.4-tessus Copyright (c) 2000-2015 the FFmpeg developers
   libswscale      3.  1.101 /  3.  1.101
   libswresample   1.  2.101 /  1.  2.101
   libpostproc    53.  3.100 / 53.  3.100
-Input #0, matroska,webm, from '/Applications/MAMP/tmp/php/phpxcdwB7':
+Input #0, matroska,webm, from '/Applications/MAMP/tmp/php/phpNEe0Su':
   Metadata:
     encoder         : whammy
-  Duration: 00:00:00.12, start: 0.000000, bitrate: 5596 kb/s
+  Duration: 00:00:00.50, start: 0.000000, bitrate: 5092 kb/s
     Stream #0:0: Video: vp8, yuv420p, 180x135, SAR 1:1 DAR 4:3, 50 fps, 50 tbr, 1k tbn, 1k tbc (default)
-Input #1, matroska,webm, from '/Applications/MAMP/tmp/php/phpj0YrEQ':
+Input #1, matroska,webm, from '/Applications/MAMP/tmp/php/phpJMkYOg':
   Metadata:
     encoder         : whammy
-  Duration: 00:00:00.18, start: 0.000000, bitrate: 583 kb/s
+  Duration: 00:00:00.30, start: 0.000000, bitrate: 5029 kb/s
     Stream #1:0: Video: vp8, yuv420p, 180x135, SAR 1:1 DAR 4:3, 50 fps, 50 tbr, 1k tbn, 1k tbc (default)
-[libvpx-vp9 @ 0x7f983c842a00] v1.3.0
-Output #0, webm, to 'tmp/Bxus3blKoL.webm':
+[libvpx-vp9 @ 0x7fb33b01c000] v1.3.0
+Output #0, webm, to 'tmp/NUzvQvBpwW.webm':
   Metadata:
     encoder         : Lavf56.40.101
     Stream #0:0: Video: vp9 (libvpx-vp9), yuv420p, 320x320 [SAR 1:1 DAR 1:1], q=-1--1, 200 kb/s, 50 fps, 1k tbn, 50 tbc (default)
@@ -31,5 +31,5 @@ Stream mapping:
   Stream #1:0 (vp8) -> scale
   concat -> Stream #0:0 (libvpx-vp9)
 Press [q] to stop, [?] for help
-frame=   15 fps=0.0 q=0.0 Lsize=       2kB time=00:00:00.30 bitrate=  42.1kbits/s    
-video:1kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 57.700001%
+frame=   37 fps=0.0 q=0.0 size=       1kB time=00:00:00.26 bitrate=  42.0kbits/s    frame=   40 fps= 12 q=0.0 Lsize=       7kB time=00:00:00.80 bitrate=  72.2kbits/s    
+video:6kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 11.385375%

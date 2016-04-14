@@ -42,7 +42,9 @@ class ViewGif extends Component {
                     <div className="view-gif-title">{dataStory.title}</div>
                     <div className="view-gif-author">{dataStory.author}</div>
                   </div>
-                  <video className="view-gif-video" crossOrigin="anonymous" autoPlay="true" width="290" height="290" loop="loop" preload="metadata" src={API_URL+dataStory.url}></video>
+                  <div className="view-gif-video-mask">
+                    <video className="view-gif-video" crossOrigin="anonymous" autoPlay="true" width="290" height="290" loop="loop" preload="metadata" src={API_URL+dataStory.url}></video>
+                  </div>
                 </div>
                 <div className="clearfix"></div>
                 <div className="view-gif-share share">Share on 

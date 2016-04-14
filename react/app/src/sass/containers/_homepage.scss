@@ -2,30 +2,63 @@
 	text-align: center;
 }
 
-.homepage-title {
-	span {
-		padding: 30px;
-	}
+.homepage-logo {
+	animation: homepageLogo forwards 0.75s;
+	opacity: 0;
+	animation-timing-function: $easeOutQuart;
 }
 
-// .homepage-block {
-// 	padding-top: 100px;
-// }
-
-.homepage-logo-img {
-	position: absolute;
-	top: 0;
-}  
+@keyframes homepageLogo {
+    from {
+    	transform: translateY(30px);
+    	opacity: 0
+    }
+    to {
+    	transform: translateX(0);
+    	opacity: 1
+    }
+}
 
 .homepage-txt {
+	opacity: 0;
 	max-width: 650px;
 	margin: 0 auto;
 	font-size: 18px;
 	font-family: $font-serif;
 	font-weight: 800;
 	color: $gray;
+	animation: homepageTxt forwards 0.75s;
+	animation-timing-function: $easeOutQuart;
+	animation-delay: 0.15s;
 }
+
+@keyframes homepageTxt {
+    from {
+    	transform: translateY(25px);
+    	opacity: 0
+    }
+    to {
+    	transform: translateX(0);
+    	opacity: 1
+    }
+}
+
 
 .homepage-btn {
 	margin: 80px 40px 0 40px;
+	opacity: 0;
+	animation: homepageBtn forwards 0.75s;
+	animation-timing-function: $easeOutQuart;
+	animation-delay: 0.25s;
+}
+
+@keyframes homepageBtn {
+    from {
+    	transform: translateY(25px);
+    	opacity: 0
+    }
+    to {
+    	transform: translateX(0);
+    	opacity: 1
+    }
 }

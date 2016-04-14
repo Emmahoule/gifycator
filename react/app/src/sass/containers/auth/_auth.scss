@@ -27,10 +27,23 @@
 .auth-logout {
 	cursor: pointer;
 	padding: 20px;
-	transition: all 0.5s $easeOutQuad;
+	transition: all 0.5s $easeOutQuart;
 	position: relative;
 	z-index: 20;
+	font-family: $font-sans;
+	display: inline-block;
+	&:after {
+		content: "";
+		display: block;
+		margin-top: 5px;
+		width: 0;
+		height: 2px;
+		background-color: #000;
+		transition: all 0.5s $easeOutQuart;
+	}
 	&:hover {
-		color: $turquoise;
+		&:after {
+			width: 100%;
+		}
 	}
 }

@@ -51,18 +51,7 @@ class CreateStoryController extends Controller
 				$filePath = $file;
 			}
 
-			// On génère un nom qui n'est pas existant
-			// do {
-			// 	$newFileName = str_random(10) . '.webm';
-			// } while(file_exists($tmpPath . '/' . $newFileName));
-
-			// On ajoute le chemin 
-			// $newFilePath = $tmpPath.'/'.$newFileName;
-
-			// shell_exec('./ffmpeg -f webm -i '.$filePath.' -filter_complex "[0:0] scale=size=500x500:force_original_aspect_ratio=decrease,pad=width=500:height=500:x=(out_w-in_w)/2:y=(out_h-in_h)/2,setsar=1" '.$newFilePath.' 2> ffmpeg-error.log');
-
 			// On ajoute le chemin dans un tableau
-			// array_push($tabImg, $newFilePath);
 			$listFiles.='-f webm -i '.$filePath.' '; 
 			$convert.='['.$cpt2.':0] scale=size=320x320:force_original_aspect_ratio=decrease,pad=width=320:height=320:x=(out_w-in_w)/2:y=(out_h-in_h)/2:color=white,setsar=1 [v'.$cpt.'];';
 			$v.='[v'.$cpt.']';

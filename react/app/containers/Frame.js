@@ -83,7 +83,9 @@ class Frame extends Component {
               <div className="frame-loading-text">Story ready !</div>
             </Link>
           }
+          {!isFetching &&
           <Link className="frame-left-nav-link" to="create-story">Create my story</Link>
+          }
           <Link className="frame-left-nav-link" to="gallery">Gallery</Link>
         </div>
       	<div className="frame-wrapper">

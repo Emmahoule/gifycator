@@ -65,3 +65,43 @@
     	opacity: 1
     }
 }
+
+.item-gallery-delete {
+	position: absolute;
+	z-index: 9990;
+	top: -55px;
+	left: 50%;
+	transform: translateX(-50%);
+	font-family: $font-sans;
+	white-space: nowrap;
+	color: $red;
+	cursor: pointer;
+	transition: all 0.5s $easeOutQuart;
+	&:after {
+		content: "";
+		display: block;
+		margin-top: 5px;
+		width: 0;
+		height: 2px;
+		background-color: $red;
+		transition: all 0.5s $easeOutQuart;
+	}
+	&:hover {
+		&:after {
+			width: 100%;
+		}
+	}
+	animation: itemGalleryDelete 0.5s;
+	animation-timing-function: $easeOutQuart;
+}
+
+@keyframes itemGalleryDelete {
+    from {
+    	transform: translateY(40px) translateX(-50%); 
+    	opacity: 0
+    	}
+    to {
+    	transform: translateY(0px) translateX(-50%); 
+    	opacity: 1
+    }
+}

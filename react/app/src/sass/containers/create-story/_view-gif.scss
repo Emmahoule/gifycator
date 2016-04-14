@@ -10,9 +10,16 @@
 }
 
 .view-gif-square {
-	width: 280px;
+	width: 0px;
 	height: 280px;
 	background-color: $turquoise;
+	animation: viewGifSquare 1s forwards 0.25s;
+	animation-timing-function: $easeInOutQuart;
+}
+
+@keyframes viewGifSquare {
+    from {width: 0px;}
+    to {width: 280px;}
 }
 
 .view-gif-title-block {
@@ -22,6 +29,15 @@
 	left: -10%;
 	transform: translateX(-20%);
 	text-align: left;
+	transform: translateX(40px);
+	animation: viewGifTitle 1s forwards 0.25s;
+	animation-timing-function: $easeInOutQuart;
+	opacity: 0;
+}
+
+@keyframes viewGifTitle {
+    from {transform: translateX(40px); opacity: 0;}
+    to {transform: translateX(0px); opacity: 1;}
 }
 
 .view-gif-title {
@@ -29,7 +45,9 @@
 	font-family: $font-sans;
 	font-weight: 800;
 	letter-spacing: -0.05em;
+	animation: viewGifTitle 1s forwards 0.25s;
 }
+
 
 .view-gif-author {
 	margin-top: 7px;
@@ -39,11 +57,23 @@
 	font-weight: 800;
 }
 
-.view-gif-video {
-	background-color: $white;
+.view-gif-video-mask {
 	position: absolute;
 	left: 50px;
 	top: 50px;
+	overflow: hidden;
+	animation: viewGifVideoMask 1s forwards 0.25s;
+	width: 0;
+	animation-timing-function: $easeOutQuart;
+}
+
+@keyframes viewGifVideoMask {
+    from {
+    	width: 0;
+    	}
+    to {
+    	width: 290px;
+    }
 }
 
 .view-gif-btn {
@@ -53,5 +83,18 @@
 .view-gif-share {
 	margin-top: 35px;
 	margin-bottom: 10px;
+	animation: viewGifShare 1s forwards 0.75s;
+	transform: translateY(40px); 
+	animation-timing-function: $easeOutQuart;
 }
 
+@keyframes viewGifShare {
+    from {
+    	transform: translateY(40px); 
+    	opacity: 0
+    	}
+    to {
+    	transform: translateY(0px); 
+    	opacity: 1
+    }
+}
