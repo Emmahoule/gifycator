@@ -1,8 +1,6 @@
 .save-gif-top {
 	display: block;
 	margin: 0px 0 60px 0;
-	// animation: saveGifTop 1s forwards 0.5s;
-	// animation-timing-function: $easeOutQuart;
 	opacity: 1;
 }
 
@@ -67,7 +65,6 @@
 .save-gif-bottom-title {
 	font-size: 50px;
 	font-family: $font-sans;
-	font-weight: 800;
 	letter-spacing: -0.05em;
 }
 
@@ -76,7 +73,6 @@
 	font-family: $font-serif;
 	font-size: 16px;
 	letter-spacing: 0.2em;
-	font-weight: 800;
 }
 
 .save-gif-video-mask {

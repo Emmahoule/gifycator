@@ -29,7 +29,6 @@
 	cursor: pointer;
 	background: none;
 	font-family: $font-sans;
-	font-weight: 800;
 	box-sizing: border-box;
 	// background-color: $grey-light;
 	text-align: center;
@@ -170,7 +169,6 @@
 	fill: $black;
 	color: $black;
 	font-family: $font-sans;
-	font-weight: 800;
 	position: absolute;
 	left: 50%;
 	top: 50%;
@@ -182,7 +180,6 @@
 .gif-box-inner-btn-txt, .gif-box-bottom-btn-txt {
 	color: $black;
 	font-family: $font-sans;
-	font-weight: 800;
 	position: absolute;
 	left: 50%;
 	top: 50%;
@@ -221,9 +218,7 @@
 .gif-box-instructions {
 	color: $gray;
 	font-family: $font-serif;
-	font-weight: 800;
 	line-height: 1.5em;
-	font-weight: 800;
 }
 
 .gif-box-bottom {

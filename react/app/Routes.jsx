@@ -23,7 +23,7 @@ import Admin from './containers/admin/Admin'
 import Login from './containers/admin/Login'
 import CategoriesList from './containers/admin/CategoriesList'
 
-let history = useBasename(createBrowserHistory)({basename: '/html/'});
+let history = useBasename(createBrowserHistory)({basename: '/'});
 // let history = useBasename(createHashHistory)({basename: '/html/'});
 
 export class Routes extends React.Component {
