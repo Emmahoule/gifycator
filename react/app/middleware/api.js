@@ -31,11 +31,11 @@ export default store => next => action => {
     return next(action)
   }
 
-  let { endpoint, types, authenticated } = callAPI
+  let { callback, endpoint, types, authenticated } = callAPI
 
   const [ requestType, successType, errorType ] = types
 
-  return callApi(endpoint).then(
+  return callApi(endpoint, callback).then(
     response =>
       next({
         response,

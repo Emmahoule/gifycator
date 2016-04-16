@@ -51,5 +51,5 @@ SelectCategory.propTypes = {
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   color: PropTypes.string.isRequired,
-  nbGifs: PropTypes.object
+  nbGifs: PropTypes.array
 }

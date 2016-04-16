@@ -9,18 +9,18 @@ ffmpeg version 2.8.4-tessus Copyright (c) 2000-2015 the FFmpeg developers
   libswscale      3.  1.101 /  3.  1.101
   libswresample   1.  2.101 /  1.  2.101
   libpostproc    53.  3.100 / 53.  3.100
-Input #0, matroska,webm, from '/Applications/MAMP/tmp/php/phpNEe0Su':
+Input #0, matroska,webm, from '/Applications/MAMP/tmp/php/phpSjKYVd':
   Metadata:
     encoder         : whammy
-  Duration: 00:00:00.50, start: 0.000000, bitrate: 5092 kb/s
+  Duration: 00:00:02.70, start: 0.000000, bitrate: 5950 kb/s
     Stream #0:0: Video: vp8, yuv420p, 180x135, SAR 1:1 DAR 4:3, 50 fps, 50 tbr, 1k tbn, 1k tbc (default)
-Input #1, matroska,webm, from '/Applications/MAMP/tmp/php/phpJMkYOg':
+Input #1, matroska,webm, from '/Applications/MAMP/tmp/php/phpWygOGI':
   Metadata:
     encoder         : whammy
-  Duration: 00:00:00.30, start: 0.000000, bitrate: 5029 kb/s
+  Duration: 00:00:00.50, start: 0.000000, bitrate: 5271 kb/s
     Stream #1:0: Video: vp8, yuv420p, 180x135, SAR 1:1 DAR 4:3, 50 fps, 50 tbr, 1k tbn, 1k tbc (default)
-[libvpx-vp9 @ 0x7fb33b01c000] v1.3.0
-Output #0, webm, to 'tmp/NUzvQvBpwW.webm':
+[libvpx-vp9 @ 0x7f91db806200] v1.3.0
+Output #0, webm, to 'tmp/OmTbe1R8j1.webm':
   Metadata:
     encoder         : Lavf56.40.101
     Stream #0:0: Video: vp9 (libvpx-vp9), yuv420p, 320x320 [SAR 1:1 DAR 1:1], q=-1--1, 200 kb/s, 50 fps, 1k tbn, 50 tbc (default)
@@ -31,5 +31,5 @@ Stream mapping:
   Stream #1:0 (vp8) -> scale
   concat -> Stream #0:0 (libvpx-vp9)
 Press [q] to stop, [?] for help
-frame=   37 fps=0.0 q=0.0 size=       1kB time=00:00:00.26 bitrate=  42.0kbits/s    frame=   40 fps= 12 q=0.0 Lsize=       7kB time=00:00:00.80 bitrate=  72.2kbits/s    
-video:6kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 11.385375%
+frame=   31 fps=0.0 q=0.0 size=       2kB time=00:00:00.14 bitrate= 105.8kbits/s    frame=   37 fps= 32 q=0.0 size=       2kB time=00:00:00.26 bitrate=  71.5kbits/s    frame=   41 fps= 24 q=0.0 size=       3kB time=00:00:00.34 bitrate=  70.4kbits/s    frame=   45 fps= 20 q=0.0 size=       4kB time=00:00:00.42 bitrate=  75.6kbits/s    frame=   50 fps= 18 q=0.0 size=       7kB time=00:00:00.52 bitrate= 107.3kbits/s    frame=   56 fps= 16 q=0.0 size=       9kB time=00:00:00.64 bitrate= 111.7kbits/s    frame=   60 fps= 15 q=0.0 size=      10kB time=00:00:00.72 bitrate= 117.0kbits/s    frame=   66 fps= 15 q=0.0 size=      12kB time=00:00:00.84 bitrate= 119.2kbits/s    frame=   70 fps= 14 q=0.0 size=      17kB time=00:00:00.92 bitrate= 148.2kbits/s    frame=   77 fps= 14 q=0.0 size=      19kB time=00:00:01.06 bitrate= 147.6kbits/s    frame=   82 fps= 13 q=0.0 size=      21kB time=00:00:01.16 bitrate= 144.9kbits/s    frame=   87 fps= 13 q=0.0 size=      24kB time=00:00:01.26 bitrate= 156.0kbits/s    frame=   92 fps= 12 q=0.0 size=      26kB time=00:00:01.36 bitrate= 154.3kbits/s    frame=   96 fps= 12 q=0.0 size=      30kB time=00:00:01.44 bitrate= 172.8kbits/s    frame=  100 fps= 12 q=0.0 size=      33kB time=00:00:01.52 bitrate= 176.1kbits/s    frame=  107 fps= 12 q=0.0 size=      36kB time=00:00:01.66 bitrate= 176.0kbits/s    frame=  112 fps= 12 q=0.0 size=      37kB time=00:00:01.76 bitrate= 173.9kbits/s    frame=  116 fps= 11 q=0.0 size=      40kB time=00:00:01.84 bitrate= 178.8kbits/s    frame=  122 fps= 11 q=0.0 size=      44kB time=00:00:01.96 bitrate= 184.4kbits/s    frame=  128 fps= 11 q=0.0 size=      50kB time=00:00:02.08 bitrate= 197.7kbits/s    frame=  134 fps= 11 q=0.0 size=      53kB time=00:00:02.20 bitrate= 198.6kbits/s    frame=  137 fps= 11 q=0.0 size=      57kB time=00:00:02.26 bitrate= 205.2kbits/s    frame=  142 fps= 11 q=0.0 size=      59kB time=00:00:02.36 bitrate= 203.7kbits/s    frame=  146 fps= 11 q=0.0 size=      61kB time=00:00:02.44 bitrate= 205.3kbits/s    frame=  150 fps= 10 q=0.0 size=      63kB time=00:00:02.52 bitrate= 205.9kbits/s    frame=  154 fps= 10 q=0.0 size=      67kB time=00:00:02.60 bitrate= 209.6kbits/s    frame=  159 fps= 10 q=0.0 size=      68kB time=00:00:02.70 bitrate= 207.4kbits/s    frame=  160 fps=8.4 q=0.0 Lsize=      80kB time=00:00:03.20 bitrate= 205.6kbits/s    
+video:79kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 1.874032%

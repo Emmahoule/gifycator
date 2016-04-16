@@ -55,8 +55,9 @@ class ItemGallery extends Component {
    * Dispatch d'une action permettant de supprimer une story
    * si l'utilisateur est identifié
   */
-  deleteGif(){
-    this.props.dispatch(deleteGif(this.props.gif.id, this.props.history));
+  deleteGif() {
+    const { dispatch, gif, history } = this.props;
+    dispatch(deleteGif(gif.id, history));
   }
 
   render() {
@@ -105,7 +106,7 @@ class ItemGallery extends Component {
 
 ItemGallery.propTypes = {
   gif: PropTypes.object,
-  isAuthenticated: PropTypes.boolean
+  isAuthenticated: PropTypes.bool
 }
 
 function mapStateToProps(state) {

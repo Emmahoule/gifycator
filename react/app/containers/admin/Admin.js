@@ -43,16 +43,16 @@ export default class Admin extends Component {
           <div className="auth-inner">
             {this.props.children}
           </div>
-          <div className="auth-logout" onClick={this.logout.bind(this)}>Déconnexion</div>
+          <div className="auth-logout" onClick={() => true}>Déconnexion</div>
         </div>
     )
   }
 }
 
 Admin.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+  dispatch: PropTypes.func,
   errorMessage: PropTypes.string,
-  isAuthenticated: PropTypes.func
+  isAuthenticated: PropTypes.bool
 }
 
 function mapStateToProps(state) {

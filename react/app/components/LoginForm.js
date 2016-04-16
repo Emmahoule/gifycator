@@ -51,7 +51,7 @@ export default class LoginForm extends Component {
 }
 
 LoginForm.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+  dispatch: PropTypes.func,
   errorMessage: PropTypes.string,
   onLoginClick: PropTypes.func
 }

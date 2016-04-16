@@ -82,7 +82,7 @@ function deleteCatError(message) {
 }
 
 // Requête pour supprimer une catégorie
-export function deleteCategory(id, history) {
+export function deleteCategory(id, callback) {
 
   let config = {
     method: 'DELETE',
@@ -101,7 +101,7 @@ export function deleteCategory(id, history) {
           return Promise.reject(datas)
         } else {
           dispatch(receiveDeleteCat(datas))
-          history.push("admin");
+          callback();
         }
       }).catch(err => console.log("Error: ", err))
   }
@@ -155,7 +155,7 @@ export function addCategory(dataCategory, callback) {
           return Promise.reject(datasCategory)
         } else {
           dispatch(receiveAddCat(datasCategory))
-          callback;
+          callback();
         }
       }).catch(err => console.log("Error: ", err))
   }

@@ -80,7 +80,7 @@ function deleteGifError(message) {
 }
 
 // Requête pour supprimer une story
-export function deleteGif(id, callback) {
+export function deleteGif(id, history) {
 
   let config = {
     method: 'DELETE',
@@ -99,7 +99,7 @@ export function deleteGif(id, callback) {
           return Promise.reject(datas)
         } else {
           dispatch(receiveDeleteGif(datas))
-          callback;
+          history.push('gallery');
         }
       }).catch(err => console.log("Error: ", err))
   }

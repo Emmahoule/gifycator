@@ -23,13 +23,13 @@ class CategoriesList extends Component {
     }
   }
 
-  /* ComponentWillMount : 
+  /* componentDidMount : 
    * 
    * Dispatch de 2 actions : une permettant de récupérer
    * les catégories, et une autre permettant de connaître le nombre
    * de stories contenues dans chaque catégories.
   */
-  componentWillMount(){
+  componentDidMount(){
     this.props.dispatch(fetchCategories());
     this.props.dispatch(fetchNbGifs());
   }
@@ -44,7 +44,7 @@ class CategoriesList extends Component {
     let form = new FormData();
     form.append('name', this.state.catName);
     form.append('color', this.state.catColor);
-    this.props.dispatch(addCategory(form, this.props.dispatch(fetchCategories())));
+    this.props.dispatch(addCategory(form, () => this.props.dispatch(fetchCategories())));
   }
 
   /* DeleteCategory : 
@@ -52,7 +52,7 @@ class CategoriesList extends Component {
    * Dispatch d'une action permettant de supprimer une catégorie.
   */
   deleteCategory(id){
-    this.props.dispatch(deleteCategory(id, this.props.dispatch(fetchCategories())));
+    this.props.dispatch(deleteCategory(id, () => this.props.dispatch(fetchCategories())));
   }
 
   render() {

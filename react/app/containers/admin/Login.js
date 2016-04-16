@@ -11,9 +11,13 @@ import { Link } from "react-router";
 class Login extends Component {
   constructor(props) {
     super(props);
-    if (props.isAuthenticated) {
-      props.history.push('admin/categories');
-    }
+
+  }
+
+  componentDidMount() {
+    if (this.props.isAuthenticated) {
+      this.props.history.push('admin/categories');
+    }  
   }
 
   render() {
@@ -42,9 +46,9 @@ class Login extends Component {
 }
 
 Login.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+  dispatch: PropTypes.func,
   errorMessage: PropTypes.string,
-  isAuthenticated: PropTypes.boolean
+  isAuthenticated: PropTypes.bool
 }
 
 function mapStateToProps(state) {

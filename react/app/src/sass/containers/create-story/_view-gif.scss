@@ -86,6 +86,7 @@
 	animation: viewGifShare 1s forwards 0.75s;
 	transform: translateY(40px); 
 	animation-timing-function: $easeOutQuart;
+	opacity: 0;
 }
 
 @keyframes viewGifShare {
