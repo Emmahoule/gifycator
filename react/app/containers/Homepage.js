@@ -14,7 +14,7 @@ class Homepage extends Component {
       <div className="homepage">
        	<div className="homepage-block a-middle">
        	    <div className="homepage-logo title-2">
-       	 		.Gyficator
+       	 		.Gifycator
        		</div>
 	       	<p className="homepage-txt">
 	       		With Gifycator, you can create your own story by gluing gifs together, and share them with your friends. Drop by the gallery, you might find something funny !

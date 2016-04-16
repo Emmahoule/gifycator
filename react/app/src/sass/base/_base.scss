@@ -22,7 +22,6 @@ a {
 
 .btn1 {
 	font-family: $font-sans;
-	font-weight: 800;
 	padding: 15px;
 	position: relative;
 	color: $black;
@@ -61,7 +60,6 @@ a {
 	text-transform: uppercase;
 	font-size: 11px;
 	letter-spacing: .1em;
-	font-weight: 600;
 	color: $gray;
 	text-decoration: none;
 	cursor: pointer;
@@ -71,7 +69,6 @@ a {
 	font-size: 158px;
 	font-family: $font-sans;
 	color: $grey-light;
-	font-weight: 800;
 	position: absolute;
 	width: auto;
 	left: 50%;
@@ -95,7 +92,6 @@ a {
 .title-2 {
 	font-family: $font-sans;
 	font-size: 30px;
-	font-weight: 800;
 	letter-spacing: -0.05em;
 	margin-bottom: 40px;
 }
@@ -103,7 +99,6 @@ a {
 .title-3 {
 	font-family: $font-sans;
 	font-size: 30px;
-	font-weight: 800;
 	letter-spacing: -0.1em;
 	margin-bottom: 40px;
 }
@@ -120,7 +115,6 @@ input {
 	padding: 10px 0 5px 0;
 	color: $black;
 	font-size: $text-size;
-	font-weight: bold;
 	vertical-align: top;
 	width: 100%;
 	// line-height: 1.5em;
@@ -133,7 +127,6 @@ input {
 	color: $black;
 	font-family: $font-sans;
 	font-size: $text-size;
-	font-weight: bold;
 	display: inline-block;
 	min-width: 200px;
 	vertical-align: top;
@@ -211,7 +204,6 @@ input {
 	color: $black;
 	font-family: $font-sans;
 	font-size: 14px;
-	font-weight: 800;
 	display: inline-block;
 	white-space: nowrap;
 	z-index: 20;
