@@ -52,7 +52,9 @@ module.exports = {
         ]
     },
     devServer: {
-        headers: { 'Access-Control-Allow-Origin': '*' }
+        headers: { 'Access-Control-Allow-Origin': '*' },
+        contentBase: "./html/",
+        historyApiFallback: true,
     },
     plugins: [
         new ExtractTextPlugin('app.css', {
