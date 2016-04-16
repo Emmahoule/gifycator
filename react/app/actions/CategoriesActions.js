@@ -19,9 +19,10 @@ export const DELETE_CAT_REQUEST = 'DELETE_CAT_REQUEST'
 export const DELETE_CAT_SUCCESS = 'DELETE_CAT_SUCCESS'
 export const DELETE_CAT_FAILURE = 'DELETE_CAT_FAILURE'
 
-export function fetchCategories() {
+export function fetchCategories(callback) {
   return {
     [CALL_API]: {
+      callback: callback,
       endpoint: 'api/category',
       types: [FETCH_CATEGORIES_REQUEST, FETCH_CATEGORIES_SUCCESS, FETCH_CATEGORIES_FAILURE]
     }

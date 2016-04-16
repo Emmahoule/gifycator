@@ -29,23 +29,16 @@ class ChooseCategory extends Component {
    * les catégories, et une autre permettant de connaître le nombre
    * de stories contenues dans chaque catégories.
   */
-  componentWillMount(){
-    this.props.dispatch(fetchCategories());
+  componentDidMount(){
+    this.props.dispatch(fetchCategories(
+      () => {
+        let tl = new TimelineMax();
+        tl.add(TweenMax.staggerTo(".select-category-bg-inner", 1, { width: "375px", ease: Power2.easeInOut }, 0.15));
+        tl.add(TweenMax.staggerTo(".select-category-name", 1.5, { autoAlpha: 1, x: 0, y: 0, ease: Power2.easeOut }, 0.15), 0.5);
+        tl.add(TweenMax.staggerTo(".select-category-stories", 1.5, { autoAlpha: 1, x: 0, y: 0, ease: Power2.easeOut }, 0.15), 0.5);  
+      }
+    ));
     this.props.dispatch(fetchNbGifs());
-  }
-
-  /* ComponentWillReceiveProps : 
-   * 
-   * A la réception des données concernant les catégories,
-   * lancement de l'animation pour les afficher
-  */
-  componentWillReceiveProps(nextProps){
-    if (nextProps.dataCategories){
-      let tl = new TimelineMax();
-      tl.add( TweenMax.staggerTo(".select-category-bg-inner", 1, {width: "375px", ease:Power2.easeInOut}, 0.15));
-      tl.add( TweenMax.staggerTo(".select-category-name", 1.5, {autoAlpha: 1, x: 0, y:0, ease:Power2.easeOut}, 0.15), 0.5);  
-      tl.add( TweenMax.staggerTo(".select-category-stories", 1.5, {autoAlpha: 1, x: 0, y:0, ease:Power2.easeOut}, 0.15), 0.5);  
-    }
   }
 
   render() {

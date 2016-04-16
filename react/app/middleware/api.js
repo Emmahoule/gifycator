@@ -2,11 +2,16 @@ import { config } from "../config.js";
 
 const API_URL = config.API_URL
 
-function callApi(endpoint) {
+function callApi(endpoint, callback) {
 
   return fetch(API_URL + endpoint, config)
     .then(response => 
-      response.json().then(text => ({ text, response }))
+      response.json().then(text => {
+        if (typeof(callback) === "function") {
+          callback();
+        }
+        return ({ text, response });
+      })
     ).then(({ text, response }) => {
       if (!response.ok) {
         return Promise.reject(text)
