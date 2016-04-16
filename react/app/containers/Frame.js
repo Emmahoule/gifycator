@@ -100,27 +100,6 @@ class Frame extends Component {
 	}
 }
 
-    // console.log(dataCategories);
-    // let title = ".Gifycator";
-    // console.log(this.props.location.pathname)
-    // if (this.props.location.pathname == "create-story" || 
-    //     this.props.location.pathname == "create-story/create-gif") {
-    //   title = "Createstory";
-    // }
-    // if (this.props.location.pathname == "create-story/your-gif") {
-    //   title = "Amazing!";
-    // }
-    // if (this.props.location.pathname == "gallery") {
-    //   title = "Gallery";
-    // }
-    // if (dataCategories){
-    //   dataCategories.map(function(category){
-    //     if (this.props.location.pathname.indexOf("gallery/"+category.id)>-1) {
-    //       return title = category.name;
-    //     }
-    //   }.bind(this));
-    // }
-
 Frame.propTypes = {
   dispatch: PropTypes.func.isRequired,
   isFetching: PropTypes.bool,

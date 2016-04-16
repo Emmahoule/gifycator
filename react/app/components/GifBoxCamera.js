@@ -7,7 +7,6 @@ import ReactDOM from 'react-dom';
  *
  * Box pour enregistrer une vidéo avec sa camera
 */
-
 export default class GifBoxCamera extends Component {
   
   constructor(){
@@ -71,7 +70,6 @@ export default class GifBoxCamera extends Component {
       frames:[],
       video: null}
     );
-
 
     // Initialisation de la video
     var finishVideoSetup = function() {

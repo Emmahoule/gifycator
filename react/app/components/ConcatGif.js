@@ -14,7 +14,6 @@ const API_URL = config.API_URL;
  * et qui effectue une requête pour concaténer les gifs 
  * et créer l'histoire
 */
-
 export default class ConcatGif extends Component {
 
   constructor(){

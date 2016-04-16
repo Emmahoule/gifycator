@@ -7,12 +7,13 @@ import { fetchCategories, fetchNbGifs, deleteCategory, addCategory } from '../..
 import { config } from '../../config.js'
 const API_URL = config.API_URL;
 
+
 /* Container CategoriesList : 
  * 
- * Sous conteneur contenant le choix
- * de la catégorie à afficher
+ * Sous conteneur de l'admin contenant la liste des catégories,
+ * avec la possibilité d'ajouter une catégorie
+ * et de les supprimer (à condition qu'elles ne contiennent plus de gif)
 */
-
 class CategoriesList extends Component {
   constructor(){
     super();
@@ -22,20 +23,36 @@ class CategoriesList extends Component {
     }
   }
 
+  /* ComponentWillMount : 
+   * 
+   * Dispatch de 2 actions : une permettant de récupérer
+   * les catégories, et une autre permettant de connaître le nombre
+   * de stories contenues dans chaque catégories.
+  */
   componentWillMount(){
     this.props.dispatch(fetchCategories());
     this.props.dispatch(fetchNbGifs());
   }
 
+  /* AddCategory : 
+   * 
+   * Création d'un formulaire contenant les données de la nouvelle 
+   * catégorie, et dispatch d'une action prenant pour paramètre le formulaire, et 
+   * permettant d'ajouter cette catégories dans la BDD. 
+  */
   addCategory(){
     let form = new FormData();
     form.append('name', this.state.catName);
     form.append('color', this.state.catColor);
-    this.props.dispatch(addCategory(form,  this.props.dispatch(fetchCategories())));
+    this.props.dispatch(addCategory(form, this.props.dispatch(fetchCategories())));
   }
 
+  /* DeleteCategory : 
+   * 
+   * Dispatch d'une action permettant de supprimer une catégorie.
+  */
   deleteCategory(id){
-    this.props.dispatch(deleteCategory(id,  this.props.dispatch(fetchCategories())));
+    this.props.dispatch(deleteCategory(id, this.props.dispatch(fetchCategories())));
   }
 
   render() {
@@ -48,7 +65,6 @@ class CategoriesList extends Component {
             if (!nbOfGifs){
               canDelete = <div className="categories-list-category-delete" onClick={()=>this.deleteCategory(category.id)} >X Delete</div>;
             }
-            console.log(nbOfGifs);
             return <div key={category.id} className="categories-list-category-item">
                       <Link to={"gallery/"+category.id}
                         className="categories-list-category" 
@@ -69,19 +85,19 @@ class CategoriesList extends Component {
 
 CategoriesList.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  dataCategories: PropTypes.array
+  dataCategories: PropTypes.array,
+  nbGifs: PropTypes.array
+
 }
 
 function mapStateToProps(state) {
 
   const { fetchCategories, fetchNbGifs, deleteCat, addCat } = state;
   const { dataCategories } = fetchCategories;
-  const { datasCatSupp } = deleteCat;
   const { nbGifs } = fetchNbGifs;
-  const { datasCat } = addCat;
 
   return {
-    dataCategories, nbGifs, datasCat, addCat
+    dataCategories, nbGifs
   }
 }
 

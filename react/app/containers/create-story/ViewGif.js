@@ -12,17 +12,23 @@ const BASE_URL = config.BASE_URL;
 
 const { FacebookShareButton, TwitterShareButton, PinterestShareButton } = ShareButtons;
 
+
 /* Container ViewGif : 
  * 
- * 
+ * Composant permettant de visualiser le gif terminé
+ * et de le partager sur différents réseaux sociaux
 */
-
 class ViewGif extends Component {
 
   constructor(){
     super();
   }
 
+  /* ComponentWillMount : 
+   * 
+   * Au montage du composant, si la story n'est pas présente
+   * redirection de l'utilisateur vers la home de création d'histoire
+  */
   componentWillMount(){
     if (!this.props.dataStory) {
       this.props.history.push("create-story");

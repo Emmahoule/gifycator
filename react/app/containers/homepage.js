@@ -2,13 +2,14 @@ import React, { Component, PropTypes } from 'react'
 import { Link } from "react-router";
 import { connect } from 'react-redux';
 
-/* Container Homepage : homepage */
-
+/* Container Homepage : 
+ * 
+ * Conteneur homepage
+*/
 class Homepage extends Component {
 
   render() {
     const { isFetching } = this.props;
-    console.log(isFetching);
     return (
       <div className="homepage">
        	<div className="homepage-block a-middle">
@@ -27,6 +28,12 @@ class Homepage extends Component {
     )
   }
 }
+
+Homepage.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+  isFetching: PropTypes.bool
+}
+
 
 function mapStateToProps(state) {
 

@@ -5,12 +5,12 @@ import GifBox from '../../components/GifBox';
 import ReactDOM from 'react-dom';
 
 
-/* Container ManipulateGif : 
+/* Container ManipulateGif :
+ * => (Essais avec Canvas, mais trop lent, solution abandonnée)
  * 
  * Sous-conteneur qui concataine les gifs 
- * pour en faire une histoire
+ * pour en faire une histoire. 
 */
-
 class ManipulateGif extends Component {
 
   constructor(){
@@ -103,7 +103,10 @@ class ManipulateGif extends Component {
             
   };
 
-
+  /* stopRecord : 
+   * 
+   * Stop l'enregistrement
+  */
   stopRecord() {
     exports.cancelAnimationFrame = exports.cancelAnimationFrame ||
     exports.webkitCancelAnimationFrame || exports.mozCancelAnimationFrame ||
@@ -114,6 +117,10 @@ class ManipulateGif extends Component {
   };
 
 
+  /* embedVideoPreview : 
+   * 
+   * Création du preview de la video
+  */
   embedVideoPreview(opt_url) {
     var url = opt_url || null;
     var video = document.querySelector('#video-preview video') || null;
@@ -145,20 +152,15 @@ class ManipulateGif extends Component {
       url = window.URL.createObjectURL(webmBlob);
     }
     video.src = url;
-    // downloadLink.href = url;
-}
-
-
+  }
 
   render() {
-    // console.log(document.getElementById("video-to-story"));
     const { dispatch, imgs } = this.props;
     return (
         <div className="manipulate-gif">
           <div>Manipulate Gif</div>
           <video id="video-to-story" ref={element => {this.videoElement = element}} width="400" height="400" autoPlay ></video>
           <video id="video-preview" width="400" height="400" autoPlay ></video>
-
         </div>
     )
   }

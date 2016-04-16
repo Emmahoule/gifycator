@@ -13,7 +13,6 @@ const API_URL = config.API_URL;
  * Sous conteneur contenant le choix
  * de la catégorie à afficher
 */
-
 class ChooseCategory extends Component {
   constructor(){
     super();
@@ -24,11 +23,22 @@ class ChooseCategory extends Component {
     }
   }
 
+  /* ComponentWillMount : 
+   * 
+   * Dispatch de 2 actions : une permettant de récupérer
+   * les catégories, et une autre permettant de connaître le nombre
+   * de stories contenues dans chaque catégories.
+  */
   componentWillMount(){
     this.props.dispatch(fetchCategories());
     this.props.dispatch(fetchNbGifs());
   }
 
+  /* ComponentWillReceiveProps : 
+   * 
+   * A la réception des données concernant les catégories,
+   * lancement de l'animation pour les afficher
+  */
   componentWillReceiveProps(nextProps){
     if (nextProps.dataCategories){
       let tl = new TimelineMax();
@@ -60,7 +70,8 @@ class ChooseCategory extends Component {
 
 ChooseCategory.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  dataCategories: PropTypes.array
+  dataCategories: PropTypes.array,
+  nbGifs: PropTypes.array
 }
 
 function mapStateToProps(state) {

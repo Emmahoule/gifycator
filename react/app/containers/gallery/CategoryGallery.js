@@ -12,8 +12,9 @@ const API_URL = config.API_URL;
 
 /* Container CategoryGallery : 
  * 
+ * Sous-conteneur contant les composants 
+ * pour afficher la gallerie de stories d'une catégorie
 */
-
 class CategoryGallery extends Component {
   constructor(){
     super();
@@ -25,6 +26,13 @@ class CategoryGallery extends Component {
     this.lg = 0;
   }
 
+  /* componentWillMount : 
+   * 
+   * Dispatch de 2 actions : 
+   * une pour récupérer les stories de la catégorie sélectionnée
+   * et une autre pour récupérer les infos de la catégorie.
+   * Ajout des classes nécessaires à l'animation.
+  */
   componentWillMount(){
     this.props.dispatch(fetchGifs(this.props.params.id));
     this.props.dispatch(fetchCategory(this.props.params.id));
@@ -34,17 +42,31 @@ class CategoryGallery extends Component {
     }.bind(this), 500);
   }
 
+  /* componentWillReceiveProps : 
+   * 
+   * Récupération du nombre de stories présents dans la catégorie
+  */
   componentWillReceiveProps(nextProps){
     if (nextProps.gifs) {
       this.lg = nextProps.gifs.length;
     }
   }
 
+  /* componentWillUnmount : 
+   * 
+   * Dispatch de 2 actions : Une pour vider le composant, 
+   * et une autre pour vider la catégorie courrante.
+  */
   componentWillUnmount(){
     this.props.dispatch(clearGifs());
     this.props.dispatch(clearCategory());
   }
 
+  /* prevStates : 
+   * 
+   * Mise à jours de l'état du composant, ajout des classes nécessaires
+   * à l'animation, et redirection vers la story précédente
+  */
   prevStates(){
     if (this.state.currentGif>0) {
       $('.category-gallery-block').removeClass("visible");
@@ -66,6 +88,11 @@ class CategoryGallery extends Component {
     }
   }  
 
+  /* nextStates : 
+   * 
+   * Mise à jours de l'état du composant, ajout des classes nécessaires
+   * à l'animation, et redirection vers la story suivante
+  */
   nextStates(){
     if (this.state.currentGif<=this.lg) {
       $('.category-gallery-block').removeClass("visible");
@@ -81,6 +108,11 @@ class CategoryGallery extends Component {
     }
   }       
 
+  /* onClickReturn : 
+   * 
+   * Mise à jour des classes nécessaires pour l'animation, et redirection
+   * vers la liste des catégories
+  */
   onClickReturn(e){
     e.preventDefault();
     $('.category-gallery-block').removeClass("visible");
@@ -124,22 +156,11 @@ class CategoryGallery extends Component {
 }
 
 
-            // <Link to={'gallery/'+categoryId+'/'+gifs[this.state.prevGif].id} onClick={this.prevStates.bind(this)} >Prev{this.state.prevGif}</Link>
-            // <Link  to={'gallery/'+categoryId+'/'+gifs[this.state.nextGif].id} onClick={this.nextStates.bind(this)} >Next{this.state.nextGif}</Link>
-
-          // <div className="category-gallery-block">
-          //   <div className="category-gallery-block-square"></div>
-          //   <div className="category-gallery-block-category">{dataCategory.name}</div>
-          //   <img className="category-gallery-block-img" src={API_URL+dataCategory.img} />
-          // </div>
-          // {gifs && gifs.map(function(gif){
-          //   return <LazyLoad key={gif.id} height={400} offsetVertical={300}><ItemGallery id={gif.id} title={gif.title} author={gif.author} url={gif.url} cover={gif.cover}/></LazyLoad>
-          // })}
-
-// CategoryGallery.propTypes = {
-//   dispatch: PropTypes.func.isRequired,
-//   dataCategories: PropTypes.array
-// }
+CategoryGallery.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+  gifs: PropTypes.array,
+  dataCategories: PropTypes.array
+}
 
 function mapStateToProps(state) {
 
@@ -148,8 +169,7 @@ function mapStateToProps(state) {
   const { dataCategory } = fetchCategory;
 
   return {
-    gifs,
-    dataCategory
+    gifs, dataCategory
   }
 }
 

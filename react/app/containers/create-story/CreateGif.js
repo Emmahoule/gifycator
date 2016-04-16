@@ -14,7 +14,6 @@ const API_URL = config.API_URL;
  * Sous-conteneur contenant les composants pour concaténer les gifs,
  * et les composants pour enregistrer un gif dans la BDD
 */
-
 class CreateGif extends Component {
 
   constructor(){
@@ -24,7 +23,7 @@ class CreateGif extends Component {
   /* ComponentWillMount : 
    * 
    * Si il n'y a pas de requête en cours
-   * on vide l'histoire
+   * dispatch d'une action permettant de vider l'histoire
   */
   componentWillUnmount(){
     if (!this.props.isFetching) {

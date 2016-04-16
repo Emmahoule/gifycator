@@ -169,7 +169,6 @@ export default class SaveGif extends Component {
               </div>
               <div className="btn1 save-gif-cover-btn" onClick={this.onClickCoverBtn.bind(this)}>Select a cover</div>
             </div>
-            
             <div className="save-gif-bottom">
               <div className="save-gif-bottom-square" style={{backgroundColor: this.state.categoryColor}}></div>
               <div className="save-gif-bottom-title-block">

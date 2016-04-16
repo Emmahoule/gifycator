@@ -4,11 +4,11 @@ import { Link } from "react-router";
 import { config } from '../config.js'
 const API_URL = config.API_URL;
 
+
 /* Component GifBoxUrl : 
  * 
  * Box pour uploader un gif via une URL 
 */
-
 export default class GifBoxUrl extends Component {
   constructor(){
     super();

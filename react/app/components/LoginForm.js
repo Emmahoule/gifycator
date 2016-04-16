@@ -1,6 +1,10 @@
 import React, { Component, PropTypes } from 'react'
 import ReactDOM from 'react-dom';
 
+/*  Component LoginForm : 
+ *
+ *  Formulaire d'authentification
+*/
 export default class LoginForm extends Component {
   constructor(){
     super();
@@ -9,10 +13,17 @@ export default class LoginForm extends Component {
       password: null
     }
   }
+
+  /*  Submit : 
+   *
+   * Au click sur le bouton "ok", dispatch d'une action pour vérifier
+   * si l'utilisateur est authorisé à accéder à l'admin 
+  */
   submit() {
     const creds = { email: this.state.email, password: this.state.password }
     this.props.onLoginClick(creds, this.props.history);
-  }   
+  } 
+
   render() {
     const { errorMessage } = this.props
     return (
@@ -37,4 +48,10 @@ export default class LoginForm extends Component {
       </div>
     )
   }
+}
+
+LoginForm.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+  errorMessage: PropTypes.string,
+  onLoginClick: PropTypes.func
 }

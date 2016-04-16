@@ -10,16 +10,23 @@ const API_URL = config.API_URL;
 const BASE_URL = config.BASE_URL;
 const { FacebookShareButton, TwitterShareButton, PinterestShareButton } = ShareButtons;
 
+
 /*  Component ItemGallery : 
  *
+ * Composant contenant une story dans la gallerie
 */
-
 class ItemGallery extends Component {
 	constructor(){
 		super();
 		this.id = null;
 	}
 
+  /*  ComponentWillMount: 
+   *
+   * Au montage du composant, dispatch d'une action pour récupérer 
+   * les infos concernant le gifn et gestion des classes nécessaires aux
+   * animations
+  */
 	componentWillMount() {
 	  this.id = this.props.params.id[1];
     this.props.dispatch(fetchGif(this.id));
@@ -29,13 +36,12 @@ class ItemGallery extends Component {
     }, 1000)
 	}
 
-	componentWillReceiveProps(nextProps){
-    if (nextProps.params.id[1]!= this.id) {
-      this.id = nextProps.params.id[1];
-      this.props.dispatch(fetchGif(this.id));
-    }
-  }
-
+  /* ComponentWillUnmount: 
+   *
+   * Au démontage du composant, dispatch d'une action permettant
+   * de vider le composant, et gestion des classes nécessaires aux
+   * animations
+  */
   componentWillUnmount(){
     this.props.dispatch(clearGif());
       $('.category-gallery-block').removeClass("visible");
@@ -44,6 +50,11 @@ class ItemGallery extends Component {
     }, 1000)
   }
 
+  /* DeleteGif: 
+   *
+   * Dispatch d'une action permettant de supprimer une story
+   * si l'utilisateur est identifié
+  */
   deleteGif(){
     this.props.dispatch(deleteGif(this.props.gif.id, this.props.history));
   }
@@ -92,11 +103,10 @@ class ItemGallery extends Component {
   }
 }
 
-// ItemGallery.propTypes = {
-//   deleteBoxToStory: PropTypes.func.isRequired,
-//   addItemFileToStory: PropTypes.func.isRequired,
-//   id: PropTypes.number.isRequired
-// }
+ItemGallery.propTypes = {
+  gif: PropTypes.object,
+  isAuthenticated: PropTypes.boolean
+}
 
 function mapStateToProps(state) {
 

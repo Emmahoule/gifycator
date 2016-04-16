@@ -5,11 +5,11 @@ import Dropzone from "react-dropzone";
 import { config } from '../config.js'
 const API_URL = config.API_URL;
 
+
 /* Component GifBoxUpload :
  * 
  * Box pour uploader via son ordinateur un gif 
 */
-
 export default class GifBoxUpload extends Component {
   constructor(){
     super();

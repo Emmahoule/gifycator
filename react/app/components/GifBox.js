@@ -6,9 +6,8 @@ import GifBoxCamera from "./GifBoxCamera";
 
 /*  Component GifBox : 
  *
- *  Box ajouter un gif (file) 
+ *  Box pour ajouter un gif
 */
-
 export default class GifBox extends Component {
   constructor(){
     super();
@@ -16,6 +15,7 @@ export default class GifBox extends Component {
       typeUpload: null
     }
   }
+
   render() {
   	const { deleteBoxToStory, addGifFileToStory, id} = this.props; 
     return (

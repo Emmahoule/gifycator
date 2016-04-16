@@ -7,7 +7,6 @@ import { Link } from "react-router";
  * Conteneur global contenant les composants 
  * pour la création d'histoire 
 */
-
 export default class CreateStory extends Component {
   render() {
     return (

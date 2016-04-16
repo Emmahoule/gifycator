@@ -3,12 +3,11 @@ import { connect } from 'react-redux'
 import { Link } from "react-router";
 import { logoutUser } from '../../actions/AuthActions.js'
 
-/* Container Gallery : 
+/* Container Admin : 
  * 
  * Conteneur global contenant les composants 
- * pour la gallerie d'histoires 
+ * pour l'interface d'administration
 */
-
 export default class Admin extends Component {
   constructor(props) {
     super(props);
@@ -16,17 +15,24 @@ export default class Admin extends Component {
       props.history.push('/');
     }
   }
+
+  /* Logout : 
+   * 
+   * Dispatch une action pour déconnecter
+   * l'utilisateur
+  */
   logout() {
     this.props.dispatch(logoutUser(this.props.history));
   }
+
   render() {
     return (
         <div className="auth">
           <Link to="/" className="auth-logo">
-            <span className="c-red">.</span>
-            <span className="c-red">G</span>
-            <span className="c-red">i</span>
-            <span className="c-red">f</span>
+            <span>.</span>
+            <span>G</span>
+            <span>i</span>
+            <span>f</span>
             <span>y</span>
             <span>c</span>
             <span>a</span>
@@ -45,7 +51,8 @@ export default class Admin extends Component {
 
 Admin.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  errorMessage: PropTypes.string
+  errorMessage: PropTypes.string,
+  isAuthenticated: PropTypes.func
 }
 
 function mapStateToProps(state) {

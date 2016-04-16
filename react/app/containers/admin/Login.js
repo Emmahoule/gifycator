@@ -4,14 +4,18 @@ import { loginUser } from '../../actions/AuthActions.js'
 import LoginForm from '../../components/LoginForm'
 import { Link } from "react-router";
 
+/* Login : 
+ * 
+ * Conteneur permettant à un admin de se connecter
+*/
 class Login extends Component {
   constructor(props) {
     super(props);
-
     if (props.isAuthenticated) {
       props.history.push('admin/categories');
     }
   }
+
   render() {
     const { dispatch, errorMessage } = this.props
     return (
@@ -39,7 +43,8 @@ class Login extends Component {
 
 Login.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  errorMessage: PropTypes.string
+  errorMessage: PropTypes.string,
+  isAuthenticated: PropTypes.boolean
 }
 
 function mapStateToProps(state) {
