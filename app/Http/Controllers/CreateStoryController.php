@@ -43,7 +43,7 @@ class CreateStoryController extends Controller
 				// Si c'est un gif, on le convertit en webm
 				if ($extension=="gif") {
 					$filePath = $filePath.".webm";
-					shell_exec("./ffmpeg -f ".$extension." -i ".$filePath." ".$webmFilePath." 2> ffmpeg-error.log");
+					shell_exec("ffmpeg -f ".$extension." -i ".$filePath." ".$webmFilePath." 2> ffmpeg-error.log");
 				} 
 
 			// Si ce n'est pas une variable de type objet
@@ -64,7 +64,7 @@ class CreateStoryController extends Controller
 		} while(file_exists($tmpPath . '/' . $newStoryName));
 
 		$newStoryName = $tmpPath.'/'.$newStoryName;
-		$cmd = './ffmpeg '.$listFiles.'-filter_complex "'.$convert.$v.' concat=n='.$cpt2.':v=1:a=0 [v]" -map "[v]" -y '.$newStoryName.' 2> ffmpeg-error.log';
+		$cmd = 'ffmpeg '.$listFiles.'-filter_complex "'.$convert.$v.' concat=n='.$cpt2.':v=1:a=0 [v]" -map "[v]" -y '.$newStoryName.' 2> ffmpeg-error.log';
 		shell_exec($cmd);
 
 		// Suppression des images dont on n'a plus besoin

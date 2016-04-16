@@ -30,7 +30,7 @@ class ToWebmController extends Controller
 		} while(file_exists($tmpPath . '/' . $newFileName));
 
 		$webmFilePath = $tmpPath.'/'.$newFileName.".webm";
-		shell_exec("./ffmpeg -f ".$extension." -i ".$filePath." ".$webmFilePath." 2> ffmpeg-error.log");
+		shell_exec("ffmpeg -f ".$extension." -i ".$filePath." ".$webmFilePath." 2> ffmpeg-error.log");
 
 		return $webmFilePath;
 	}
