@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, Router, IndexRoute } from "react-router";
-import createHashHistory from 'history/lib/createHashHistory';
-// import createBrowserHistory from 'history/lib/createBrowserHistory';
+// import createHashHistory from 'history/lib/createHashHistory';
+import createBrowserHistory from 'history/lib/createBrowserHistory';
 
 import { useBasename } from 'history';
 
@@ -23,8 +23,8 @@ import Admin from './containers/admin/Admin'
 import Login from './containers/admin/Login'
 import CategoriesList from './containers/admin/CategoriesList'
 
-// let history = useBasename(createBrowserHistory)({basename: '/html/'});
-let history = useBasename(createHashHistory)({basename: '/html/'});
+let history = useBasename(createBrowserHistory)({basename: '/html/'});
+// let history = useBasename(createHashHistory)({basename: '/html/'});
 
 export class Routes extends React.Component {
 	render(){
