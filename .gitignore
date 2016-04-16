@@ -2,3 +2,5 @@
 node_modules
 /public/uploads/
 /public/tmp/
+/react/dist/
+npm-debug.log
