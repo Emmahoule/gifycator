@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "compile": "webpack -p",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "webpack -d && mocha dist/tests.js",
     "dev-server": "webpack-dev-server --color --progress"
   },
   "author": "",
@@ -37,10 +37,12 @@
     "babel-loader": "^6.2.1",
     "babel-preset-es2015": "^6.3.13",
     "babel-preset-react": "^6.3.13",
+    "chai": "^3.5.0",
     "css-loader": "^0.23.1",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.8.5",
     "img-loader": "^1.2.2",
+    "mocha": "^2.4.5",
     "postcss-loader": "^0.8.0",
     "react-hot-loader": "^1.3.0",
     "sass-loader": "^3.1.2",
