@@ -43,7 +43,7 @@ export default class ConcatGif extends Component {
 				    </svg>
 				    <div className="concat-gif-title-text title-3">Wait...</div>
 			    </div>
-			  <p className="concat-gif-infos">You can navigate in the website, or stay here during the creation of your story. It must be take the longer of yours gif. We tell you when your story is ready !</p>
+			  <p className="concat-gif-infos">Your story is being created. You can browse the gallery, or stay here while it is being created. The creation should take about as long as the duration of your story. We will tell you when it’s ready !</p>
       </div>
     )
   }

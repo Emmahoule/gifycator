@@ -43,7 +43,7 @@ export default class Admin extends Component {
           <div className="auth-inner">
             {this.props.children}
           </div>
-          <div className="auth-logout" onClick={() => true}>Déconnexion</div>
+          <div className="auth-logout" onClick={this.logout.bind(this)}>Déconnexion</div>
         </div>
     )
   }

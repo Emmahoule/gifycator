@@ -17,7 +17,7 @@ class Homepage extends Component {
        	 		.Gyficator
        		</div>
 	       	<p className="homepage-txt">
-	       		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec cursus dapibus est eleifend egestas. Maecenas imperdiet, magna id molestie.
+	       		With Gifycator, you can create your own story by gluing gifs together, and share them with your friends. Drop by the gallery, you might find something funny !
 	       	</p>
           {!isFetching &&
 	       	<Link to="create-story" className="btn1 homepage-btn">Create my story</Link>

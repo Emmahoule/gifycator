@@ -68,7 +68,9 @@ export default class GifBoxCamera extends Component {
       camera: null,
       recording: false, 
       frames:[],
-      video: null}
+      video: null,
+      noWebcam: false
+    }
     );
 
     // Initialisation de la video
@@ -90,7 +92,9 @@ export default class GifBoxCamera extends Component {
       });
       finishVideoSetup();
     }, function(e) {
-      finishVideoSetup();
+      this.setState({
+          noWebcam: true
+      });
     });
   }
 
@@ -184,7 +188,9 @@ export default class GifBoxCamera extends Component {
           <div className={"gif-box-camera-btn gif-box-camera-record-btn "+ (this.state.recording==true?"record":"")} onClick={this.record.bind(this)}></div>
         </div>
       }
-
+      {this.state.noWebcam &&
+        <div className="gif-box-camera-no-camera">No webcam was found.</div>
+      }
       {this.state.video!=null &&
         <div className="gif-box-gif-container">
           <video ref="videoCamera" loop="true" className="gif-box-gif" src={this.state.video} autoPlay></video>

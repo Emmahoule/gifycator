@@ -42,3 +42,20 @@
 	top: 50%;
 	}
 }
+
+.gif-box-camera-no-camera {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 999;
+	color: $red;
+	text-align: center;
+	background-color: $white;
+	line-height: 180px;
+}
+
+.gif-box-camera-no-camera {
+	
+}

@@ -50,6 +50,5 @@ export default class SelectCategory extends Component {
 SelectCategory.propTypes = {
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
-  color: PropTypes.string.isRequired,
-  nbGifs: PropTypes.array
+  color: PropTypes.string.isRequired
 }

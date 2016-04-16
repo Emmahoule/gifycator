@@ -27,7 +27,7 @@ class ComposeGif extends Component {
   	const { dispatch, imgs, complete, files } = this.props;
     return (
       	<div className="compose-gif">
-          <div className="create-story-title title-2">Lets create your story !</div>
+          <div className="create-story-title title-2">Let's create your story !</div>
           <div className="compose-gif-block a-middle">
             {imgs.map(function(img){
               return <GifBox deleteBoxToStory={(id)=>dispatch(deleteBoxToStory(id))} addGifFileToStory={(file)=>dispatch(addGifFileToStory(img.id, file))} id={img.id} key={img.id} />

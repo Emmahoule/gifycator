@@ -32,10 +32,12 @@ class ChooseCategory extends Component {
   componentDidMount(){
     this.props.dispatch(fetchCategories(
       () => {
-        let tl = new TimelineMax();
-        tl.add(TweenMax.staggerTo(".select-category-bg-inner", 1, { width: "375px", ease: Power2.easeInOut }, 0.15));
-        tl.add(TweenMax.staggerTo(".select-category-name", 1.5, { autoAlpha: 1, x: 0, y: 0, ease: Power2.easeOut }, 0.15), 0.5);
-        tl.add(TweenMax.staggerTo(".select-category-stories", 1.5, { autoAlpha: 1, x: 0, y: 0, ease: Power2.easeOut }, 0.15), 0.5);  
+        setTimeout(function(){
+          let tl = new TimelineMax();
+          tl.add(TweenMax.staggerTo(".select-category-bg-inner", 1, { width: "375px", ease: Power2.easeInOut }, 0.15));
+          tl.add(TweenMax.staggerTo(".select-category-name", 1.5, { autoAlpha: 1, x: 0, y: 0, ease: Power2.easeOut }, 0.15), 0.5);
+          tl.add(TweenMax.staggerTo(".select-category-stories", 1.5, { autoAlpha: 1, x: 0, y: 0, ease: Power2.easeOut }, 0.15), 0.5);  
+        }, 250);
       }
     ));
     this.props.dispatch(fetchNbGifs());
