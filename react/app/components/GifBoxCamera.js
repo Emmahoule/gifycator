@@ -57,7 +57,7 @@ export default class GifBoxCamera extends Component {
   startCamera(){
     navigator.getUserMedia = navigator.getUserMedia ||
     navigator.webkitGetUserMedia || navigator.mozGetUserMedia ||
-    navigator.msGetUserMedia;
+    navigator.msGetUserMedia || navigator.mediaDevices.getUserMedia;
     var video = $('#video-camera');
     var canvas = document.createElement('canvas'); 
     video.controls = false;
