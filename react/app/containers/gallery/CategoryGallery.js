@@ -38,7 +38,7 @@ class CategoryGallery extends Component {
     this.props.dispatch(fetchCategory(this.props.params.id));
     window.setTimeout(function(){
       $('.category-gallery-block').addClass("visible");
-      if (this.props.params.id.isArray()) {
+      if (Array.isArray(this.props.params.id)) {
           this.props.history.push('gallery/'+this.props.params.id[0]+'/'+this.props.params.id[1]);
       } else {
         this.props.history.push('gallery/'+this.props.params.id[0]+'/'+this.props.gifs[0].id);
