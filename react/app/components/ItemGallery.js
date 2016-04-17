@@ -50,7 +50,19 @@ class ItemGallery extends Component {
     }, 1000)
   }
 
-  /* DeleteGif: 
+  /* componentWillReceiveProps: 
+   *
+   * A la reception des nouvelles props, récupération de l'id
+   * du gif à fetcher, et récupération des données du nouveau gif
+  */
+  componentWillReceiveProps(nextProps){
+    if (nextProps.params.id[1]!= this.id) {
+      this.id = nextProps.params.id[1];
+      this.props.dispatch(fetchGif(this.id));
+    }
+  }
+
+  /* deleteGif: 
    *
    * Dispatch d'une action permettant de supprimer une story
    * si l'utilisateur est identifié
