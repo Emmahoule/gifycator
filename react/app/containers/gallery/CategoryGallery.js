@@ -38,7 +38,11 @@ class CategoryGallery extends Component {
     this.props.dispatch(fetchCategory(this.props.params.id));
     window.setTimeout(function(){
       $('.category-gallery-block').addClass("visible");
-      this.props.history.push('gallery/'+this.props.params.id[0]+'/'+this.props.gifs[0].id);
+      if (this.props.params.id.isArray()) {
+          this.props.history.push('gallery/'+this.props.params.id[0]+'/'+this.props.params.id[1]);
+      } else {
+        this.props.history.push('gallery/'+this.props.params.id[0]+'/'+this.props.gifs[0].id);
+      }
     }.bind(this), 500);
   }
 
