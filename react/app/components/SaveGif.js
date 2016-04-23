@@ -14,8 +14,16 @@ const API_URL = config.API_URL;
  * et qui affiche des champs de formulaire pour
  * ajouter des infos à l'histoire (titre, auteur, 
  * image de couverture, catégorie). 
+ *
+ * States :
+ * - categoryName: nom de la catégorie sélectionnée
+ * - categoryValue: valeur de la catégorie sélectionnée
+ * - categoryColor: couleur de la catégorie sélectionnée
+ * - open: true/false - état du select
+ * - title: titre de l'histoire
+ * - author: autheur de l'histoire
+ * - cover: image de couverture de l'histoire
 */
-
 export default class SaveGif extends Component {
 
   constructor(){
@@ -33,11 +41,10 @@ export default class SaveGif extends Component {
     this.video;
   }
 
-  /* componentDidMount : 
+  /* componentWillMount : 
    * 
-   * Met à jour l'état du composant 
-   * pour passer une classe "open" au select
-   * si il est ouvert, et "closed" si il est fermé
+   * Au montage du composant, récupération des catégories (fetch),
+   * et si pas d'histoire à enregistrer, redirection vers la composition d'histoire
   */  
   componentWillMount(){
     this.props.dispatch(fetchCategories());
@@ -67,8 +74,7 @@ export default class SaveGif extends Component {
   /* onClickSelectItem : 
    * 
    * Met à jour l'état du composant 
-   * pour afficher la valeur sélectionnée
-   * dans le select
+   * pour afficher, dans le select, la valeur sélectionnée
   */  
   onClickSelectItem(e){
     let value = e.target.getAttribute("data-value");
@@ -85,8 +91,8 @@ export default class SaveGif extends Component {
   /* onClickCoverBtn : 
    * 
    * Ajoute le contrôle de la vidéo,
-   * et la remet au début
-   * pour choisir une photo de couverture
+   * et la remet au début pour la selection
+   * d'une photo de couverture
   */  
   onClickCoverBtn() {
     this.setState({
@@ -109,9 +115,8 @@ export default class SaveGif extends Component {
 
   /* captureCoverVideo : 
    * 
-   * Capture dans un canvas d'une image de couverture
-   * pour la vidéo, et envoie des données de la vidéo
-   * avec son image de couverture
+   * Capture dans un canvas d'une image de couverture en base 64
+   * et envoie des données au serveur
   */  
   captureCoverVideo(){
     var canvas = document.createElement('canvas');
@@ -132,10 +137,9 @@ export default class SaveGif extends Component {
   /* sendData : 
    * - parameter : coverImg 
    * 
-   * Prend en paramètre l'image de couverture de la vidéo
-   * et ajoute les données de la vidéo dans un formulaire.
-   * Envoie de ce formulaire au serveur pour enregistrer les données
-   * dans la BDD.
+   * Ajoute les données de l'histoire (titre, auteur, url, couverture, catégorie) 
+   * contenues dans l'état du composant dans un formulaire.
+   * Dispatch d'une action pour envoyer le formulaire au serveur et ainsi enregistrer les données
   */  
   sendData(coverImg){
     let form = new FormData();
@@ -189,6 +193,7 @@ export default class SaveGif extends Component {
   }
 }
 
+// Déclaration du types des props
 SaveGif.propTypes = {
   dispatch: PropTypes.func.isRequired,
   story: PropTypes.string.isRequired,

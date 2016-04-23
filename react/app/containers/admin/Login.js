@@ -11,9 +11,13 @@ import { Link } from "react-router";
 class Login extends Component {
   constructor(props) {
     super(props);
-
   }
 
+  /* componentDidMount : 
+   * 
+   * Si l'utilisateur est déjà connecté,
+   * redirection vers l'admin directement.
+  */
   componentDidMount() {
     if (this.props.isAuthenticated) {
       this.props.history.push('admin/categories');
@@ -45,12 +49,14 @@ class Login extends Component {
   }
 }
 
+// Déclaration du types des props
 Login.propTypes = {
   dispatch: PropTypes.func,
   errorMessage: PropTypes.string,
   isAuthenticated: PropTypes.bool
 }
 
+// Connection au store Redux
 function mapStateToProps(state) {
 
   const { auth } = state

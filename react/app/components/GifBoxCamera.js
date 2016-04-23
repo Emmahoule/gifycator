@@ -6,6 +6,12 @@ import ReactDOM from 'react-dom';
 /* Component GifBoxCamera : 
  *
  * Box pour enregistrer une vidéo avec sa camera
+ *
+ * States :
+ * - camera: preview de la camera
+ * - recording: true/false - enregistrement en cours
+ * - frames: tableau de frames
+ * - video: video enregistrée
 */
 export default class GifBoxCamera extends Component {
   
@@ -44,7 +50,7 @@ export default class GifBoxCamera extends Component {
 
   /* stopCamera : 
    * 
-   * Stopper la caméra,
+   * Stop la caméra
   */  
   stopCamera(){
     this.state.stream.getVideoTracks()[0].stop();
@@ -52,7 +58,9 @@ export default class GifBoxCamera extends Component {
 
   /* startCamera : 
    * 
-   * Démarrer la caméra,
+   * Démarrer la caméra, initialise le canvas
+   * qui permettra l'enregistrement frame par frame, 
+   * et met l'état du composant à jour
   */ 
   startCamera(){
     navigator.getUserMedia = navigator.getUserMedia ||
@@ -65,12 +73,12 @@ export default class GifBoxCamera extends Component {
 
     // Remise à 0 de l'état du composant
     this.setState({      
-      camera: null,
-      recording: false, 
-      frames:[],
-      video: null,
-      noWebcam: false
-    }
+        camera: null,
+        recording: false, 
+        frames:[],
+        video: null,
+        noWebcam: false
+      }
     );
 
     // Initialisation de la video
@@ -100,10 +108,8 @@ export default class GifBoxCamera extends Component {
 
   /* record : 
    * 
-   * Enregistrement de chaque frame 
-   * du preview de la caméra
-   * dans un canvas,
-   * puis conversion en webm
+   * Enregistrement de chaque frame de la video (jouée dans un canvas) en image webp,
+   * et mise à jour de l'état du composant 
   */   
   record(){
     exports.cancelAnimationFrame = exports.cancelAnimationFrame ||
@@ -120,8 +126,10 @@ export default class GifBoxCamera extends Component {
     var CANVAS_HEIGHT = canvas.height;
     var CANVAS_WIDTH = canvas.width;
 
-    // Si l'enregistrement n'est pas en cours : lancement de l'enregistrement
+    // Si l'enregistrement n'est pas déjà en cours : lancement de l'enregistrement
     if (this.state.recording == false){
+
+      // Mise à jour de l'état du composant
       this.setState({recording: true});
 
       // Récupération frame par frame de l'enregistrement
@@ -149,7 +157,9 @@ export default class GifBoxCamera extends Component {
   /* embedVideoPreview : 
    * - parameters : canvas, frames
    * 
-   * Affichage du rendu de l'enregistrement précédent
+   * Récupération de l'enregistrement,
+   * puis conversion en .webm avec le plugin Whammy.js.
+   * Ensuite, mise à jour de l'état du composant
   */   
   embedVideoPreview(canvas, frames) {
     var video = $('#video-preview video') || null;
@@ -172,6 +182,11 @@ export default class GifBoxCamera extends Component {
     this.props.addGifFileToStory(this.blobToFile(webmBlob, "camera_record_"+this.props.id+".webm"));
   }
 
+  /* embedVideoPreview : 
+   * - parameters : blob, nom du fichier
+   * 
+   * Conversion d'un blob en file
+  */   
   blobToFile(theBlob, fileName){
     theBlob.lastModifiedDate = new Date();
     theBlob.name = fileName;
@@ -206,6 +221,7 @@ export default class GifBoxCamera extends Component {
   }
 }
 
+// Déclaration du types des props
 GifBoxCamera.propTypes = {
   addGifFileToStory: PropTypes.func.isRequired
 }

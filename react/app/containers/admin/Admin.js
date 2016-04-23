@@ -18,8 +18,8 @@ export default class Admin extends Component {
 
   /* Logout : 
    * 
-   * Dispatch une action pour déconnecter
-   * l'utilisateur
+   * Dispatch une action pour 
+   * déconnecter l'utilisateur
   */
   logout() {
     this.props.dispatch(logoutUser(this.props.history));
@@ -49,12 +49,14 @@ export default class Admin extends Component {
   }
 }
 
+// Déclaration du types des props
 Admin.propTypes = {
   dispatch: PropTypes.func,
   errorMessage: PropTypes.string,
   isAuthenticated: PropTypes.bool
 }
 
+// Connection au store Redux
 function mapStateToProps(state) {
 
   const { auth } = state

@@ -12,7 +12,7 @@ const API_URL = config.API_URL;
 /* Container CreateGif : 
  * 
  * Sous-conteneur contenant les composants pour concaténer les gifs,
- * et les composants pour enregistrer un gif dans la BDD
+ * et les composants pour enregistrer une histoire dans la BDD
 */
 class CreateGif extends Component {
 
@@ -54,6 +54,7 @@ class CreateGif extends Component {
   }
 }
 
+// Déclaration du types des props
 CreateGif.propTypes = {
   dispatch: PropTypes.func.isRequired,
   imgs: PropTypes.array.isRequired,
@@ -61,6 +62,7 @@ CreateGif.propTypes = {
   dataCategories: PropTypes.array
 }
 
+// Connection au store Redux
 function mapStateToProps(state) {
 
   const { composeGifStory, concatGifStory, saveGifStory, fetchCategories } = state

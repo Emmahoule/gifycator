@@ -13,6 +13,7 @@ const API_URL = config.API_URL;
  * Composent qui récupère la liste de gif de l'utilisateur
  * et qui effectue une requête pour concaténer les gifs 
  * et créer l'histoire
+ *
 */
 export default class ConcatGif extends Component {
 
@@ -27,28 +28,29 @@ export default class ConcatGif extends Component {
   */  
   componentDidMount(){
     let form = new FormData();
-  	{this.props.imgs.map(function(img){
-  		form.append("gif_"+img.id, img.file);
-  	})}
-  	this.props.dispatch(concatGifs(form));
+    {this.props.imgs.map(function(img){
+      form.append("gif_"+img.id, img.file);
+    })}
+    this.props.dispatch(concatGifs(form));
   }
 
   render() {
     const { dispatch, imgs } = this.props;
     return (
         <div className="concat-gif a-middle">
-        	<div className="concat-gif-title">
-		        <svg className="icon icon-load concat-gif-title-icon">
-				      <use xlinkHref="#icon-load"></use>
-				    </svg>
-				    <div className="concat-gif-title-text title-3">Wait...</div>
-			    </div>
-			  <p className="concat-gif-infos">Your story is being created. You can browse the gallery, or stay here while it is being created. The creation should take about as long as the duration of your story. We will tell you when it’s ready !</p>
+          <div className="concat-gif-title">
+            <svg className="icon icon-load concat-gif-title-icon">
+              <use xlinkHref="#icon-load"></use>
+            </svg>
+            <div className="concat-gif-title-text title-3">Wait...</div>
+          </div>
+        <p className="concat-gif-infos">Your story is being created. You can browse the gallery, or stay here while it is being created. The creation should take about as long as the duration of your story. We will tell you when it’s ready !</p>
       </div>
     )
   }
 }
 
+// Déclaration du types des props
 ConcatGif.propTypes = {
   dispatch: PropTypes.func.isRequired,
   imgs: PropTypes.array.isRequired

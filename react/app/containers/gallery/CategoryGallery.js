@@ -13,9 +13,16 @@ const API_URL = config.API_URL;
 /* Container CategoryGallery : 
  * 
  * Sous-conteneur contant les composants 
- * pour afficher la gallerie de stories d'une catégorie
+ * pour afficher la gallerie d'histoires après
+ * sélection d'une catégorie
+ *
+ * States :
+ * - currentGif: index gif courrant
+ * - nextGif: index gif suivant
+ * - prevGif: index gif précedent
 */
 class CategoryGallery extends Component {
+
   constructor(){
     super();
     this.state = {
@@ -29,7 +36,7 @@ class CategoryGallery extends Component {
   /* componentWillMount : 
    * 
    * Dispatch de 2 actions : 
-   * une pour récupérer les stories de la catégorie sélectionnée
+   * une pour récupérer fetcher les histoires de la catégorie sélectionnée
    * et une autre pour récupérer les infos de la catégorie.
    * Ajout des classes nécessaires à l'animation.
   */
@@ -59,7 +66,7 @@ class CategoryGallery extends Component {
   /* componentWillUnmount : 
    * 
    * Dispatch de 2 actions : Une pour vider le composant, 
-   * et une autre pour vider la catégorie courrante.
+   * et une autre pour vider la catégorie courrante stockée.
   */
   componentWillUnmount(){
     this.props.dispatch(clearGifs());
@@ -69,7 +76,7 @@ class CategoryGallery extends Component {
   /* prevStates : 
    * 
    * Mise à jours de l'état du composant, ajout des classes nécessaires
-   * à l'animation, et redirection vers la story précédente
+   * à l'animation, et redirection vers l'histoire précédente
   */
   prevStates(){
     if (this.state.currentGif>0) {
@@ -95,7 +102,7 @@ class CategoryGallery extends Component {
   /* nextStates : 
    * 
    * Mise à jours de l'état du composant, ajout des classes nécessaires
-   * à l'animation, et redirection vers la story suivante
+   * à l'animation, et redirection vers l'histoire suivante
   */
   nextStates(){
     if (this.state.currentGif<=this.lg) {
@@ -159,13 +166,14 @@ class CategoryGallery extends Component {
   }
 }
 
-
+// Déclaration du types des props
 CategoryGallery.propTypes = {
   dispatch: PropTypes.func.isRequired,
   gifs: PropTypes.array,
   dataCategories: PropTypes.array
 }
 
+// Connection au store Redux
 function mapStateToProps(state) {
 
   const { fetchGifs, fetchCategory } = state;

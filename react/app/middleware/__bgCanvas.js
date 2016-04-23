@@ -2,7 +2,6 @@
 
 // Idée de départ : créer un fond dégradé en canvas animé
 
-
 // //Initialisation des variables
 // $(document).ready(function() { 
 //   var wWidth = $(window).width();

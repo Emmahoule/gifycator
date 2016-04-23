@@ -9,12 +9,13 @@ import { Link } from "react-router";
  * Sous-conteneur contenant les composants
  * pour l'ajout de gif lors de la création d'histoire 
 */
-
 class ComposeGif extends Component {
 
   /* ComponentWillMount : 
    * 
-   * Remise à 0 des box pour crééer l'histoire
+   * Si une histoire est en cours de création,
+   * redirection vers la home.
+   * Sinon, remise à 0 des boxs pour créer l'histoire.
   */
   componentWillMount(){
     if (this.props.isFetching) {
@@ -24,9 +25,9 @@ class ComposeGif extends Component {
   }
 
   render() {
-  	const { dispatch, imgs, complete, files } = this.props;
+    const { dispatch, imgs, complete, files } = this.props;
     return (
-      	<div className="compose-gif">
+        <div className="compose-gif">
           <div className="create-story-title title-2">Let's create your story !</div>
           <div className="compose-gif-block a-middle">
             {imgs.map(function(img){
@@ -51,6 +52,7 @@ class ComposeGif extends Component {
   }
 }
 
+// Déclaration du types des props
 ComposeGif.propTypes = {
   dispatch: PropTypes.func.isRequired,
   imgs: PropTypes.array.isRequired,
@@ -59,6 +61,7 @@ ComposeGif.propTypes = {
   isFetching: PropTypes.bool
 }
 
+// Connection au store Redux
 function mapStateToProps(state) {
 
   const { composeGifStory, concatGifStory } = state;

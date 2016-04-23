@@ -4,6 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Gif
+ * 
+ * Modèle Gif
+*/
 class Gif extends Model
 {
     protected $table = 'gifs';

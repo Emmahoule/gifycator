@@ -20,6 +20,7 @@ import { FETCH_GIFS_REQUEST, FETCH_GIFS_SUCCESS, FETCH_GIFS_FAILURE,
         DELETE_GIF_REQUEST, DELETE_GIF_SUCCESS, DELETE_GIF_FAILURE,
          } from '../actions/GalleryActions.js'
 
+
 /* Auth Reducer :
  * - LOGIN_REQUEST
  * - LOGIN_SUCCESS
@@ -435,7 +436,11 @@ function deleteGif(state = {
 }
 
 const myApp = combineReducers({
-  composeGifStory, concatGifStory, saveGifStory, fetchCategories, fetchCategory, fetchNbGifs, deleteCat, addCat, fetchGifs, fetchGif, deleteGif, auth
+  composeGifStory, concatGifStory, saveGifStory, 
+  fetchCategories, fetchCategory, fetchNbGifs, 
+  deleteCat, addCat, 
+  fetchGifs, fetchGif, deleteGif, 
+  auth
 })
 
 export default myApp

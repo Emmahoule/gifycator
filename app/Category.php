@@ -2,7 +2,11 @@
  
  use Illuminate\Database\Eloquent\Model;
  
- 
+/**
+ * Category
+ * 
+ * Modèle Category
+*/
  class Category extends Model
  {
     protected $table = 'categories';

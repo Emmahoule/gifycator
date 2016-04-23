@@ -82,11 +82,13 @@ class ViewGif extends Component {
   }
 }
 
+// Déclaration du types des props
 ViewGif.propTypes = {
   dispatch: PropTypes.func.isRequired,
   dataStory: PropTypes.object.isRequired
 }
 
+// Connection au store Redux
 function mapStateToProps(state) {
 
   const { saveGifStory } = state

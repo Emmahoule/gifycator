@@ -1,3 +1,8 @@
+/* GalleryActions : 
+ * 
+ * Actions de la gallerie
+*/
+
 import { CALL_API } from '../middleware/api'
 import { config } from '../config.js'
 const API_URL = config.API_URL;
@@ -16,6 +21,13 @@ export const DELETE_GIF_FAILURE = 'DELETE_GIF_FAILURE'
 
 export const CLEAR_GIFS= 'CLEAR_GIFS'
 export const CLEAR_GIF= 'CLEAR_GIF'
+
+
+/* Gifs Action : 
+ * 
+ * - types: types d'actions,
+ * - endpoint: adresse de l'api,
+*/
 
 // Envoie de la requête pour récupérer les gifs en fonction de l'id d'une catégorie
 export function fetchGifs(id) {
@@ -51,6 +63,14 @@ export function clearGif(){
   }
 }
 
+/* DeleteGif Actions : 
+ * 
+ * - type: type d'action,
+ * - isFetching: true/false - requête en cours,
+ * - isAuthenticated: true/false - authentifié,
+ * - datasGifSupp - Datas gif supprimé
+ * - message - Message d'erreur
+*/
 
 // Envoie de la requête pour supprimer une story
 function requestDeleteGif() {

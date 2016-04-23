@@ -4,6 +4,10 @@ import ReactDOM from 'react-dom';
 /*  Component LoginForm : 
  *
  *  Formulaire d'authentification
+ *
+ * States :
+ * - email: email de l'utilisateur
+ * - password: password de l'utilisateur
 */
 export default class LoginForm extends Component {
   constructor(){

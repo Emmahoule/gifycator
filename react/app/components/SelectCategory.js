@@ -6,8 +6,7 @@ const API_URL = config.API_URL;
 
 /*  Component SelectCategory : 
  *
- * Composant contenant une catégorie et son lien
- * pour rentrer dans sa gallerie
+ * Affichage d'une catégorie
 */
 export default class SelectCategory extends Component {
 
@@ -16,11 +15,11 @@ export default class SelectCategory extends Component {
     this.onClickCategory = this.onClickCategory.bind(this);
   }
 
-  /*  GoToGallery(event) : 
+  /*  onClickCategory(event) : 
    * - parameter : event 
    *
    * Au click sur une catégorie, lancement de l'animation de disparition
-   * des catégories, et callback pour entrer dans la catégorie sélectionnée.
+   * des catégories, avec callback pour entrer dans la gallerie de la catégorie sélectionnée.
   */
   onClickCategory(e) {
     e.preventDefault();
@@ -47,6 +46,7 @@ export default class SelectCategory extends Component {
   }
 }
 
+// Déclaration du types des props
 SelectCategory.propTypes = {
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,

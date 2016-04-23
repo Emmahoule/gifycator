@@ -1,5 +1,9 @@
 import { config } from "../config.js";
 
+/*  Middleware callApi : 
+ *
+ *  Middleware permettant de faire des requêtes à l'API
+*/
 const API_URL = config.API_URL
 
 function callApi(endpoint, callback) {

@@ -11,30 +11,30 @@ const BASE_URL = config.BASE_URL;
 const { FacebookShareButton, TwitterShareButton, PinterestShareButton } = ShareButtons;
 
 
-/*  Component ItemGallery : 
+/* Component ItemGallery : 
  *
- * Composant contenant une story dans la gallerie
+ * Affichage d'une histoire dans la gallerie
 */
 class ItemGallery extends Component {
-	constructor(){
-		super();
-		this.id = null;
-	}
+  constructor(){
+    super();
+    this.id = null;
+  }
 
   /*  ComponentWillMount: 
    *
    * Au montage du composant, dispatch d'une action pour récupérer 
-   * les infos concernant le gifn et gestion des classes nécessaires aux
+   * les infos de l'histoire (fetch) et gestion des classes nécessaires aux
    * animations
   */
-	componentWillMount() {
-	  this.id = this.props.params.id[1];
+  componentWillMount() {
+    this.id = this.props.params.id[1];
     this.props.dispatch(fetchGif(this.id));
     $('.category-gallery-block').removeClass("visible");
     window.setTimeout(function(){
       $('.category-gallery-block').addClass("visible");
     }, 1000)
-	}
+  }
 
   /* ComponentWillUnmount: 
    *
@@ -64,7 +64,7 @@ class ItemGallery extends Component {
 
   /* deleteGif: 
    *
-   * Dispatch d'une action permettant de supprimer une story
+   * Dispatch d'une action permettant de supprimer une histoire
    * si l'utilisateur est identifié
   */
   deleteGif() {
@@ -77,13 +77,13 @@ class ItemGallery extends Component {
     return (
       <div className="item-gallery">
       {gif &&
-      	<div className="item-gallery-story">
+        <div className="item-gallery-story">
           <div className="item-gallery-title-block">
-  	     	 	<div className="item-gallery-title">{gif.title}</div>
-  	     	 	<div className="item-gallery-author">{gif.author}</div>
-       	 	</div>
+            <div className="item-gallery-title">{gif.title}</div>
+            <div className="item-gallery-author">{gif.author}</div>
+          </div>
           <div className="item-gallery-video-mask">
-  	        <video className="item-gallery-video" src={API_URL+gif.url} autoPlay loop/>
+            <video className="item-gallery-video" src={API_URL+gif.url} autoPlay loop/>
           </div>
         </div>
       }
@@ -116,11 +116,13 @@ class ItemGallery extends Component {
   }
 }
 
+// Déclaration du types des props
 ItemGallery.propTypes = {
   gif: PropTypes.object,
   isAuthenticated: PropTypes.bool
 }
 
+// Connection au store Redux
 function mapStateToProps(state) {
 
   const { fetchGif, auth } = state;

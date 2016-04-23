@@ -11,8 +11,13 @@ const API_URL = config.API_URL;
 /* Container CategoriesList : 
  * 
  * Sous conteneur de l'admin contenant la liste des catégories,
- * avec la possibilité d'ajouter une catégorie
- * et de les supprimer (à condition qu'elles ne contiennent plus de gif)
+ * avec la possibilité d'ajouter une catégorie,
+ * et d'en supprimer (à condition que la catégorie à supprimer 
+ * ne contienne plus de gif)
+ *
+ * States :
+ * - catName: nom de la catégorie à ajouter
+ * - catColor: couleur de la catégorie à ajouter
 */
 class CategoriesList extends Component {
   constructor(){
@@ -36,9 +41,10 @@ class CategoriesList extends Component {
 
   /* AddCategory : 
    * 
-   * Création d'un formulaire contenant les données de la nouvelle 
-   * catégorie, et dispatch d'une action prenant pour paramètre le formulaire, et 
-   * permettant d'ajouter cette catégories dans la BDD. 
+   * Création d'un objet formulaire contenant les données de la nouvelle 
+   * catégorie ajoutée, et dispatch d'une action permettant d'ajouter cette catégories dans la BDD.
+   * Cette action prendra pour paramètres le formulaire, 
+   * ainsi qu'une fonction de callback pour fetcher la nouvelle liste de catégories.
   */
   addCategory(){
     let form = new FormData();
@@ -49,7 +55,9 @@ class CategoriesList extends Component {
 
   /* DeleteCategory : 
    * 
-   * Dispatch d'une action permettant de supprimer une catégorie.
+   * Dispatch d'une action permettant de supprimer une catégorie. Cette action prendra
+   * pour paramètres l'id de la catégorie à supprimer, 
+   * ainsi qu'une fonction de callback pour fetcher la nouvelle liste de catégories.
   */
   deleteCategory(id){
     this.props.dispatch(deleteCategory(id, () => this.props.dispatch(fetchCategories())));
@@ -82,7 +90,7 @@ class CategoriesList extends Component {
   }
 }
 
-
+// Déclaration du types des props
 CategoriesList.propTypes = {
   dispatch: PropTypes.func.isRequired,
   dataCategories: PropTypes.array,
@@ -90,6 +98,7 @@ CategoriesList.propTypes = {
 
 }
 
+// Connection au store Redux
 function mapStateToProps(state) {
 
   const { fetchCategories, fetchNbGifs, deleteCat, addCat } = state;

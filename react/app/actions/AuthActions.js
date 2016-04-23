@@ -1,3 +1,8 @@
+/* AuthActions : 
+ * 
+ * Actions d'authentification
+*/
+
 export const LOGIN_REQUEST = 'LOGIN_REQUEST'
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
 export const LOGIN_FAILURE = 'LOGIN_FAILURE'
@@ -9,6 +14,17 @@ export const LOGOUT_FAILURE = 'LOGOUT_FAILURE'
 import { config } from '../config.js'
 const API_URL = config.API_URL;
 
+
+/* Login Actions : 
+ * 
+ * - type: type d'action,
+ * - isFetching: true/false - requête en cours,
+ * - isAuthenticated: true/false - authentifié,
+ * - creds - Données d'authentification
+ * - message - Message d'erreur
+*/
+
+// Envoie de la requête pour se connecter
 function requestLogin(creds) {
   return {
     type: LOGIN_REQUEST,
@@ -18,6 +34,7 @@ function requestLogin(creds) {
   }
 }
 
+// Réception de la requête pour se connecter
 function receiveLogin(user) {
   return {
     type: LOGIN_SUCCESS,
@@ -26,6 +43,7 @@ function receiveLogin(user) {
   }
 }
 
+// Erreur survenue de la requête pour se connecter
 function loginError(message) {
   return {
     type: LOGIN_FAILURE,
@@ -35,6 +53,7 @@ function loginError(message) {
   }
 }
 
+// Requête pour se connecter
 export function loginUser(creds, history) {
 
   let config = {
@@ -45,7 +64,6 @@ export function loginUser(creds, history) {
 
   return dispatch => {
     dispatch(requestLogin(creds))
-
     return fetch(API_URL+'api/auth', config)
       .then(response =>
         response.json().then(user => ({ user, response }))
@@ -62,6 +80,15 @@ export function loginUser(creds, history) {
   }
 }
 
+
+/* Logout Actions : 
+ * 
+ * - type: type d'action,
+ * - isFetching: true/false - requête en cours,
+ * - isAuthenticated: true/false - authentifié,
+*/
+
+// Envoie de la requête pour la déconnexion
 function requestLogout() {
   return {
     type: LOGOUT_REQUEST,
@@ -70,6 +97,7 @@ function requestLogout() {
   }
 }
 
+// Réception de la requête pour la déconnexion
 function receiveLogout() {
   return {
     type: LOGOUT_SUCCESS,
@@ -78,7 +106,7 @@ function receiveLogout() {
   }
 }
 
-// Logs the user out
+// Actions pour la déconnexion
 export function logoutUser(history) {
   return dispatch => {
     dispatch(requestLogout())

@@ -7,9 +7,22 @@ use App\Gif;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-
+/**
+ * GifController
+ * 
+ * Controller qui gère les requêtes relatives
+ * aux gifs
+*/
 class GifController extends Controller{
 
+    /**
+     * index
+     *
+     * - Parameter : no
+     * - Route : api/gif
+     * - Method : GET
+     * - Response : liste gifs
+    */
     public function index(){
 
         $gifs  = Gif::all();
@@ -18,6 +31,14 @@ class GifController extends Controller{
 
     }
 
+    /**
+     * getGif
+     *
+     * - Parameter : id gif à lire
+     * - Route : api/gif/{id}
+     * - Method : GET
+     * - Response : infos gif
+    */
     public function getGif($id){
 
         $gif  = Gif::find($id);
@@ -25,6 +46,14 @@ class GifController extends Controller{
         return response()->json($gif);
     }
 
+    /**
+     * getGifs
+     *
+     * - Parameter : id catégorie des gifs à lire
+     * - Route : api/gifs/{id}
+     * - Method : GET
+     * - Response : liste gifs d'une catégorie
+    */
     public function getGifs($id){
 
         $gifs  = Gif::where('category', $id)->get();;
@@ -32,6 +61,14 @@ class GifController extends Controller{
         return response()->json($gifs);
     }
 
+    /**
+     * countGifs
+     *
+     * - Parameter : no
+     * - Route : api/count-gifs
+     * - Method : GET
+     * - Response : liste catégories avec leur nombre de gifs
+    */
     public function countGifs(){
         
         $nbGifs = Gif::select('category', DB::raw('count(*) as total'))
@@ -41,6 +78,14 @@ class GifController extends Controller{
         return response()->json($nbGifs);
     }
 
+    /**
+     * saveGif
+     *
+     * - Parameter : request (infos gif à ajouter)
+     * - Route : api/gif
+     * - Method : POST
+     * - Response : infos gif ajouté
+    */
     public function saveGif(Request $request){
 
         // Récupération de la requête
@@ -61,7 +106,7 @@ class GifController extends Controller{
 
         $newGifName = $random . '.webm';
 
-        // Décodage de la photo de couverture (Base64)
+        // Décodage  et enregistrement de la photo de couverture (Base64)
         $coverDecoded = base64_decode($cover);
         $coverFileName = $uploadPath.'/'.$newCoverName;
         file_put_contents($coverFileName, $coverDecoded);
@@ -80,6 +125,7 @@ class GifController extends Controller{
             ]
         );
 
+        // Récupération du nouvel ID généré
         $id = Gif::select('id')->where('url', '=', $gifPath)->get();
 
         // Renvoie des données en JSON
@@ -91,13 +137,16 @@ class GifController extends Controller{
             'author' => $author,
             'category' => $category
             ]);
-
-        // $gif = Gif::create($request->all());
-
-        // return response()->json($gif);
-
     }
 
+    /**
+     * deleteGifs
+     *
+     * - Parameter : id gif à supprimer
+     * - Route : api/gif/{id}
+     * - Method : DELETE
+     * - Response : infos gif supprimé
+    */
     public function deleteGif($id){
         $gif  = Gif::find($id);
 
@@ -106,7 +155,15 @@ class GifController extends Controller{
         return response()->json('success');
     }
 
-    public function updateGif(Request $request,$id){
+    /**
+     * updateGif
+     *
+     * - Parameter : request (infos gif à updater: name, color), id gif à updater
+     * - Route : api/gif/{id}
+     * - Method : PUT
+     * - Response : infos gif updaté
+    */
+    public function updateGif(Request $request, $id){
         $gif  = Gif::find($id);
 
         $gif->url = $request->input('url');

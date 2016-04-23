@@ -10,7 +10,7 @@ import { Link } from "react-router";
 export default class CreateStory extends Component {
   render() {
     return (
-      	<div className="create-story">
+        <div className="create-story">
           <Link to="/" className="create-story-logo">
             <span>.</span>
             <span>G</span>

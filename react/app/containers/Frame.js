@@ -3,16 +3,19 @@ import { Link } from "react-router";
 import { connect } from 'react-redux';
 import { fetchCategories } from '../actions/CategoriesActions.js';
 
-/* Container Frame : conteneur global */
+/* Container Frame : conteneur global 
+ *
+ * States :
+ * - title: titre de la page
+*/
 
 class Frame extends Component {
-	constructor(){
-		super();
+  constructor(){
+    super();
     this.state = {
-      title:".Gifycator",
-      currentPage: ""
+      title:".Gifycator"
     }
-	}
+  }
 
   componentWillMount(){
     this.props.dispatch(fetchCategories());
@@ -41,34 +44,34 @@ class Frame extends Component {
     }
   }
 
-	render() {
-		const { isFetching, story, dataCategories } = this.props;
+  render() {
+    const { isFetching, story, dataCategories } = this.props;
 
-  	return (
-    	<div className="frame">
-  			<div className="frame-bg">
-  				<div className="frame-bg-line">
-  					<div className="frame-bg-line-inner"></div>
-  				</div>
-  				<div className="frame-bg-line">
-  					<div className="frame-bg-line-inner"></div>
-  				</div>
-  				<div className="frame-bg-line">
-  					<div className="frame-bg-line-inner"></div>
-  				</div>
-  				<div className="frame-bg-line">
-  					<div className="frame-bg-line-inner"></div>
-  				</div>
-  				<div className="frame-bg-line">
-  					<div className="frame-bg-line-inner"></div>
-  				</div>
-  				<div className="frame-bg-line">
-  					<div className="frame-bg-line-inner"></div>
-  				</div>
-  				<div className="frame-bg-line">
-  					<div className="frame-bg-line-inner"></div>
-  				</div>
-  			</div>
+    return (
+      <div className="frame">
+        <div className="frame-bg">
+          <div className="frame-bg-line">
+            <div className="frame-bg-line-inner"></div>
+          </div>
+          <div className="frame-bg-line">
+            <div className="frame-bg-line-inner"></div>
+          </div>
+          <div className="frame-bg-line">
+            <div className="frame-bg-line-inner"></div>
+          </div>
+          <div className="frame-bg-line">
+            <div className="frame-bg-line-inner"></div>
+          </div>
+          <div className="frame-bg-line">
+            <div className="frame-bg-line-inner"></div>
+          </div>
+          <div className="frame-bg-line">
+            <div className="frame-bg-line-inner"></div>
+          </div>
+          <div className="frame-bg-line">
+            <div className="frame-bg-line-inner"></div>
+          </div>
+        </div>
         <div className="frame-left-nav">
           {isFetching &&
             <Link to="create-story/create-gif" className="frame-loading frame-left-nav-link">
@@ -88,18 +91,19 @@ class Frame extends Component {
           }
           <Link className="frame-left-nav-link" to="gallery">Gallery</Link>
         </div>
-      	<div className="frame-wrapper">
-      	  <div className="title-1">
-		    		{this.state.title}
-	      	</div>
+        <div className="frame-wrapper">
+          <div className="title-1">
+            {this.state.title}
+          </div>
           <Link className="frame-admin-btn" to="login">Admin</Link>
-     			{this.props.children}
-       	</div>
-    	</div>
-  	)	
-	}
+          {this.props.children}
+        </div>
+      </div>
+    ) 
+  }
 }
 
+// Déclaration du types des props
 Frame.propTypes = {
   dispatch: PropTypes.func.isRequired,
   isFetching: PropTypes.bool,
@@ -107,6 +111,7 @@ Frame.propTypes = {
   dataCategories: PropTypes.array
 }
 
+// Connection au store Redux
 function mapStateToProps(state) {
 
   const { concatGifStory, fetchCategories } = state

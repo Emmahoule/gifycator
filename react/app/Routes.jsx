@@ -26,6 +26,7 @@ import CategoriesList from './containers/admin/CategoriesList'
 let history = useBasename(createBrowserHistory)({basename: '/'});
 // let history = useBasename(createHashHistory)({basename: '/html/'});
 
+// Création des routes
 export class Routes extends React.Component {
 	render(){
 		return(

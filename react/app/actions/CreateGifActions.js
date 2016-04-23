@@ -1,3 +1,8 @@
+/* CreateGifActions : 
+ * 
+ * Actions de création des histoires
+*/
+
 import { config } from '../config.js'
 const API_URL = config.API_URL;
 
@@ -9,6 +14,16 @@ export const CLEAR_STORY = 'CLEAR_STORY';
 export const SAVE_STORY_REQUEST = 'SAVE_STORY_REQUEST';
 export const SAVE_STORY_SUCCESS = 'SAVE_STORY_SUCCESS';
 export const SAVE_STORY_FAILURE = 'SAVE_STORY_FAILURE';
+
+
+/* ConcatGifs Actions : 
+ * 
+ * - type: type d'action,
+ * - isFetching: true/false - requête en cours,
+ * - isAuthenticated: true/false - authentifié,
+ * - story - Datas de l'histoire créée
+ * - message - Message d'erreur
+*/
 
 // Envoie de la requête pour concaténer les gifs
 function requestConcatGifs() {
@@ -69,6 +84,15 @@ export function clearStory() {
 }
 
 
+/* SaveStory Actions : 
+ * 
+ * - type: type d'action,
+ * - isFetching: true/false - requête en cours,
+ * - isAuthenticated: true/false - authentifié,
+ * - dataStory - Datas de l'histoire sauvegardée
+ * - message - Message d'erreur
+*/
+
 // Envoie de la requête pour enregistrer l'histoire
 function requestSaveStory() {
   return {
@@ -120,4 +144,3 @@ export function saveStory(story, history) {
       }).catch(err => console.log("Error: ", err))
   }
 }
-

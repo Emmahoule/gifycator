@@ -7,20 +7,26 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-
+/**
+ * CreateStoryController
+ * 
+ * Controller qui gère la création d'histoire
+*/
 class CreateStoryController extends Controller
 {
 
-	/**
-	 * Convert gif to webm .
-	 * - Request : file
-	 * - Response : URL
-	*/
+    /**
+     * createStory
+     *
+     * - Parameter : request (files ou URL gif)
+     * - Route : api/create-story
+     * - Method : POST
+     * - Response : chemin histoire
+    */
 	public function createStory(Request $request) {
 		
 		$image = $request->toArray();
 		$tabImg = [];
-		// $tmpPath = config('images.tmpPath');
 		$tmpPath = "tmp";
 		$listFiles = "";
 		$convert="";
@@ -28,42 +34,52 @@ class CreateStoryController extends Controller
 		$cpt2=0;
 		$v="";
 
+		// Pour chaque élément de la requête
 		foreach ($image as $file) {
 
-			// Si la variable est vide, on continue
+			// Si il est vide, on continue
 			if ($file=="null"){
 				continue;
 			}
 
-			// Si c'est une variable de type objet
+			// Si c'est un objet
 			if (is_object($file)){
+
+				// Stockage de son chemin et son extension
 				$filePath = $file->getPathName();
 				$extension = $file->getClientOriginalExtension();
 				
-				// Si c'est un gif, on le convertit en webm
+				// Si c'est un gif, conversion en webm
 				if ($extension=="gif") {
 					$filePath = $filePath.".webm";
 					shell_exec("ffmpeg -f ".$extension." -i ".$filePath." ".$webmFilePath." 2> ffmpeg-error.log");
 				} 
 
-			// Si ce n'est pas une variable de type objet
+			// Sinon
 			} else {
+
+				// Stockage de sa valeur
 				$filePath = $file;
 			}
 
-			// On ajoute le chemin dans un tableau
+			// Ajout du chemin dans un tableau
 			$listFiles.='-f webm -i '.$filePath.' '; 
+
+			// Construction des éléments nécessaires pour exécuter la commande FFMPEG
 			$convert.='['.$cpt2.':0] scale=size=320x320:force_original_aspect_ratio=decrease,pad=width=320:height=320:x=(out_w-in_w)/2:y=(out_h-in_h)/2:color=white,setsar=1 [v'.$cpt.'];';
 			$v.='[v'.$cpt.']';
 			$cpt ++;
 			$cpt2 ++;
 		}
 		
+		// Génération d'un nom de fichier qui n'est pas existant
 		do {
 			$newStoryName = str_random(10) . '.webm';
 		} while(file_exists($tmpPath . '/' . $newStoryName));
 
 		$newStoryName = $tmpPath.'/'.$newStoryName;
+
+		// Exécution de la commande FFMPEG
 		$cmd = 'ffmpeg '.$listFiles.'-filter_complex "'.$convert.$v.' concat=n='.$cpt2.':v=1:a=0 [v]" -map "[v]" -y '.$newStoryName.' 2> ffmpeg-error.log';
 		shell_exec($cmd);
 
@@ -74,6 +90,7 @@ class CreateStoryController extends Controller
 			}
 		}
 
+		// Retour du chemin de l'histoire créee
 		return $newStoryName;
 
 	}

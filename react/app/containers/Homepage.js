@@ -12,29 +12,30 @@ class Homepage extends Component {
     const { isFetching } = this.props;
     return (
       <div className="homepage">
-       	<div className="homepage-block a-middle">
-       	    <div className="homepage-logo title-2">
-       	 		.Gifycator
-       		</div>
-	       	<p className="homepage-txt">
-	       		With Gifycator, you can create your own story by gluing gifs together, and share them with your friends. Drop by the gallery, you might find something funny !
-	       	</p>
+        <div className="homepage-block a-middle">
+            <div className="homepage-logo title-2">
+            .Gifycator
+          </div>
+          <p className="homepage-txt">
+            With Gifycator, you can create your own story by gluing gifs together, and share them with your friends. Drop by the gallery, you might find something funny !
+          </p>
           {!isFetching &&
-	       	<Link to="create-story" className="btn1 homepage-btn">Create my story</Link>
+          <Link to="create-story" className="btn1 homepage-btn">Create my story</Link>
           }
-	       	<Link to="gallery" className="btn1 homepage-btn">Gallery</Link>
-       	</div>
+          <Link to="gallery" className="btn1 homepage-btn">Gallery</Link>
+        </div>
       </div>
     )
   }
 }
 
+// Déclaration du types des props
 Homepage.propTypes = {
   dispatch: PropTypes.func.isRequired,
   isFetching: PropTypes.bool
 }
 
-
+// Connection au store Redux
 function mapStateToProps(state) {
 
   const { concatGifStory } = state

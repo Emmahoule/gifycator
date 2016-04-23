@@ -10,24 +10,19 @@ const API_URL = config.API_URL;
 
 /* Container ChooseCategory : 
  * 
- * Sous conteneur contenant le choix
- * de la catégorie à afficher
+ * Sous conteneur contenant la liste
+ * des catégories
 */
 class ChooseCategory extends Component {
   constructor(){
     super();
-    this.state = {
-      selectCat:false,
-      curCatName: null,
-      curCatImg: null
-    }
   }
 
   /* ComponentWillMount : 
    * 
    * Dispatch de 2 actions : une permettant de récupérer
    * les catégories, et une autre permettant de connaître le nombre
-   * de stories contenues dans chaque catégories.
+   * d'histoires contenues dans chaque catégories.
   */
   componentDidMount(){
     this.props.dispatch(fetchCategories(
@@ -62,13 +57,14 @@ class ChooseCategory extends Component {
   }
 }
 
-
+// Déclaration du types des props
 ChooseCategory.propTypes = {
   dispatch: PropTypes.func.isRequired,
   dataCategories: PropTypes.array,
   nbGifs: PropTypes.array
 }
 
+// Connection au store Redux
 function mapStateToProps(state) {
 
   const { fetchCategories, fetchNbGifs } = state;

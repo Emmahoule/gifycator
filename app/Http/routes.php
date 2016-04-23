@@ -17,7 +17,7 @@ $app->get('/', function () use ($app) {
 
 $app->group(['prefix' => 'api/','namespace' => 'App\Http\Controllers'], function($app)
 {
-	// Category routes
+    // Category routes
     $app->get('category','CategoryController@index');
     $app->get('category/{id}','CategoryController@getCategory');
     $app->post('category','CategoryController@saveCategory');

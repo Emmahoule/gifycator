@@ -9,6 +9,12 @@ const API_URL = config.API_URL;
 /* Component GifBoxUpload :
  * 
  * Box pour uploader via son ordinateur un gif 
+ *
+ * States :
+ * - image: preview du fichier uploadé
+ * - file: fichier uploadé
+ * - toWebm: fichier uploadé en .webm
+ * - fetching: true/false - requête en cours
 */
 export default class GifBoxUpload extends Component {
   constructor(){
@@ -69,7 +75,6 @@ export default class GifBoxUpload extends Component {
         }
       })
       //.catch(err => console.log("Error: ", err))
-
   }
 
   render() {
@@ -110,6 +115,7 @@ export default class GifBoxUpload extends Component {
   }
 }
 
+// Déclaration du types des props
 GifBoxUpload.propTypes = {
   addGifFileToStory: PropTypes.func.isRequired
 }

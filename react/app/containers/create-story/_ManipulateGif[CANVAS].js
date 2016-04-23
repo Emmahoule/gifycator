@@ -78,6 +78,10 @@ class ManipulateGif extends Component {
     return tabFiles;
   }
 
+  /* record : 
+   * 
+   * Enregistre les images dans un canvas
+  */
   record() {
     this.canvas = document.createElement('canvas');
     this.canvas.width = this.video.width;
@@ -119,7 +123,7 @@ class ManipulateGif extends Component {
 
   /* embedVideoPreview : 
    * 
-   * Création du preview de la video
+   * Créé le preview de la video
   */
   embedVideoPreview(opt_url) {
     var url = opt_url || null;

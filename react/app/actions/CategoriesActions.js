@@ -1,6 +1,7 @@
-import { CALL_API } from '../middleware/api'
-import { config } from '../config.js'
-const API_URL = config.API_URL;
+/* CategoriesActions : 
+ * 
+ * Actions liées aux catégories
+*/
 
 export const FETCH_CATEGORIES_REQUEST = 'FETCH_CATEGORIES_REQUEST'
 export const FETCH_CATEGORIES_SUCCESS = 'FETCH_CATEGORIES_SUCCESS'
@@ -19,6 +20,19 @@ export const DELETE_CAT_REQUEST = 'DELETE_CAT_REQUEST'
 export const DELETE_CAT_SUCCESS = 'DELETE_CAT_SUCCESS'
 export const DELETE_CAT_FAILURE = 'DELETE_CAT_FAILURE'
 
+import { CALL_API } from '../middleware/api'
+import { config } from '../config.js'
+const API_URL = config.API_URL;
+
+
+/* Categories Action : 
+ * 
+ * - types: types d'actions,
+ * - endpoint: adresse de l'api,
+ * - callback: callback
+*/
+
+// Requête pour récupérer la liste des catégories
 export function fetchCategories(callback) {
   return {
     [CALL_API]: {
@@ -29,6 +43,8 @@ export function fetchCategories(callback) {
   }
 }
 
+
+// Requête pour récupérer les infos d'une catégories
 export function fetchCategory(id) {
   return {
     [CALL_API]: {
@@ -38,12 +54,21 @@ export function fetchCategory(id) {
   }
 }
 
+// Action pour vider l'état général de l'application
 export function clearCategory(){
   return {
     type: CLEAR_CATEGORY
   }  
 }
 
+
+/* NbGif Action : 
+ * 
+ * - types: types d'actions,
+ * - endpoint: adresse de l'api,
+*/
+
+// Action pour récupérer le nombre de gif dans chaque catégorie
 export function fetchNbGifs() {
   return {
     [CALL_API]: {
@@ -53,6 +78,15 @@ export function fetchNbGifs() {
   }
 }
 
+
+/* DeleteCat Actions : 
+ * 
+ * - type: type d'action,
+ * - isFetching: true/false - requête en cours,
+ * - isAuthenticated: true/false - authentifié,
+ * - datasCatSupp - Datas catégorie supprimée
+ * - message - Message d'erreur
+*/
 
 // Envoie de la requête pour supprimer une catégorie
 function requestDeleteCat() {
@@ -107,6 +141,15 @@ export function deleteCategory(id, callback) {
   }
 }
 
+
+/* AddCat Actions : 
+ * 
+ * - type: type d'action,
+ * - isFetching: true/false - requête en cours,
+ * - isAuthenticated: true/false - authentifié,
+ * - datasCat - Datas catégorie ajoutée
+ * - message - Message d'erreur
+*/
 
 // Envoie de la requête pour ajouter une catégorie
 function requestAddCat() {

@@ -8,6 +8,11 @@ const API_URL = config.API_URL;
 /* Component GifBoxUrl : 
  * 
  * Box pour uploader un gif via une URL 
+ *
+ * States :
+ * - url: preview de la camera
+ * - fetching: true/false - requête en cours
+ * - error: tableau de frames
 */
 export default class GifBoxUrl extends Component {
   constructor(){
@@ -23,7 +28,7 @@ export default class GifBoxUrl extends Component {
    * - parameter : event 
    * 
    * Récupère la valeur de l'input
-   * et lance une requête télécharger l'url 
+   * et lance une requête pour télécharger l'url 
    * (résultat: url du fichier téléchargé en webm)
   */  
   downloadVideo(e) {
@@ -96,6 +101,7 @@ export default class GifBoxUrl extends Component {
   }
 }
 
+// Déclaration du types des props
 GifBoxUrl.propTypes = {
   addGifFileToStory: PropTypes.func.isRequired
 }
