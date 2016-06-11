@@ -4,13 +4,6 @@
 
 Gifycator is a web app to create story with many gifs. It consists in 2 parts : stories creation, and stories gallery.
 
+Using ffmpeg for gif manipulation.
 
-## Install
-
-```
-#!python
-
-npm install # install dependancies
-npm run dev-server # run server
-
-```
+My second application with React.js. School project, no tests, and back-end to improve. 
