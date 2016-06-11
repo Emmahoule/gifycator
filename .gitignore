@@ -4,3 +4,4 @@ node_modules
 /public/tmp/
 /react/dist/
 npm-debug.log
+/.env
